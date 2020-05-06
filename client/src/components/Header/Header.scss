@@ -1,0 +1,111 @@
+@import "../../sass/variables.scss";
+
+.Header {
+
+    height: 70vh;
+    background-image: linear-gradient(to right, $primary-transparent, $primary-light-transparent), url("../../assets/images/business-event.jpg") ;
+    background-size: cover;
+    background-position: bottom;
+    position: relative;
+    font-family: "Lato";
+    position: relative;
+
+    &__container {
+        height: 100%;
+        width: 100%;
+    }
+
+    &__text-container {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 45%;
+        left: 32.5%;
+        color: $white;
+        width: 80rem;
+        
+    }
+
+    &__text {
+        font-size: 5.5rem;
+        font-weight: 400;
+    }
+
+    &__upcoming-event-card {
+        position: absolute;
+        width: 35rem;
+        height: 40rem;
+        background-color: $white;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 80%;
+        border-radius: 0.5rem;
+        box-shadow: $box-shadow-1;
+        padding: 2rem;
+        text-align: center;
+        color: $off-black
+    }
+
+    &__btn-container {
+        margin-top: 2rem;
+    }
+
+    &__card-header {
+        font-size: 3.25rem;
+    }
+
+    &__event-name {
+        font-size: 2.5rem;
+        color: $grey;
+        width: 65%;
+        margin: 0 auto;
+        margin-top: 1.5rem;
+    }
+
+    &__event-topic {
+        margin-top: 1rem;
+        font-size: 2rem;
+        color: $grey
+    }
+
+    &__event-details-container {
+        margin-top: 3rem;
+        font-size: 1.75rem;
+    }
+
+    &__event-detail {
+        margin-bottom: 0.5rem;
+    }
+
+    &__register-btn {
+        width: 80%;
+        margin-top: 2rem;
+        padding: 1.35rem 0;
+        cursor: pointer;
+        border-radius: 0.2rem;
+        border: none;
+        background-color: $primary;
+        color: $white;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+    }
+
+    &__about-btn {
+        width: 22.25rem;
+        margin-right: 4rem;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.89);
+
+        &--purple {
+            background-color: rgba(250, 192, 255, 0.644);
+        }
+
+    }
+
+}
