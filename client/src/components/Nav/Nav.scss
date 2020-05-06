@@ -1,6 +1,35 @@
 @import "../../sass/variables.scss";
 
 .Nav {
-    background-color: rgba(0, 0, 0, 0.233);
-    height: 12.5vh
+    background-color: rgba(31, 4, 31, 0.918);
+    height: 12.5vh;
+    font-family: "Lato";
+    
+    &__logo {
+        width: 30rem;
+        margin-left: 2rem;
+    }
+
+    &__list {
+        height: 100%;
+        align-items: center;
+        display: flex;
+    }
+
+    &__list-item {
+
+        margin-right: 4rem;
+        list-style: none;
+        font-size: 2rem;
+
+        &--right {
+            margin-left: auto;
+        }
+
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $white
+    }
 }
