@@ -1,0 +1,37 @@
+@import "../../sass/variables.scss";
+
+.Events {
+
+    &__container {
+        width: 85%;
+        margin: 0 auto;
+        height: 100vh
+    }
+
+    &__header {
+        font-weight: 700;
+        font-size: 4.5rem;
+        margin: 2rem 0;
+        font-family: 'Nunito Sans';
+        color: $primary;
+        letter-spacing: 0.2rem;
+        word-spacing: 0.4rem;
+        text-align: center;
+    }
+
+    &__line {
+        height: 0.35rem; 
+        width: 15rem;
+        background-color: $primary-light;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+        border-radius: 100rem;
+    }
+
+    &__event-card-container {
+        margin: 0 auto;
+        margin-top: 10rem;
+        width: 70rem;
+    }
+
+}
