@@ -1,0 +1,65 @@
+@import "../../sass/variables.scss";
+
+.About {
+    
+    padding: 15rem 0;
+    font-family: "Lato";
+
+    &__container {
+        width: 87.5%;
+        margin: 0 auto
+    }
+
+    &__header {
+        font-weight: 700;
+        font-size: 5rem;
+        text-transform: uppercase;
+        font-family: 'Nunito Sans';
+        color: $primary;
+        letter-spacing: 0.2rem;
+        word-spacing: 0.4rem;
+        margin-top: 10rem;
+    }
+
+    &__section-container {
+        display: flex;
+    }
+
+    &__text-container {
+
+        width: 45%;
+
+    }
+
+    &__img-container {
+        width: 55%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__img {
+        width: 65rem
+    }
+
+    &__text {
+        font-size: 2rem;
+        color: $dark-grey;
+
+        width: 85%;
+        line-height: 3rem;
+    }
+
+    &__btn {
+        margin-top: 2.5rem;
+        padding: 1.5rem 4.5rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        cursor: pointer;
+        color: $white;
+        font-size: 1.5rem;
+        background-color: $secondary;
+        border: none
+    }
+
+}
