@@ -1,0 +1,73 @@
+@import "../../sass/variables.scss";
+
+.Chapters {
+
+    font-family: "Lato";
+
+    &__container {
+        width: 87.5%;
+        margin: 0 auto
+    }
+
+
+    &__header {
+        font-weight: 700;
+        font-size: 5rem;
+        font-family: 'Nunito Sans';
+        color: $primary;
+        letter-spacing: 0.2rem;
+        word-spacing: 0.4rem;
+        margin-top: 10rem;
+    }
+
+    &__text {
+        font-size: 2rem;
+        color: $dark-grey;
+        margin-top: 1rem;
+        width: 65%;
+        line-height: 3rem;
+    }
+
+    &__card-container {
+        padding: 5rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+    }
+
+    &__card {
+        width: 40rem;
+        height: 35rem;
+        
+        margin-bottom: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        border-radius: 0.25rem;
+        overflow: hidden;
+        cursor: pointer;
+        background-color: black;
+
+        &:hover .Chapters__img {
+            opacity: 0.75;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        transition: 1s;
+    }
+
+    &__title {
+        z-index: 2;
+        font-size: 3.5rem;
+        color: $white;
+        
+    }
+
+}

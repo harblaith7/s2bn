@@ -13,6 +13,8 @@ export default class Events extends Component {
                     <div className="Events__line"></div>
                     <div className="Events__event-card-container">
                         <EventCard />
+                        <EventCard />
+                        <EventCard />
                     </div>
                 </div>
             </div>
