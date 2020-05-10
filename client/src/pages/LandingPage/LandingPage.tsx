@@ -4,6 +4,7 @@ import Nav from "../../components/Nav/Nav"
 import About from "../../components/About/About"
 import Events from "../../components/Events/Events"
 import Chapters from "../../components/Chapters/Chapters"
+import Footer from "../../components/Footer/Footer"
 import "./LandingPage.scss"
 
  class LandingPage extends Component {
@@ -15,6 +16,7 @@ import "./LandingPage.scss"
                 <About/>
                 <Events/>
                 <Chapters/>
+                <Footer/>
             </div>
         )
     }

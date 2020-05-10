@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./About.scss";
 import worldConnection from "../../assets/images/svg/world-connection.svg"
+import events from "../../assets/images/svg/icons/events.svg"
 
 export default class About extends Component {
     render() {
