@@ -18,7 +18,7 @@ export default class About extends Component {
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia facere atque itaque odit sunt voluptas at quasi repellat architecto explicabo aut minima impedit illum sapiente autem nisi vitae, tempore perspiciatis.
                             </p>
                             <button className="About__btn">
-                                Send Me an Email
+                                Learn More
                             </button>
                         </div>
                         <div className="About__img-container">

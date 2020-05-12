@@ -1,0 +1,55 @@
+@import "../../sass/variables.scss";
+
+.PersonCard {
+
+    width: 35rem;
+    background-color: $transparent-grey;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin-bottom: 10rem;
+    
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__image {
+        width: 17.5rem;
+        height: 17.5rem;
+        border-radius: 100%;
+        margin-top: -8.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__social-container {
+        width: 50%;
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 2rem;
+    }
+
+    &__icon {
+        width: 1.5rem;
+        cursor: pointer;
+    }
+
+    &__name {
+        font-size: 3rem;
+    }
+
+    &__title {
+        font-size: 1.75rem;
+        color: $transparent-black;
+        margin-bottom: 1rem;
+    }
+
+    &__text {
+        width: 75%;
+        font-size: 1.5rem;
+        color: $transparent-black
+    }
+
+}

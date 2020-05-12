@@ -1,0 +1,22 @@
+.SchoolImage {
+
+    &__container {
+        width: 100%;
+        height: 25rem;
+        background-image: url("https://images.shiksha.com/mediadata/images/1534223829phpsCrnQD.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+        background-attachment: fixed;
+    }
+
+    &__blur {
+        background: rgba(26, 0, 26, 0.315); // Make sure this color has an opacity of less than 1
+        backdrop-filter: blur(2.5px); // This be the blur
+        height: 100%;
+            width: 100%;
+    }
+
+    
+
+}

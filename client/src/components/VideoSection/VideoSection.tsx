@@ -13,11 +13,11 @@ export default class VideoSection extends Component {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, aspernatur sed veritatis quibusdam nemo blanditiis iusto ipsum laborum perferendis ratione?
                     </p>
                     <div className="VideoSection__video-container">
-                    <video controls className="VideoSection__video">
-                        <source src="movie.mp4" type="video/mp4"/>
-                        <source src="movie.ogg" type="video/ogg"/>
-                        Your browser does not support the video tag.
-                    </video>
+                        <video controls className="VideoSection__video">
+                            <source src="movie.mp4" type="video/mp4"/>
+                            <source src="movie.ogg" type="video/ogg"/>
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
             </div>

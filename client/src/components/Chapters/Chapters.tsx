@@ -49,6 +49,12 @@ export default class Chapters extends Component {
                                 Edmonton, AB
                             </h3>
                         </div>
+                        <div className="Chapters__card">
+                            <img src="https://assets.exploreedmonton.com/images/_300x170_crop_center-center_none/Edmonton-City-Skyline.jpg?utime=20190710140426" alt="" className="Chapters__img"/>
+                            <h3 className="Chapters__title">
+                                London, ON
+                            </h3>
+                        </div>
                     </div>
                 </div>
             </div>
