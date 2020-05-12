@@ -4,6 +4,7 @@ import Nav from "../../components/Nav/Nav"
 import About from "../../components/About/About"
 import Events from "../../components/Events/Events"
 import Chapters from "../../components/Chapters/Chapters"
+import VideoSection from "../../components/VideoSection/VideoSection"
 import Footer from "../../components/Footer/Footer"
 import "./LandingPage.scss"
 
@@ -16,6 +17,7 @@ import "./LandingPage.scss"
                 <About/>
                 <Events/>
                 <Chapters/>
+                <VideoSection/>
                 <Footer/>
             </div>
         )

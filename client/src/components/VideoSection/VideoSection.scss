@@ -1,0 +1,42 @@
+@import "../../sass/variables.scss";
+
+.VideoSection {
+
+    background-color: $primary-purple;
+    padding: 1.5rem 0;
+    padding-bottom: 15rem;
+
+    &__container {
+        width: 87.5%;
+        margin: 0 auto;
+        
+    }
+
+    &__header {
+        font-weight: 700;
+        font-size: 5rem;
+        font-family: 'Nunito Sans';
+        color: $primary;
+        letter-spacing: 0.2rem;
+        word-spacing: 0.4rem;
+        margin-top: 10rem;
+    }
+
+    &__text {
+        font-size: 2rem;
+        color: $dark-grey;
+        margin-top: 1rem;
+        width: 65%;
+        line-height: 3rem;
+    }
+
+    &__video-container {
+        margin-top: 5rem;
+    }
+
+    &__video {
+        width: 65%;
+
+    }
+
+}

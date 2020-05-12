@@ -9,6 +9,10 @@ export default class Events extends Component {
         return (
             <div className = "Events">
                 <div className="Events__container">
+                    <div className="Events__slide-nav-background"></div>
+                    <h2 className="Events__header">
+                        Upcoming Events
+                    </h2>
                     <Carousel>
                         <Carousel.Item>
                             <EventCard/>
@@ -17,7 +21,7 @@ export default class Events extends Component {
                         <Carousel.Item>
                             <EventCard/>
                         </Carousel.Item>
-                        
+
                         <Carousel.Item>
                             <EventCard/>
                         </Carousel.Item>

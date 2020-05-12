@@ -2,10 +2,29 @@
 
 .Events {
 
+    background-color: $primary-purple;
+    padding: 7.5rem 0;
+
     &__container {
-        width: 55%;
+        width: 45%;
         margin: 0 auto;
-        display: flex
+        position: relative;
+    }
+
+    &__slide-nav-background {
+        background-color: rgba(72, 43, 85, 0.233);
+        height: 2rem;
+        width: 20rem;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 97%;
+        left: 50%;
+        border-radius: 0.3rem;
+    }
+
+    &__slide-container {
+        height: 10rem;
+        width: 100%;
     }
 
     &__header {
