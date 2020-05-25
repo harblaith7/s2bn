@@ -1,0 +1,76 @@
+@import "../../sass/variables.scss";
+
+.Sponsors {
+
+    &__container {
+        text-align: center;
+        margin-top: 10rem;
+    }
+
+    &__header {
+        font-weight: 700;
+        font-size: 4rem;
+        font-family: 'Nunito Sans';
+        color: $primary;
+        letter-spacing: 0.2rem;
+        word-spacing: 0.4rem;
+    
+    }
+
+    &__text {
+        font-size: 2rem;
+        color: $dark-grey;
+        width: 60%;
+        line-height: 3rem;
+        margin: 2rem auto;
+        
+    }
+
+    &__sub-heading {
+        color: $dark-grey;
+        font-size: 1.2rem;
+    }
+
+    &__sponsors-container {
+        width: 55%;
+        height: 40rem;
+        margin: 6rem auto;
+
+    }
+
+    &__row {
+        height: 20rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.3rem;
+    }
+
+    &__card{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(186, 187, 186, 0.514);
+
+        &--three {
+            width: 33%;
+        }
+
+        &--two {
+            width: 49.75%
+        }
+        
+    }
+
+    &__img {
+        width: 17.5rem;
+        opacity: 0.5;
+    }
+
+}
+
+
+.size-3 {
+    width: 25rem;
+}
