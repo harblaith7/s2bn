@@ -1,5 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, ReactComponentElement } from 'react'
 import "./InnerNav.scss"
+
+interface IProps {
+    updateSection : (page : "OurStory" | "WhatWeDo" | "OurTeam") => React.Component
+}
 
 export default class InnerNav extends Component {
     render() {

@@ -1,0 +1,51 @@
+@import "../../sass/variables.scss";
+
+.OurStory {
+
+    padding: 7.5rem 0;
+
+    &__container {
+        width: 85%;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    &__text-container {
+        margin-top: 10rem;
+    }
+
+    &__data-header {
+        font-weight: 700;
+        font-size: 6rem;
+        font-family: 'Nunito Sans';
+        color: $primary;
+        letter-spacing: 0.2rem;
+        word-spacing: 0.4rem;
+
+        &--right {
+            text-align: right;
+            margin-right: 10rem;
+        }
+
+    }
+
+    &__text-and-image-container {
+        display: flex;
+        align-items: center;
+    }
+
+    &__img {
+        width: 25rem;
+        height: 25rem;
+        border-radius: 100%;
+        margin-right: 5rem;
+    }
+
+    &__description {
+        font-size: 2rem;
+        margin-top: 2rem;
+        width: 70%;
+        margin-right: 2rem;
+    }
+
+}
