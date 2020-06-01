@@ -1,0 +1,12 @@
+@import "../../sass/variables.scss";
+
+.AboutHeader {
+    &__header {
+        height: 45rem;
+        width: 100%;
+        background-image: linear-gradient(to right, $primary-purple, $primary-purple), url("https://sbims.com/wp-content/uploads/2018/08/Event_Management.png"), ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top;
+    }
+}
