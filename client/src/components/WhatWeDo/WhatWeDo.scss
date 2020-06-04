@@ -1,5 +1,127 @@
 @import "../../sass/variables.scss";
 
 .WhatWeDo {
+    padding: 10rem 0;
 
+    &__container {
+        width: 85%;
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+    }
+
+    &__text-container {
+        margin-top: 10rem;
+    }
+
+    &__description {
+        font-size: 2rem;
+        margin: 0 auto;
+        margin-top: 2rem;
+        width: 70%;
+  
+    }
+
+    &__data-header {
+        font-weight: 700;
+        font-size: 6rem;
+        font-family: 'Nunito Sans';
+        color: $primary;
+        letter-spacing: 0.2rem;
+        word-spacing: 0.4rem;
+
+        &--right {
+            text-align: right;
+            margin-right: 10rem;
+        }
+
+    }
+
+    &__cards-container {
+        display: flex;
+        margin-top: 7.5rem;
+        justify-content: space-around;
+    }
+
+    &__card-container {
+        cursor: pointer;
+        height: 30rem;
+        perspective: 600;
+        position: relative;
+        width: 25rem;
+       
+        
+    }
+
+    &__card {
+      
+        position: absolute;
+        transform-style: preserve-3d;
+        transition: all 1s ease-in-out;
+        height: 30rem;
+        width: 25rem;
+
+        &:hover {
+            transform: rotateY(180deg);
+        }
+    }
+
+    &__front {
+        backface-visibility: hidden;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        width: 100%;
+        background-color: $primary;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__back {
+        text-align: center;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotateY(180deg);
+        height: 30rem;
+        width: 25rem;
+        background-color: $off-white;
+        box-shadow: 0.1rem 0.1rem 1rem $transparent-black;
+        font-size: 1.5rem;
+    }
+
+    &__card-title {
+        font-size: 3rem;
+        color: $white
+    }
+
+    &__sub-header{
+
+        color: $primary;
+        font-size: 3rem;
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 7.5rem;
+    }
+
+    &__arrow-cards-container {
+        justify-content: space-evenly;
+        margin-top: 7.5rem;
+        display: flex;
+    }
+
+    &__arrow-card {
+        width: 25rem;
+        height: 30rem;
+        background-color: $primary-light-transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        font-size: 2rem;
+        border-radius: 0.2rem;
+    }
 }
