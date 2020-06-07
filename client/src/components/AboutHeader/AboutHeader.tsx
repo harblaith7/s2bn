@@ -15,7 +15,7 @@ class AboutHeader extends Component<{}, IState> {
     constructor(props: any){
         super(props)
         this.state = {
-            section : "WhatWeDo"
+            section : "OurStory"
         }
     }
 

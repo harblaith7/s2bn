@@ -3,7 +3,40 @@
 .OurTeam {
 
     &__container {
-        
+
+    }
+
+    &__card-container {
+        padding: 10rem 0;
+        width: 75%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__img {
+        width: 15rem
+    }
+
+    &__card {
+        width: 27%;
+        display: flex;
+        box-shadow: $box-shadow-2;
+        cursor: pointer;
+        margin-bottom: 7.5rem;
+    }
+
+    &__description-container {
+        padding: 1.5rem;
+    }
+
+    &__education {
+        color: $tomato-red;
+    }
+
+    &__title {
+        font-size: 1.25rem;
     }
 
 }
