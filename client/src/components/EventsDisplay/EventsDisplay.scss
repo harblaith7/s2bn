@@ -1,0 +1,65 @@
+@import "../../sass/variables.scss";
+
+.EventsDisplay {
+
+    &__container {
+        width: 75%;
+        margin: 0 auto
+    }
+
+    &__nav {
+        height: 7.5rem;
+        box-shadow: $box-shadow-2;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        padding: 3rem;
+        justify-content: space-between;
+    }
+
+
+    &__all-events-nav-container {
+        display: flex;
+        align-items: center;
+        
+    }
+
+    &__all-events-title {
+        font-size: 2rem;
+    }
+
+    &__all-events-number {
+        margin-left: 2rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 100%;
+        border: 0.1rem solid $less-transparent-grey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.75rem;
+        font-size: 1.5rem;
+    }
+
+    &__select {
+        width: 10rem;
+        padding: 1rem;
+        margin-right: 2rem;
+        border-radius: 0.2rem;
+        border: 0.1rem solid $less-transparent-grey;
+        font-size: 1.25rem;
+
+        &:focus {
+            outline: none
+        }
+    } 
+
+    &__show-all-btn {
+        @extend .EventsDisplay__select
+    }
+
+    &__option {
+        height: 3rem
+    }
+
+}
