@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./EventCardTwo.scss"
 
 interface IProps {
     eventTitle: string
@@ -7,8 +8,10 @@ interface IProps {
 class EventCardTwo extends Component<IProps> {
     render() {
         return (
-            <div>
-                
+            <div className="EventCardTwo">
+                <div className="EventCardTwo__container">
+                        {this.props.eventTitle}
+                </div>
             </div>
         )
     }
