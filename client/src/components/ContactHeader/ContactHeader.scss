@@ -1,0 +1,25 @@
+@import "../../sass/variables.scss";
+
+.ContactHeader {
+
+    height: 65vh;
+    background-color: $primary-light-transparent;
+
+    &__container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__heading {
+        font-size: 4.5rem;
+    }
+
+    &__form-container {
+        background-color: saddlebrown;
+    }
+
+}

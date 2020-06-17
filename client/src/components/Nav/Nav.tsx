@@ -35,9 +35,9 @@ export default class Nav extends Component {
                        </a>
                    </li>
                    <li className="Nav__list-item">
-                       <a href="" className="Nav__link">
+                       <Link to="/contact" className="Nav__link">
                             Contact
-                       </a>
+                       </Link>
                    </li>
                </ul>
             </nav>
