@@ -16,10 +16,46 @@
 
     &__heading {
         font-size: 4.5rem;
+        margin-top: 5rem;
     }
 
     &__form-container {
-        background-color: saddlebrown;
+        width: 50%;
+        margin-top: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        padding: 0.5rem 1rem;
+        width: 50rem;
+        margin: 0.5rem;
+        font-size: 1.25rem;
+        border-radius: 0.25rem;
+        border: 0.1rem solid rgba(0, 0, 0, 0.486)
+    }
+
+    &__textarea {
+        margin: 0.5rem;
+        height: 10rem;
+        border-radius: 0.5rem;
+        border: none;
+        margin: 0.5rem;
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+        border: 0.1rem solid rgba(0, 0, 0, 0.486)
+    }
+
+
+    &__mail-icon {
+        width: 20rem
+    }
+    
 
 }
