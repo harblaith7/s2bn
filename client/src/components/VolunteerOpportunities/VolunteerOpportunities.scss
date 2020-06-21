@@ -1,0 +1,58 @@
+@import "../../sass/variables.scss";
+
+.VolunteerOpportunities {
+
+    &__container {
+        padding: 10rem
+    }
+
+    &__heading {
+        font-size: 4rem;
+    }
+
+    &__description {
+        margin-top: 2rem;
+        font-size: 1.75rem;
+        width: 60%
+    }
+
+    &__opportunity-container {
+        display: flex;
+    }
+
+    &__opportunities-container {
+        margin-top: 2rem;
+    }
+
+    &__opportunity-container {
+        padding: 1rem 0;
+        display: flex;
+        align-items: center;
+        height: 5rem;
+    } 
+
+    &__chapter-heading {
+        font-size: 3rem;
+        color: $primary
+    }
+
+    &__title {
+        font-size: 2rem;
+        margin-right: 1rem;
+        
+    }
+
+    &__title-description {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-right: 8rem;
+        margin-top: 0.25rem;
+    }
+
+    &__apply-btn {
+        padding: 1rem 5rem;
+        background-color: rgba(128, 128, 128, 0.384);
+        border-radius: 0.2rem;
+    }
+
+}
