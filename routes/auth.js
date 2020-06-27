@@ -1,0 +1,132 @@
+const router = require('express').Router()
+const db = require('../database/db');
+const {check, validationResult} = require('express-validator')
+const bycrpt = require('bcrypt')
+const JWT = require('jsonwebtoken')
+const keys = require('../config/dev')
+const checkAuth = require('../middleware/checkAuth')
+
+// Path: api/auth/login
+// Not Protected
+router.post('/login', [
+    check('email', 'Please input a valid email')
+    .isEmail(),
+    check('password', 'Please input a password')
+    .not()
+    .isEmpty()
+], async (req, res) => {
+    // Check if the inputs are correct
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(422).json({
+            errors: errors.array()
+        })
+    }
+
+    const {email, password} = req.body
+    // Check if user even exists 
+    let user = await db.getDb()
+    .collection('users')
+    .findOne({email})
+
+    if(!user){
+        return res.status(422).json({
+            errors: [
+                {
+                    msg: "Invalid Credentials"
+                }
+            ]
+        })
+    }
+
+    // Compare user password with given password
+    let isMatch = await bycrpt.compare(password, user.password)
+
+    if(!isMatch){
+        return res.status(404).json({
+            errors: [
+                {
+                    msg: "Invalid Credentials" 
+                }
+            ]
+        })
+    }
+
+    // Send JSON WEB TOKEN
+    const token = await JWT.sign({email}, keys.JWTSecret)
+
+    res.json({
+        token
+    })
+})
+
+// Path: api/auth/signup
+// Not Protected
+router.post('/signup', [
+    check('firstName', 'First name is required')
+        .not()
+        .isEmpty(),
+    check('lastName', 'Last name is required')
+        .not()
+        .isEmpty(),
+    check('email', 'Please provide a valid email')
+        .isEmail(),
+    check('password', 'Password must be greater than 8 characters')
+        .isLength({min: 8}),
+    check('authenticationCode', 'Authentication code is required')
+        .not()
+        .isEmpty()
+], async (req, res) => {
+    // Checking if input results are valid
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return res.status(422).json({
+            errors: errors.array()
+        })
+    }
+
+    // Checking if user already exists in the database
+    const {firstName, lastName, email, password, authenticationCode} = req.body
+
+    let user = await db.getDb()
+    .collection('users')
+    .findOne({email})
+
+    if(user) {
+        return res.status(400).json({
+            errors: [
+                {
+                    msg: "User already exists"
+                }
+            ]
+        })
+    }
+
+    // If user does not exist, hash the password
+    const hashedPassword = await bycrpt.hash(password, 10)
+
+    // Save user in the database
+    user = await db.getDb()
+    .collection('users')
+    .insertOne({
+        firstName,
+        lastName,
+        email,
+        password: hashedPassword
+    })
+
+    // Create JSON web token
+    const token = await JWT.sign({email}, keys.JWTSecret);
+
+    res.json({
+        token
+    })
+})
+
+
+router.get('/protected', checkAuth, (req, res) => {
+    res.send("You accessed a protected route")
+})
+
+
+module.exports = router
