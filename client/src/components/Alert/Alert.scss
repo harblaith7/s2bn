@@ -1,0 +1,19 @@
+@import "../../sass/variables.scss";
+
+.Alert {
+    border: 0.1rem solid $alert-red;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    &__message {
+        color: $alert-red;
+        font-size: 1.5rem;
+    }
+
+    &__custom-message {
+        font-size: 1.25rem;
+    }
+}

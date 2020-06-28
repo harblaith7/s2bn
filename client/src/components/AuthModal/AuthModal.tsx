@@ -5,7 +5,9 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import LoginForm from "./LoginForm/LoginForm"
 import SignUpForm from "./SignUpForm/SignUpForm"
+import Alert from '../Alert/Alert'
 import './AuthModal.scss'
+import {connect} from 'react-redux'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function TransitionsModal() {
+ function TransitionsModal(props: any) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [isLogin, setIsLogin] = React.useState(true)
@@ -58,6 +60,7 @@ export default function TransitionsModal() {
             {
                 isLogin ? (
                     <>
+                        {props.alert && <Alert/>}
                         <h2 className="AuthModal__title">Login</h2>
                         <p className="AuthModal__blurb">Log in as an administrator</p>
                         <LoginForm
@@ -66,6 +69,7 @@ export default function TransitionsModal() {
                     </>
                 ) : (
                     <>
+                        {props.alert && <Alert/>}
                         <h2 className="AuthModal__title">Sign Up</h2>
                         <p className="AuthModal__blurb">Only administrator can sign up</p>
                         <SignUpForm
@@ -80,3 +84,9 @@ export default function TransitionsModal() {
     </div>
   );
 }
+
+const mapStateToProps = (state: any) => ({
+  alert: state.alert
+})
+
+export default connect(mapStateToProps)(TransitionsModal)
