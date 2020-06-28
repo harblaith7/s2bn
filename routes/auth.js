@@ -73,6 +73,9 @@ router.post('/signup', [
         .isEmail(),
     check('password', 'Password must be greater than 8 characters')
         .isLength({min: 8}),
+    check('confirmPassword', 'You must confirm you password')
+        .not()
+        .isEmpty(),
     check('authenticationCode', 'Authentication code is required')
         .not()
         .isEmpty()
@@ -85,9 +88,30 @@ router.post('/signup', [
         })
     }
 
-    // Checking if user already exists in the database
-    const {firstName, lastName, email, password, authenticationCode} = req.body
+    const {firstName, lastName, email, password, confirmPassword, authenticationCode} = req.body
+    // Checking if passwords match
+    if(password !== confirmPassword){
+        return res.status(400).json({
+            errors: [
+                {
+                    msg: "Passwords do not match"
+                }
+            ]
+        })
+    }
 
+    // Check if authcode is correct
+    if(authenticationCode !== keys.authCode){
+        return res.status(400).json({
+            errors: [
+                {
+                    msg: "Incorrect authentication code"
+                }
+            ]
+        })
+    }
+
+    // Checking if user already exists in the database
     let user = await db.getDb()
     .collection('users')
     .findOne({email})
