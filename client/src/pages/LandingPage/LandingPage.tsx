@@ -29,7 +29,6 @@ interface IProps {
             return <Redirect to="/dashboard"/>
         }
 
-        
         return (
             <div className="LandingPage">
                 <Nav/>
