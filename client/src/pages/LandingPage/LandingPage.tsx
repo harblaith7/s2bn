@@ -6,10 +6,30 @@ import Events from "../../components/Events/Events"
 import Chapters from "../../components/Chapters/Chapters"
 import VideoSection from "../../components/VideoSection/VideoSection"
 import Footer from "../../components/Footer/Footer"
-import "./LandingPage.scss"
+import "./LandingPage.scss";
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
- class LandingPage extends Component {
+interface IProps {
+    user: {
+        firstName: string,
+        lastName: string,
+        email: string
+    } | null
+}
+
+ class LandingPage extends Component<IProps> {
+
+
+
     render() {
+
+        if(this.props.user){
+            console.log(this.props.user)
+            return <Redirect to="/dashboard"/>
+        }
+
+        
         return (
             <div className="LandingPage">
                 <Nav/>
@@ -24,4 +44,8 @@ import "./LandingPage.scss"
     }
 }
 
-export default LandingPage
+const mapStateToProps = (state: any) => ({
+    user: state.auth.user
+})
+
+export default connect(mapStateToProps)(LandingPage)

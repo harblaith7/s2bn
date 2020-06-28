@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.scss';
 import LandingPage from "./pages/LandingPage/LandingPage"
 import ChaptersPage from "./pages/ChaptersPage/ChaptersPage";
@@ -6,11 +6,18 @@ import AboutPage from "./pages/AboutPage/AboutPage";
 import EventsPage from "./pages/EventsPage/EventsPage"
 import ContactPage from "./pages/ContactPage/ContactPage";
 import EventPage from './pages/EventPage/EventPage'
-import {Route, BrowserRouter, Switch} from "react-router-dom"
+import {Route, BrowserRouter, Switch, Redirect} from "react-router-dom"
 import {Provider} from 'react-redux'
+import {loadUser} from "./redux/actions/auth"
 import store from './redux/store'
+import {connect} from 'react-redux'
 
 function App() {
+
+  useEffect(() => {
+    store.dispatch(loadUser())
+  }, [])
+
   return (
     <Provider store={store}>
       <BrowserRouter>

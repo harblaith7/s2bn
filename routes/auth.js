@@ -53,7 +53,7 @@ router.post('/login', [
     }
 
     // Send JSON WEB TOKEN
-    const token = await JWT.sign({email}, keys.JWTSecret)
+    const token = await JWT.sign({email}, keys.JWTSecret, {expiresIn: 360000})
 
     res.json({
         token
@@ -140,16 +140,39 @@ router.post('/signup', [
     })
 
     // Create JSON web token
-    const token = await JWT.sign({email}, keys.JWTSecret);
+    const token = await JWT.sign({email}, keys.JWTSecret, {expiresIn: 360000});
 
     res.json({
         token
     })
 })
 
+// Path: api/auth/loaduser
+// Protected
+router.get('/', checkAuth, async (req, res) => {
 
-router.get('/protected', checkAuth, (req, res) => {
-    res.send("You accessed a protected route")
+    const email = req.user;
+
+    try {
+        const user = await db
+        .getDb()
+        .collection("users")
+        .find({email})
+        .project({"password": 0, "_id": 0})
+        .toArray()
+
+        res.json(
+            user[0]
+        )
+    } catch (error) {
+        res.status(500).json({
+            errors: [
+                {
+                    msg: "Something is wrong with our server"
+                }
+            ]
+        })
+    }
 })
 
 
