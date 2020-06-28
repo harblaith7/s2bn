@@ -1,0 +1,43 @@
+@import "../../sass/variables.scss";
+
+.AuthModal {
+    width: 40rem;
+    background-color: $off-white;
+    padding: 3rem;
+
+    &__title {
+        font-size: 3rem;
+    }
+
+    &__blurb {
+        font-size: 1.25rem;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        font-size: 1.5rem;
+    }
+
+    &__submit {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        font-size: 1.5rem;
+        background-color: $primary;
+        border: none;
+        color: $off-white;
+        letter-spacing: 0.3rem;
+    }
+
+    &__switch {
+        cursor: pointer;
+        color: rgba(0, 0, 255, 0.671);
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+    }
+}

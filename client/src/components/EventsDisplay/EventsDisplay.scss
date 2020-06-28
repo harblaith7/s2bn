@@ -4,7 +4,8 @@
 
     &__container {
         width: 75%;
-        margin: 0 auto
+        margin: 0 auto;
+        height: 125vh
     }
 
     &__nav {
@@ -67,5 +68,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+
     }
 }

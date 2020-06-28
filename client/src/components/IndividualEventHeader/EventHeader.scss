@@ -1,0 +1,53 @@
+@import '../../sass/variables.scss';
+
+.SingleEventHeader {
+    &__container {
+        height: 60vh;
+        position: relative;
+    }
+
+    &__img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -2;
+    }
+
+    &__white-overlay {
+        background-color: rgba(0, 0, 0, 0.377);
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__info-container {
+        width: 50rem;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 25%;
+        color: $off-white;
+        letter-spacing: 0.2rem;
+    }
+
+    &__title {
+        font-size: 5rem;
+    }
+
+    &__date {
+        font-size: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    &__register-btn {
+        padding: 1.25rem 2rem;
+        width: 65%;
+        border: none;
+        background-color: $primary;
+        color: $off-white;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 1.25rem;
+        letter-spacing: 0.5rem;
+    }
+}

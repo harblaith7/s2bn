@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import "./EventCardTwo.scss"
+import { Link } from "react-router-dom"
 
 interface IProps {
-        
         cardInfo: {
             title: string,
             img: string,
@@ -25,7 +25,7 @@ class EventCardTwo extends Component<IProps> {
                     <p className="EventCardTwo__description">
                         {this.props.cardInfo.description}
                     </p>
-                    <button className="EventCardTwo__learn-more-btn">Learn More</button>
+                    <Link to="/events/eventId" className="EventCardTwo__learn-more-btn">Learn More</Link>
                 </div>
             </div>
         )

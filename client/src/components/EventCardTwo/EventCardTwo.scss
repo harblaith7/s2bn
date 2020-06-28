@@ -1,9 +1,9 @@
 @import "../../sass/variables.scss";
 
 .EventCardTwo {
-    width: 30rem;
+    width: 27.5rem;
     height: 40rem;
-    box-shadow: $box-shadow-3;
+    box-shadow: $box-shadow-2;
     margin-right: 5rem;
     margin-bottom: 10rem;
 
@@ -19,6 +19,7 @@
     &__description {
         padding: 0 1rem;
         font-size: 1.25rem;
+        margin-bottom: 1rem;
     }
 
     &__date {
@@ -26,11 +27,9 @@
     }
 
     &__learn-more-btn {
-        margin: 1rem;
         border: none;
         background-color: $primary-light-transparent;
         padding: 1rem 2rem;
-        width: 90%
     }
     
 }

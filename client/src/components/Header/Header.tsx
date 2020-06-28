@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import AuthModal from '../AuthModal/AuthModal'
 import "./Header.scss"
 
 
@@ -12,12 +13,10 @@ export default class Header extends Component {
                            We help students gain a competitive edge in both school and business
                         </h1>
                         <div className="Header__btn-container">
-                            <button className="Header__about-btn ">
-                                Learn More
-                            </button>
                             <button className="Header__about-btn Header__about-btn--purple">
                                 Our Events
                             </button>
+                            <AuthModal/>
                         </div>
                     </div>
                     <div className="Header__upcoming-event-card">
