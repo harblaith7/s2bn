@@ -7,10 +7,12 @@ import EventsPage from "./pages/EventsPage/EventsPage"
 import ContactPage from "./pages/ContactPage/ContactPage";
 import EventPage from './pages/EventPage/EventPage'
 import {Route, BrowserRouter, Switch} from "react-router-dom"
+import {Provider} from 'react-redux'
+import store from './redux/store'
 
 function App() {
   return (
-    <div className="App">
+    <Provider store={store}>
       <BrowserRouter>
         <Switch>
           <Route path='/events/:id' component={EventPage} />
@@ -23,7 +25,7 @@ function App() {
         </Switch>
       </BrowserRouter>
       
-    </div>
+    </Provider>
   );
 }
 

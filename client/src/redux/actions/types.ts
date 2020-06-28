@@ -1,0 +1,2 @@
+export const TRIGGER_ALERT = 'TRIGGER_ALERT'
+export const REMOVE_ALERT = 'REMOVE_ALERT'
