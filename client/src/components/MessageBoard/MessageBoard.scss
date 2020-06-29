@@ -1,0 +1,68 @@
+@import "../../sass/variables.scss";
+
+.MessageBoard {
+    width: 100%;
+    background-color: $primary-light-transparent;
+
+    &__container {
+        width: 35%;
+        padding: 5rem 10rem;
+        height: 85vh
+    }
+
+    &__header {
+        font-size: 3rem;
+    }
+
+    &__messages-container {
+        margin-top: 3rem;
+        width: 120%;
+        height: 90%;
+        overflow-y: auto;
+        
+    }
+
+    &__message-container {
+        background-color: $off-white;
+        width: 100%;
+        border-radius: 0.5rem;
+        box-shadow: $box-shadow-3;
+        height: 10rem;
+        padding: 2rem;
+        cursor: pointer;
+        transition: 1s;
+        display: flex;
+        margin-bottom: 2rem;
+
+        &:hover {
+            box-shadow: $box-shadow-2;
+        }
+    }
+
+    &__info-container {
+        width: 80%;
+        margin-left: 2rem;
+    }
+
+    &__message-status {
+        width: 3rem;
+        height: 3rem;
+        background-color: red;
+        border-radius: 100%;
+    }
+
+    &__name-date-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__message-name {
+        font-size: 1.1rem;
+        color: $off-black
+    }
+
+    &__message-date {
+        color: $dark-grey
+    }
+
+}

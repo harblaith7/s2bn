@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Header from "../../components/Header/Header"
-import Nav from "../../components/Nav/Nav"
 import About from "../../components/About/About"
 import Events from "../../components/Events/Events"
 import Chapters from "../../components/Chapters/Chapters"
@@ -31,7 +30,6 @@ interface IProps {
 
         return (
             <div className="LandingPage">
-                <Nav/>
                 <Header/> 
                 <About/>
                 <Events/>

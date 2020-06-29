@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
                     </>
                 ) : (
                     <>
-                        {props.alert && <Alert/>}
+                        {props.alert && <Alert alertType={1}/>}
                         <h2 className="AuthModal__title">Sign Up</h2>
                         <p className="AuthModal__blurb">Only administrator can sign up</p>
                         <SignUpForm
