@@ -1,0 +1,68 @@
+@import "../../sass/variables.scss";
+
+.Message {
+
+    width: 60%;
+    height: 85vh;
+
+    &__container {
+        padding: 5rem;
+        margin-top: 5rem;
+    }
+
+    &__nav {
+        padding: 1.5rem;
+        border: 0.2rem solid $transparent-grey;
+        border-radius: 0.5rem;
+        background-color: $light-blue;
+        margin-bottom: 1rem;
+    }
+
+    &__title-and-date-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 2.25rem;
+    }
+
+    &__date {
+        font-size: 1.25rem;
+    }
+
+    &__btn {
+        padding: 0.75rem 2rem;
+        margin-right: 2rem;
+        margin-top: 1rem;
+        border:none;
+        font-size: 1.25rem;
+        border-radius: 10rem;
+        letter-spacing: 0.1rem;
+        font-weight: 600;
+
+        &:focus {
+            outline: none;
+        }
+
+        &--red {
+            background-color: $tomato-red-transparent;
+        }
+
+        &--green {
+            background-color: $green-transparent;
+        }
+
+        &--yellow {
+            background-color: $yellow-transparent;
+        }
+    }
+
+    &__message-container {
+        border: 0.2rem solid $transparent-grey;
+        height: 30rem;
+        background-color: $off-white-transparent;
+        border-radius: 0.5rem;
+    }
+}

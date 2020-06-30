@@ -48,14 +48,25 @@ router.post('/', [
 // Adminstrator gets all messages in email
 // Protected 
 router.get('/all', checkAuth, async (req, res) => {
-    let results = await db.getDb()
-    .collection('messages')
-    .find({})
-    .toArray()
+    
+    try {
+        let messages = await db.getDb()
+        .collection('messages')
+        .find({})
+        .toArray()
 
-    res.json({
-        res: results
-    })
+        res.json({
+            messages
+        })
+    } catch (error) {
+        res.status(500).json({
+            errors: [
+                {msg: "Something went wrong"}
+            ]
+        })
+    }
+
+    
 })
 
 module.exports = router

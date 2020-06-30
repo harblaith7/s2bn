@@ -1,11 +1,9 @@
 @import "../../sass/variables.scss";
 
 .MessageBoard {
-    width: 100%;
-    background-color: $primary-light-transparent;
+    width: 35%;
 
     &__container {
-        width: 35%;
         padding: 5rem 10rem;
         height: 85vh
     }
@@ -24,7 +22,7 @@
 
     &__message-container {
         background-color: $off-white;
-        width: 100%;
+        width: 95%;
         border-radius: 0.5rem;
         box-shadow: $box-shadow-3;
         height: 10rem;
@@ -66,3 +64,24 @@
     }
 
 }
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

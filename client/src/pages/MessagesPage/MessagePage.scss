@@ -1,3 +1,7 @@
+@import "../../sass/variables.scss";
+
 .MessagePage {
     display: flex;
+    background-color: $primary-light-transparent;
+    height: 87.5vh
 }
