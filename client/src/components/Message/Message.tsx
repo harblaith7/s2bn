@@ -1,18 +1,70 @@
 import React, { Component } from 'react'
 import './Message.scss'
+import {connect} from 'react-redux'
 
-export default class Message extends Component {
+interface IProps {
+    messages: {
+        _id: string,
+        date: string,
+        name: string,
+        title: string,
+        email: string,
+        message: string
+    }[]
+    messageId: string
+}
+
+interface IState {
+    message: {
+        _id: string,
+        date: string,
+        name: string,
+        title: string,
+        email: string,
+        message: string
+    }
+}
+
+class Message extends Component<IProps, IState> {   
+
+    constructor(props: IProps){
+        super(props)
+        this.state = {
+            message: {
+                _id: "",
+                date: "",
+                name: "",
+                title: "",
+                email: "",
+                message: ""
+            }
+        }
+    }
+
+    componentDidUpdate = (prevProps: IProps) => {
+        if(prevProps.messageId !== this.props.messageId){
+            let currentMessage = this.props.messages.find(message => {
+                return message._id === this.props.messageId
+            })
+            if(currentMessage)
+            this.setState({
+                message: currentMessage
+            })
+        }
+    }
+
     render() {
+        const {title, message, email, date, name} = this.state.message
         return (
             <div className="Message">
                 <div className="Message__container">
                     <nav className="Message__nav">
                         <div className="Message__title-and-date-container">
                             <h4 className="Message__title">
-                                I have a huge business offer
+                                {title}
                             </h4>
                             <p className="Message__date">
-                                2019-04-29
+                                {date}
                             </p>
                         </div>
                         <div className="Message__status-btn-container">
@@ -29,3 +81,11 @@ export default class Message extends Component {
         )
     }
 }
+
+const mapStateToProps = (state: any) => ({
+    messages: state.messages.messages,
+    messageId: state.currentMessageId
+})
+
+
+export default connect(mapStateToProps)(Message)

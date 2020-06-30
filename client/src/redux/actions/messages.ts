@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {triggerAlert} from './alert'
-import { FETCH_MESSAGES_SUCCESS, FETCH_MESSAGES_FAIL } from './types'
+import { FETCH_MESSAGES_SUCCESS, FETCH_MESSAGES_FAIL, SET_MESSAGE_ID } from './types'
 
 export const sendMessage = (message: {
     name: string,
@@ -31,4 +31,11 @@ export const getAllMessages = () => async (dispatch: any) => {
             type: FETCH_MESSAGES_FAIL,
         })
     }
+}
+
+export const setCurrentMessageId = (id: string) => async (dispatch: any) => {
+    dispatch({
+        type: SET_MESSAGE_ID,
+        payload: id
+    })
 }

@@ -4,6 +4,7 @@ import Message from "../../components/Message/Message"
 import "./MessagePage.scss"
 
 export default class MessagePage extends Component {
+
     render() {
         return (
             <div className="MessagePage">
