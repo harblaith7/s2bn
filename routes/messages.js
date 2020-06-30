@@ -36,7 +36,7 @@ router.post('/', [
         email,
         title,
         message,
-        read: false,
+        status: 'unread',
         date: new Date()
     })
 
@@ -67,6 +67,25 @@ router.get('/all', checkAuth, async (req, res) => {
     }
 
     
+})
+
+// Update message status
+// Protected
+router.patch('/updateOne', checkAuth, async (req, res) => {
+    const {status, _id} = req.body
+    
+    let result = await db
+    .getDb()
+    .collection('messages')
+    .findOneAndUpdate(
+        {_id},
+        {$set: {status}},
+        { upsert: true }
+    )
+
+    res.json({
+        result
+    })
 })
 
 module.exports = router

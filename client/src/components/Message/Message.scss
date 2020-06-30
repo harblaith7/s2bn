@@ -3,7 +3,7 @@
 .Message {
 
     width: 60%;
-    height: 85vh;
+    height: 150vh;
 
     &__container {
         padding: 5rem;
@@ -61,8 +61,18 @@
 
     &__message-container {
         border: 0.2rem solid $transparent-grey;
-        height: 30rem;
+        height: 65rem;
         background-color: $off-white-transparent;
         border-radius: 0.5rem;
+        padding: 2rem
+    }
+
+    &__from-email {
+        font-size: 1.5rem;
+        color: $dark-grey
+    }
+
+    &__line {
+        font-size: 1.5rem;
     }
 }

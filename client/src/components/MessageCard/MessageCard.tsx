@@ -10,6 +10,7 @@ interface IProps {
         title: string;
         message: string;
         date: string;
+        status: string
     }
     id: string
     setCurrentMessageId: (id: string) => void
@@ -27,18 +28,30 @@ class MessageCard extends Component<IProps> {
         this.props.setCurrentMessageId(this.props.id)
     }
 
+    displayStatus: () => string = () => {
+        const {status} = this.props.message
+        console.log(status)
+        if(status === "unread"){
+            return "MessageBoard__message-status"
+        } else if (status === "read") {
+            return "MessageBoard__message-status--yellow"
+        } else {
+            return "MessageBoard__message-status--green"
+        }
+    }
+
     render() {
         const {message} = this.props
         return (
             <div className="MessageBoard__message-container" ref={this.cardRef} onClick={this.handleClick}>
-                    <div className="MessageBoard__message-status"></div>
+                    <div className={`${this.displayStatus()}`}></div>
                     <div className="MessageBoard__info-container">
                         <div className="MessageBoard__name-date-container">
                             <p className="MessageBoard__message-name">
                                 {message.name}
                             </p>
                             <p className="MessageBoard__message-date">
-                                {message.date}
+                                {message.date.split('T')[0]}
                             </p>
                         </div>
                         <h4 className="MessageBoard__message-title">

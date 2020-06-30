@@ -14,7 +14,8 @@ interface IProps {
             email: string,
             title: string,
             message: string,
-            date: string
+            date: string,
+            status: string
         }[]
     }
 }

@@ -53,6 +53,27 @@ class Message extends Component<IProps, IState> {
         }
     }
 
+    displayParagraph = () => {
+        console.log(this.state.message.message)
+        return this.state.message.message.split("\n").map(line => {
+            return (
+                <>
+                    <p className="Message__line">{line}</p>
+                </>
+            )
+        })
+    }
+
+    handleClick: (e: any) => void = (e) => {
+        if(e.target.id === "resolved"){
+            
+        } else if (e.target.id === "read") {
+
+        } else if (e.target.id === "delete") {
+
+        }
+    }
+
     render() {
         const {title, message, email, date, name} = this.state.message
         return (
@@ -64,17 +85,40 @@ class Message extends Component<IProps, IState> {
                                 {title}
                             </h4>
                             <p className="Message__date">
-                                {date}
+                                {date.split('T')[0]}
                             </p>
                         </div>
                         <div className="Message__status-btn-container">
-                            <button className="Message__btn Message__btn--green">Mark as resolved</button>
-                            <button className="Message__btn Message__btn--yellow">Mark as read</button>
-                            <button className="Message__btn Message__btn--red">Delete message</button>
+                            <button 
+                                className="Message__btn Message__btn--green" 
+                                id="resolved" 
+                                onClick={this.handleClick}
+                            >
+                                Mark as resolved
+                            </button>
+                            <button 
+                                className="Message__btn Message__btn--yellow" 
+                                id="read" 
+                                onClick={this.handleClick}
+                            >
+                                Mark as read
+                            </button>
+                            <button 
+                                className="Message__btn Message__btn--red"
+                                id="delete" 
+                                onClick={this.handleClick}
+                            >
+                                Delete message
+                            </button>
                         </div>
                     </nav>
                     <div className="Message__message-container">
-                        
+                        <p className="Message__from-email">
+                            From: {email}
+                        </p>
+                        <div className="Message__message">
+                            {this.displayParagraph()}
+                        </div>
                     </div>
                 </div>
             </div>
