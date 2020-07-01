@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer')
+const keys = require('../../config/dev')
 
 let browser, page;
 jest.setTimeout(300000)
@@ -35,4 +36,15 @@ test("Not passing in a password triggers password alert", async () => {
     await page.waitForSelector('.Alert__message')
     let alert = await page.$eval('.Alert__message', e => e.innerHTML)
     expect(alert).toEqual("Please input a password")
+})
+
+test("Passing in valid inputs redirects users to dashboard page", async () => {
+    await page.focus('input[name=email]')
+    await page.keyboard.type(keys.email)
+    await page.focus("input[name=password]")
+    await page.keyboard.type(keys.password)
+    await page.click('.AuthModal__submit')
+    await page.waitForNavigation();
+    const url = await page.url();
+    expect(url).toMatch(/dashboard/)
 })
