@@ -36,6 +36,7 @@ class MessageBoard extends Component<IProps> {
     }
 
     render() {
+        console.log(this.props.messages)
         return (
             <div className="MessageBoard">
                 <div className="MessageBoard__container">
@@ -43,7 +44,7 @@ class MessageBoard extends Component<IProps> {
                         All Messages
                     </h4>
                     <div className="MessageBoard__messages-container">
-                        {this.displayMessages()}
+                        {this.props.messages.messages.length && this.displayMessages()}
                     </div>
                 </div>
             </div>

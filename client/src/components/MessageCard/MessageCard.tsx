@@ -42,6 +42,7 @@ class MessageCard extends Component<IProps> {
 
     render() {
         const {message} = this.props
+        console.log(message)
         return (
             <div className="MessageBoard__message-container" ref={this.cardRef} onClick={this.handleClick}>
                     <div className={`${this.displayStatus()}`}></div>

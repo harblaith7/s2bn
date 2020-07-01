@@ -2,6 +2,7 @@ const router = require('express').Router()
 const db = require('../database/db')
 const {check, validationResult} = require('express-validator')
 const checkAuth = require('../middleware/checkAuth')
+const {ObjectID} = require('mongodb')
 
 // User sends a message
 // Not protected
@@ -77,8 +78,8 @@ router.patch('/updateOne', checkAuth, async (req, res) => {
     let result = await db
     .getDb()
     .collection('messages')
-    .findOneAndUpdate(
-        {_id},
+    .updateOne(
+        {_id: ObjectID(_id)},
         {$set: {status}},
         { upsert: true }
     )

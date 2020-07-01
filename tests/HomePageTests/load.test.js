@@ -8,13 +8,12 @@ beforeEach(async () => {
         headless: false
     })
     page = await browser.newPage()
-    page.goto("http://localhost:3000/")
+    await page.goto("http://localhost:3000/")
 })
 
 afterEach(async () => {
     await browser.close()
 })
-
 
 test("Appropriate text appears on landing page", async () => {
     const html = await page.$eval(".Header__text", e => e.innerHTML)

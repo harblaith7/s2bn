@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Message.scss'
 import {connect} from 'react-redux'
+import axios from 'axios'
 
 interface IProps {
     messages: {
@@ -9,7 +10,8 @@ interface IProps {
         name: string,
         title: string,
         email: string,
-        message: string
+        message: string,
+        status: string
     }[]
     messageId: string
 }
@@ -21,7 +23,8 @@ interface IState {
         name: string,
         title: string,
         email: string,
-        message: string
+        message: string,
+        status: string
     }
 }
 
@@ -36,7 +39,8 @@ class Message extends Component<IProps, IState> {
                 name: "",
                 title: "",
                 email: "",
-                message: ""
+                message: "",
+                status: ""
             }
         }
     }
@@ -54,7 +58,6 @@ class Message extends Component<IProps, IState> {
     }
 
     displayParagraph = () => {
-        console.log(this.state.message.message)
         return this.state.message.message.split("\n").map(line => {
             return (
                 <>
@@ -65,11 +68,19 @@ class Message extends Component<IProps, IState> {
     }
 
     handleClick: (e: any) => void = (e) => {
-        if(e.target.id === "resolved"){
-            
-        } else if (e.target.id === "read") {
-
-        } else if (e.target.id === "delete") {
+        console.log('running')
+        if(e.target.id === "resolved" || e.target.id === "read"){
+            axios.patch('http://localhost:5000/api/messages/updateOne', {
+                status: e.target.id,
+                _id: this.state.message._id
+            })
+            this.setState({
+                message: {
+                    ...this.state.message,
+                    status: e.target.id
+                }
+            })
+        }  else if (e.target.id === "delete") {
 
         }
     }
