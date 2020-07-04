@@ -45,7 +45,6 @@ class SignUpForm extends Component<IProps, IState> {
     }
 
     handleChange: (e:React.ChangeEvent<HTMLInputElement>) => void = (e) => {
-        console.log(e.target.name)
         let field: keyof IState
 
         if(e.target.name === "firstName") {

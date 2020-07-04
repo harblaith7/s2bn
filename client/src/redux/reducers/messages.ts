@@ -1,4 +1,4 @@
-import { FETCH_MESSAGES_FAIL, FETCH_MESSAGES_SUCCESS } from "../actions/types";
+import { FETCH_MESSAGES_FAIL, FETCH_MESSAGES_SUCCESS, SET_UPDATED_MESSAGES } from "../actions/types";
 
 
 const initialState = {
@@ -13,6 +13,10 @@ export default (state = initialState, action: any) => {
             return {
                 messages: payload.data.messages
             };
+        case SET_UPDATED_MESSAGES:
+            return {
+                messages: payload
+            }
         case FETCH_MESSAGES_FAIL:
             return {
                 messages: []

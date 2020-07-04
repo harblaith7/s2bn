@@ -12,7 +12,6 @@ const initDb = callback => {
     // If not, then we initialize the database
     MongoClient.connect(keys.MongoURI, { useUnifiedTopology: true } )
     .then(client => {
-        console.log('connected to db')
         _db = client.db();
         callback(null, _db)
     })

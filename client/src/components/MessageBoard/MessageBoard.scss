@@ -45,8 +45,16 @@
     &__message-status {
         width: 3rem;
         height: 3rem;
-        background-color: red;
+        background-color: $tomato-red;
         border-radius: 100%;
+
+        &--yellow {
+            background-color: $yellow;
+        }
+
+        &--green {
+            background-color: $green;
+        }
     }
 
     &__name-date-container {

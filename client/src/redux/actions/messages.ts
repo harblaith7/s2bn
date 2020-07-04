@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {triggerAlert} from './alert'
-import { FETCH_MESSAGES_SUCCESS, FETCH_MESSAGES_FAIL, SET_MESSAGE_ID } from './types'
+import { FETCH_MESSAGES_SUCCESS, FETCH_MESSAGES_FAIL, SET_MESSAGE_ID, SET_UPDATED_MESSAGES } from './types'
 
 export const sendMessage = (message: {
     name: string,
@@ -20,7 +20,6 @@ export const sendMessage = (message: {
 
 export const getAllMessages = () => async (dispatch: any) => {
     try {
-        console.log('action running')
         let results = await axios.get('http://localhost:5000/api/messages/all')
         dispatch({
             type: FETCH_MESSAGES_SUCCESS,
@@ -37,5 +36,19 @@ export const setCurrentMessageId = (id: string) => async (dispatch: any) => {
     dispatch({
         type: SET_MESSAGE_ID,
         payload: id
+    })
+}
+
+export const updateMessageStatus = (id: String, messages: any, status: string) => async (dispatch: any) => {
+    let updatedMessages = messages.map((message: any) => {
+        if(message._id === id){
+            message.status = status;
+            return message
+        }
+        return message
+    }).reverse()
+    dispatch({
+        type: SET_UPDATED_MESSAGES,
+        payload: updatedMessages
     })
 }

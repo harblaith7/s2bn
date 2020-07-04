@@ -20,23 +20,42 @@ interface IProps {
     }
 }
 
-class MessageBoard extends Component<IProps> {
+interface IState {
+    randomNumber: number
+}
+
+class MessageBoard extends Component<IProps, IState> {
+
+    constructor(props: IProps){
+        super(props)
+        this.state = {
+            randomNumber: Math.floor(Math.random() * 10000)
+        }
+    }
 
     componentDidMount(){       
         this.props.getAllMessages()
     }
 
+    componentDidUpdate(){
+        console.log(this.props.messages.messages)
+    }
+
     displayMessages: () => JSX.Element[] = () => {
         return this.props.messages.messages.reverse().map(message => {
             return (
-                <MessageCard message={message} key={message['_id']} id={message['_id']}/>
+                <MessageCard 
+                    message={message} 
+                    key={message['_id']} 
+                    id={message['_id']} 
+                    randomNumber={Math.floor(Math.random() * 10000000)}
+                />
             )
         })
         
     }
 
     render() {
-        console.log(this.props.messages)
         return (
             <div className="MessageBoard">
                 <div className="MessageBoard__container">

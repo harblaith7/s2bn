@@ -14,9 +14,14 @@ interface IProps {
     }
     id: string
     setCurrentMessageId: (id: string) => void
+    randomNumber: number
 }
 
 class MessageCard extends Component<IProps> {
+
+    componentDidUpdate(){
+        console.log(this.props.randomNumber)
+    }
 
     private cardRef = React.createRef<HTMLDivElement>();
 
@@ -30,7 +35,6 @@ class MessageCard extends Component<IProps> {
 
     displayStatus: () => string = () => {
         const {status} = this.props.message
-        console.log(status)
         if(status === "unread"){
             return "MessageBoard__message-status"
         } else if (status === "read") {
@@ -45,7 +49,7 @@ class MessageCard extends Component<IProps> {
         console.log(message)
         return (
             <div className="MessageBoard__message-container" ref={this.cardRef} onClick={this.handleClick}>
-                    <div className={`${this.displayStatus()}`}></div>
+                    <div className={`MessageBoard__message-status ${this.displayStatus()}`}></div>
                     <div className="MessageBoard__info-container">
                         <div className="MessageBoard__name-date-container">
                             <p className="MessageBoard__message-name">

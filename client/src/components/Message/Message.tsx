@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Message.scss'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import {updateMessageStatus} from '../../redux/actions/messages'
 
 interface IProps {
     messages: {
@@ -14,6 +15,15 @@ interface IProps {
         status: string
     }[]
     messageId: string
+    updateMessageStatus: (id: string, messages: {
+        _id: string,
+        date: string,
+        name: string,
+        title: string,
+        email: string,
+        message: string,
+        status: string
+    }[], status: string) => void
 }
 
 interface IState {
@@ -68,18 +78,12 @@ class Message extends Component<IProps, IState> {
     }
 
     handleClick: (e: any) => void = (e) => {
-        console.log('running')
         if(e.target.id === "resolved" || e.target.id === "read"){
             axios.patch('http://localhost:5000/api/messages/updateOne', {
                 status: e.target.id,
                 _id: this.state.message._id
             })
-            this.setState({
-                message: {
-                    ...this.state.message,
-                    status: e.target.id
-                }
-            })
+            this.props.updateMessageStatus(this.state.message._id, this.props.messages, e.target.id)
         }  else if (e.target.id === "delete") {
 
         }
@@ -100,32 +104,36 @@ class Message extends Component<IProps, IState> {
                             </p>
                         </div>
                         <div className="Message__status-btn-container">
-                            <button 
-                                className="Message__btn Message__btn--green" 
-                                id="resolved" 
-                                onClick={this.handleClick}
-                            >
-                                Mark as resolved
-                            </button>
-                            <button 
-                                className="Message__btn Message__btn--yellow" 
-                                id="read" 
-                                onClick={this.handleClick}
-                            >
-                                Mark as read
-                            </button>
-                            <button 
-                                className="Message__btn Message__btn--red"
-                                id="delete" 
-                                onClick={this.handleClick}
-                            >
-                                Delete message
-                            </button>
+                            {title && (
+                                <>
+                                  <button 
+                                    className="Message__btn Message__btn--green" 
+                                    id="resolved" 
+                                    onClick={this.handleClick}
+                                  >
+                                        Mark as resolved
+                                  </button>
+                                  <button 
+                                        className="Message__btn Message__btn--yellow" 
+                                        id="read" 
+                                        onClick={this.handleClick}
+                                  >
+                                        Mark as read
+                                  </button>
+                                  <button 
+                                        className="Message__btn Message__btn--red"
+                                        id="delete" 
+                                        onClick={this.handleClick}
+                                    >
+                                        Delete message
+                                    </button>
+                                </>
+                            )}
                         </div>
                     </nav>
                     <div className="Message__message-container">
                         <p className="Message__from-email">
-                            From: {email}
+                            {email && "From:"} {email}
                         </p>
                         <div className="Message__message">
                             {this.displayParagraph()}
@@ -143,4 +151,4 @@ const mapStateToProps = (state: any) => ({
 })
 
 
-export default connect(mapStateToProps)(Message)
+export default connect(mapStateToProps, {updateMessageStatus})(Message)
