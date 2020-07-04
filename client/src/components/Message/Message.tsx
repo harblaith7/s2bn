@@ -2,28 +2,23 @@ import React, { Component } from 'react'
 import './Message.scss'
 import {connect} from 'react-redux'
 import axios from 'axios'
-import {updateMessageStatus} from '../../redux/actions/messages'
+import {updateMessageStatus, deleteMessage} from '../../redux/actions/messages'
+
+type Messages = {
+    _id: string,
+    date: string,
+    name: string,
+    title: string,
+    email: string,
+    message: string,
+    status: string
+}[]
 
 interface IProps {
-    messages: {
-        _id: string,
-        date: string,
-        name: string,
-        title: string,
-        email: string,
-        message: string,
-        status: string
-    }[]
+    messages: Messages
     messageId: string
-    updateMessageStatus: (id: string, messages: {
-        _id: string,
-        date: string,
-        name: string,
-        title: string,
-        email: string,
-        message: string,
-        status: string
-    }[], status: string) => void
+    updateMessageStatus: (id: string, messages: Messages, status: string) => void
+    deleteMessage: (id: string, messages: Messages) => void
 }
 
 interface IState {
@@ -85,7 +80,10 @@ class Message extends Component<IProps, IState> {
             })
             this.props.updateMessageStatus(this.state.message._id, this.props.messages, e.target.id)
         }  else if (e.target.id === "delete") {
-
+            this.props.deleteMessage(this.state.message._id, this.props.messages)
+            axios.post('http://localhost:5000/api/messages/deleteUser', {
+                _id: this.state.message._id
+            })
         }
     }
 
@@ -151,4 +149,4 @@ const mapStateToProps = (state: any) => ({
 })
 
 
-export default connect(mapStateToProps, {updateMessageStatus})(Message)
+export default connect(mapStateToProps, {updateMessageStatus, deleteMessage})(Message)

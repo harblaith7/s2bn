@@ -89,4 +89,19 @@ router.patch('/updateOne', checkAuth, async (req, res) => {
     })
 })
 
+router.post('/deleteUser', checkAuth, async (req, res) => {
+    const {_id} = req.body
+
+    let result = await db
+    .getDb()
+    .collection("messages")
+    .deleteOne(
+        {_id: ObjectID(_id)}
+    )
+
+    res.json({
+        result
+    })
+})
+
 module.exports = router
