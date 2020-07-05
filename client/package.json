@@ -18,6 +18,7 @@
     "@types/uuid": "^8.0.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "emailjs-com": "^2.4.1",
     "node-sass": "^4.14.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",

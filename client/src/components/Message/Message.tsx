@@ -3,6 +3,7 @@ import './Message.scss'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {updateMessageStatus, deleteMessage} from '../../redux/actions/messages'
+import emailjs from 'emailjs-com'
 
 type Messages = {
     _id: string,
@@ -31,6 +32,8 @@ interface IState {
         message: string,
         status: string
     }
+    writeBackMessage: string,
+    title: string
 }
 
 class Message extends Component<IProps, IState> {   
@@ -46,7 +49,9 @@ class Message extends Component<IProps, IState> {
                 email: "",
                 message: "",
                 status: ""
-            }
+            },
+            writeBackMessage: "",
+            title: ""
         }
     }
 
@@ -72,7 +77,7 @@ class Message extends Component<IProps, IState> {
         })
     }
 
-    handleClick: (e: any) => void = (e) => {
+    handleClick: (e: any) => void = async (e) => {
         if(e.target.id === "resolved" || e.target.id === "read"){
             axios.patch('http://localhost:5000/api/messages/updateOne', {
                 status: e.target.id,
@@ -85,6 +90,38 @@ class Message extends Component<IProps, IState> {
                 _id: this.state.message._id
             })
         }
+    }
+
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void = (e) => {
+        e.preventDefault()
+        let template_params = {
+            "userEmail": this.state.message.email,
+            "title": this.state.title,
+            "userName": this.state.message.name.split(" ")[0],
+            "ourMessage": this.state.writeBackMessage
+        }
+        var service_id = "myserviceid";
+        var template_id = "s2bn_responses";
+        var user_id = "user_rAC4jzr3XMdBE8lJ6HsYK"
+        emailjs.send(service_id, template_id, template_params, user_id);
+
+        this.setState({
+            writeBackMessage: "",
+            title: ""
+        })
+    }
+
+    handleChange: (e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>) => void = (e) => {
+        if(e.target.id === 'title'){
+            this.setState({
+                title: e.target.value
+            })
+        } else {
+            this.setState({
+                writeBackMessage: e.target.value
+            })
+        }
+        
     }
 
     render() {
@@ -101,6 +138,7 @@ class Message extends Component<IProps, IState> {
                                 {date.split('T')[0]}
                             </p>
                         </div>
+                        <form action="" className="form-test"></form>
                         <div className="Message__status-btn-container">
                             {title && (
                                 <>
@@ -130,12 +168,37 @@ class Message extends Component<IProps, IState> {
                         </div>
                     </nav>
                     <div className="Message__message-container">
-                        <p className="Message__from-email">
-                            {email && "From:"} {email}
-                        </p>
-                        <div className="Message__message">
-                            {this.displayParagraph()}
+                        <div className="Message__message-read-container">
+                            <p className="Message__from-email">
+                                {email && "From:"} {email}
+                            </p>
+                            <div className="Message__message">
+                                {this.displayParagraph()}
+                            </div>
                         </div>
+                        {title && (
+                            <div className="Message__message-write-container">
+                                <form action="" className="Message__form" onSubmit={this.handleSubmit}>
+                                    <input 
+                                        type="text" 
+                                        className="Message__input"
+                                        onChange={this.handleChange}
+                                        id="title"
+                                        required
+                                        placeholder="Title"
+                                        value={this.state.title}
+                                    />
+                                    <textarea 
+                                        className="Message__textarea" 
+                                        value={this.state.writeBackMessage}
+                                        onChange={this.handleChange}
+                                        required
+                                        placeholder="Your message back"
+                                    />
+                                    <input type="submit" className="Message__submit"/>
+                                </form>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
