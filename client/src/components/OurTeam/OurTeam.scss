@@ -3,15 +3,14 @@
 .OurTeam {
 
     &__container {
-
+        height: 100vh
     }
 
     &__card-container {
-        padding: 10rem 0;
+        padding: 7.5rem 0;
         width: 75%;
         margin: 0 auto;
         display: flex;
-        justify-content: space-between;
         flex-wrap: wrap;
     }
 
@@ -25,6 +24,7 @@
         box-shadow: $box-shadow-2;
         cursor: pointer;
         margin-bottom: 7.5rem;
+        margin-right: 5rem;
     }
 
     &__description-container {
@@ -37,6 +37,13 @@
 
     &__title {
         font-size: 1.25rem;
+    }
+
+    &__input {
+        margin: 5rem 0rem 0rem 16.5rem;
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        width: 50rem
     }
 
 }

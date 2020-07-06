@@ -154,7 +154,12 @@ export default class OurTeam extends Component<{}, IState> {
         return (
             <div className="OurTeam">
                 <div className="OurTeam__container">
-                    <input type="text" onChange={this.handleChange}/>
+                    <input 
+                        type="text" 
+                        className="OurTeam__input" 
+                        onChange={this.handleChange}
+                        placeholder="Search for a member"
+                    />
                     <div className="OurTeam__card-container">
                         {this.displayCards()}
                     </div>

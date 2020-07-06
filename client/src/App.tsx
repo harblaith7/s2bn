@@ -3,6 +3,7 @@ import './App.scss';
 import PrivateRoute from './utils/PrivateRoutes/PrivateRoutes'
 import LandingPage from "./pages/LandingPage/LandingPage"
 import ChaptersPage from "./pages/ChaptersPage/ChaptersPage";
+import EventDashboardPage from "./pages/EventDashboardPage/EventDashboardPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import EventsPage from "./pages/EventsPage/EventsPage"
 import ContactPage from "./pages/ContactPage/ContactPage";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/about" component={AboutPage} />
           <PrivateRoute path='/dashboard' component={DashboardPage}/>
           <PrivateRoute path='/messages' component={MessagePage}/>
+          <PrivateRoute path="/create-events" component={EventDashboardPage}/>
           <Route path="/chapters" component={ChaptersPage} />
           <Route exact strict path="/events" component={EventsPage} />
           <Route exact path="/contact" component={ContactPage} />

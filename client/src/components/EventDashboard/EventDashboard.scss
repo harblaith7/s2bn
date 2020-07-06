@@ -1,0 +1,22 @@
+.EventDashboard {
+
+    &__nav {
+        padding: 0.5rem 10rem;
+        display: flex;
+    }
+
+    &__list-item {
+        list-style: none;
+        margin-right: 4rem;
+        font-size: 1.75rem;
+        cursor: pointer;
+    }
+
+    &__container {
+        background-color: rgba(178, 222, 238, 0.342);
+        border-top: 0.2rem solid rgba(102, 103, 104, 0.281);
+        height:  58vh
+    }
+    
+
+}
