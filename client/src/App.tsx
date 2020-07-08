@@ -15,9 +15,13 @@ import {Provider} from 'react-redux'
 import {loadUser} from "./redux/actions/auth"
 import store from './redux/store'
 import Nav from './components/Nav/Nav'
-
+import setAuthToken from '../../client/src/utils/setAuthToken'
 
 function App() {
+
+  if(localStorage.token){
+    setAuthToken(localStorage.token)
+  }
 
   useEffect(() => {
     store.dispatch(loadUser())

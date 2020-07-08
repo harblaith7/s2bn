@@ -48,7 +48,7 @@ router.post('/', [
 
 // Adminstrator gets all messages in email
 // Protected 
-router.get('/all', async (req, res) => {
+router.get('/all', checkAuth, async (req, res) => {
     
     try {
         let messages = await db.getDb()

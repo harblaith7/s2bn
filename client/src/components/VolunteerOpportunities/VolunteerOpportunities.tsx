@@ -23,17 +23,17 @@ class VolunteerOpportunities extends Component<{}, IState> {
                     opportunities: [
                         {
                             title: "Tech Lead",
-                            description: "You alrady know",
+                            description: "Lead team",
                             googleFormLink: "google.com"
                         },
                         {
                             title: "Front End Developer",
-                            description: "You alrady know hah anad go now",
+                            description: "Make website",
                             googleFormLink: "google.com"
                         },
                         {
                             title: "Software Engineer",
-                            description: "You gotta engineer the crap out of that",
+                            description: "You gotta engineer that",
                             googleFormLink: "google.com"
                         }
                     ]
@@ -43,17 +43,17 @@ class VolunteerOpportunities extends Component<{}, IState> {
                     opportunities: [
                         {
                             title: "Tech Lead",
-                            description: "You alrady know",
+                            description: "Lead Team",
                             googleFormLink: "google.com"
                         },
                         {
                             title: "Front End Developer",
-                            description: "You alrady know hah anad go now",
+                            description: "Design website",
                             googleFormLink: "google.com"
                         },
                         {
                             title: "Software Engineer",
-                            description: "You gotta engineer the crap out of that",
+                            description: "Engineer the docker container",
                             googleFormLink: "google.com"
                         }
                     ]
