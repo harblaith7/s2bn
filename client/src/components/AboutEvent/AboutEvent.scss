@@ -1,10 +1,9 @@
 @import "../../sass/variables.scss";
 
 .AboutEvent {
-    padding: 5rem;
+    padding: 2rem;
 
     &__container {
-
     }
 
     &__header {
@@ -12,10 +11,11 @@
         text-align: center;
         text-transform: uppercase;
         color: $primary;
+        
     }
 
     &__info-container {
-        padding: 5rem 20rem;
+        padding: 5rem 5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;

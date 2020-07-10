@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import "./CreateEvents.scss"
-
+import EventDisplayModal from "../EventDisplayModal/EventDisplayModal"
 
 
 export default class CreateEvents extends Component<{}, any> {
@@ -250,7 +250,12 @@ export default class CreateEvents extends Component<{}, any> {
                                         {shortDescription}
                                     </p>
                                 </div>
-                                <button className="CreateEvents__learn-more-btn">Learn More</button>
+                                <EventDisplayModal
+                                    imageUrl={cardImageUrl}
+                                    title={name}
+                                    date={startDate.day}
+                                    longDescription={longDescription}
+                                />
                             </div>
                     </div>
                 </div>
