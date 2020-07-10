@@ -1,0 +1,94 @@
+@import "../../sass/variables.scss";
+
+.CreateEvents {
+
+    &__container {
+        padding: 5rem;
+        display: flex;
+    }
+
+    &__input-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__form {
+        width: 60%;
+    }
+
+    &__input {
+        padding: 0.75rem;
+        font-size: 1.5rem;
+        width: 100%;
+        margin: 0.25rem;
+        margin-bottom: 1rem;
+
+        &--longer {
+            height: 15rem
+        }
+
+        &--submit {
+            margin-top: 2rem;
+        }
+    }
+
+    &__label {
+        font-size: 2rem;
+    }
+
+    &__character {
+        color: $dark-grey;
+        letter-spacing: 0.1rem;
+    }
+
+    // CARD STYLING 
+
+    &__demo-card-container {
+        padding: 0 3rem;
+        display: flex;
+        justify-content: center;
+        width: 40%;
+        position: relative;
+    }
+
+    &__card {
+        width: 30rem;
+        height: 40rem;
+        background-color: $white;
+        box-shadow: $box-shadow-2;
+        border-radius: 0.5rem;
+        margin-top: 2.5rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    } 
+
+    &__card-image-container {
+        height: 40%;
+    }
+
+    &__card-image {
+        background-color: green;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__card-description-container {
+        height: 45%;
+        padding: 1rem;
+        display: block;
+    }
+
+    &__learn-more-btn {
+        width: 90%;
+        margin: 0 auto;
+        padding: 1rem;
+        border: none;
+        font-size: 1.5rem;
+        letter-spacing: 0.15rem;
+    }
+
+    &__title {
+        height: 5rem
+    }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./EventDashboard.scss"
+import CreateEvents from '../CreateEvents/CreateEvents'
 
 interface IState {
     activeLink: "monitor" | "create"
@@ -10,7 +11,7 @@ export default class EventDashboard extends Component<{}, IState> {
     constructor(props: {}){
         super(props)
         this.state = {
-            activeLink: "monitor"
+            activeLink: "create"
         }
     }
 
@@ -21,18 +22,19 @@ export default class EventDashboard extends Component<{}, IState> {
     }
 
     render() {
+        const {activeLink} = this.state
         return (
             <div className="EventDashboard">
                 <nav className="EventDashboard__nav">
                     <li 
-                        className={`EventDashboard__list-item ${this.state.activeLink === "monitor" && "EventDashboard__list-item--active"}`} 
+                        className={`EventDashboard__list-item ${activeLink === "monitor" && "EventDashboard__list-item--active"}`} 
                         id="monitor" 
                         onClick={this.handleClick}
                     >
                         Monitor
                     </li>
                     <li 
-                        className={`EventDashboard__list-item ${this.state.activeLink === "create" && "EventDashboard__list-item--active"}`} 
+                        className={`EventDashboard__list-item ${activeLink === "create" && "EventDashboard__list-item--active"}`} 
                         id="create" 
                         onClick={this.handleClick}
                     >
@@ -40,7 +42,7 @@ export default class EventDashboard extends Component<{}, IState> {
                     </li>
                 </nav>
                 <div className="EventDashboard__container">
-                    dashboard
+                    {activeLink === "create" ? <CreateEvents/> : ""}
                 </div>
             </div>
         )
