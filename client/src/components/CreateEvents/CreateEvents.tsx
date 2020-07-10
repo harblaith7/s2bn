@@ -29,6 +29,18 @@ export default class CreateEvents extends Component<{}, any> {
                 name: {
                     current: 0,
                     max: 50
+                },
+                location: {
+                    current: 0,
+                    max: 25
+                },
+                shortDescription: {
+                    current: 0,
+                    max: 100
+                },
+                longDescription: {
+                    current: 0,
+                    max: 500
                 }
             }
             
@@ -72,8 +84,8 @@ export default class CreateEvents extends Component<{}, any> {
                 characterCounts: {
                     ...this.state.characterCounts,
                     [target.name]: {
-                        ...this.state.characterCounts.name,
-                        current: this.state.eventDetails.name.length
+                        ...this.state.characterCounts[target.name],
+                        current: this.state.eventDetails[target.name].length
                     }
                 }
             })
@@ -103,7 +115,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 value={name}
                             />
                             <p className="CreateEvents__character">
-                                {characterCounts.name.current}/50 characters
+                                {characterCounts.name.current}/{characterCounts.name.max} characters
                             </p>
                             <label htmlFor="" className="CreateEvents__label">
                                 Start Date
@@ -162,6 +174,9 @@ export default class CreateEvents extends Component<{}, any> {
                                 onChange={this.handleChange}
                                 value={location}
                             />
+                            <p className="CreateEvents__character">
+                                {characterCounts.location.current}/{characterCounts.location.max} characters
+                            </p>
                             <label htmlFor="" className="CreateEvents__label">
                                 Short Description
                             </label>
@@ -173,6 +188,9 @@ export default class CreateEvents extends Component<{}, any> {
                                 value={shortDescription}
                             >
                             </textarea>
+                            <p className="CreateEvents__character">
+                                {characterCounts.shortDescription.current}/{characterCounts.shortDescription.max} characters
+                            </p>
                             <label htmlFor="" className="CreateEvents__label">
                                 Long Description
                             </label>
@@ -184,6 +202,9 @@ export default class CreateEvents extends Component<{}, any> {
                                 value={longDescription}
                             >
                             </textarea>
+                            <p className="CreateEvents__character">
+                                {characterCounts.longDescription.current}/{characterCounts.longDescription.max} characters
+                            </p>
                             <label htmlFor="" className="CreateEvents__label">
                                 Price (CAD)
                             </label>
