@@ -91,4 +91,13 @@
     &__title {
         height: 5rem
     }
+
+    &__date {
+        font-size: 1.25rem;
+        color: $dark-grey
+    }
+
+    &__short-description {
+        font-size: 1.4rem;
+    }
 }

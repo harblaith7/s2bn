@@ -243,6 +243,12 @@ export default class CreateEvents extends Component<{}, any> {
                                     <h3 className="CreateEvents__title">
                                         {name}
                                     </h3>
+                                    <p className="CreateEvents__date">
+                                        {startDate.day}
+                                    </p>
+                                    <p className="CreateEvents__short-description">
+                                        {shortDescription}
+                                    </p>
                                 </div>
                                 <button className="CreateEvents__learn-more-btn">Learn More</button>
                             </div>
