@@ -1,5 +1,4 @@
 import React, { Component, SelectHTMLAttributes } from 'react'
-import EventsCardTwo from "../EventCardTwo/EventCardTwo"
 import "./EventsDisplay.scss"
 import EventCardTwo from '../EventCardTwo/EventCardTwo'
 import {connect} from 'react-redux'
