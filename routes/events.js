@@ -15,7 +15,8 @@ router.post('/create', checkAuth, async (req, res) => {
         longDescription,
         price,
         volume,
-        firstName
+        firstName,
+        filterWords
     } = req.body
 
     let result = await db
@@ -31,7 +32,8 @@ router.post('/create', checkAuth, async (req, res) => {
         longDescription,
         price,
         volume,
-        firstName
+        firstName,
+        filterWords
     })
 
     res.json({
@@ -39,7 +41,7 @@ router.post('/create', checkAuth, async (req, res) => {
     })
 })
 
-router.get('/', checkAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         let events = await db
         .getDb()

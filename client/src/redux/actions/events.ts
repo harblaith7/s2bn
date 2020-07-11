@@ -17,13 +17,14 @@ type Event = {
     longDescription: String,
     price: Number,
     volume: Number,
-    firstName: String
+    firstName: String,
+    filterWords: String[]
 }
-
 
 export const createEvent = (event: Event) => async (dispatch: any) => {
     try {
         let results = await axios.post('http://localhost:5000/api/events/create', {...event})
+        dispatch(fetchEvent())
     } catch (error) {
         console.log(error)
     }

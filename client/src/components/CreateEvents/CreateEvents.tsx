@@ -129,6 +129,7 @@ class CreateEvents extends Component<IProps, any> {
         e.preventDefault()
         await this.props.createEvent({
             ...this.state.eventDetails,
+            filterWords: this.state.eventDetails.location.split(", "),
             firstName: this.props.auth.user.firstName
         })
         await this.setState({

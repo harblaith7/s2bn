@@ -2,80 +2,53 @@ import React, { Component, SelectHTMLAttributes } from 'react'
 import EventsCardTwo from "../EventCardTwo/EventCardTwo"
 import "./EventsDisplay.scss"
 import EventCardTwo from '../EventCardTwo/EventCardTwo'
+import {connect} from 'react-redux'
 
 interface IState {
-    cards: {
-        img: string,
-        title: string,
-        date: string,
-        description: string,
-        filterWords: string[]
-    }[],
     filter: string,
     totalEvents: number
 }
 
- class EventsDisplay extends Component<{}, IState> {
+interface IProps {
+    events: {
+        name: String,
+        location: String,
+        cardImageUrl: String,
+        startDate: {
+            day: String,
+            time: String
+        },
+        endDate: {
+            day: String,
+            time: String
+        },
+        shortDescription: String,
+        longDescription: String,
+        price: Number,
+        volume: Number,
+        firstName: String,
+        filterWords: String[]
+    }[]
+}
 
-    constructor(props: {}){
+ class EventsDisplay extends Component<IProps, IState> {
+
+    constructor(props: IProps){
         super(props)
         this.state = {
-            cards : [
-                {
-                    img: "https://guelph.ca/wp-content/uploads/aerial-of-Guelphjpg.jpg",
-                    title: "Virtual Business Network for Guelph",
-                    description: "In this event we will be doing something really special as it will be virtual and stuff and other things too",
-                    date: "2020-06-03",
-                    filterWords: ["Guelph", "Virtual"]
-                },
-                {
-                    img: "https://i.cbc.ca/1.5502282.1584571536!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/cda-coronavirus-20200318.jpg",
-                    title: "Virtual Business Network for UOttawa",
-                    description: "In this event we will be doing something really special as it will be virtual and stuff and other things too",
-                    date: "2020-03-23",
-                    filterWords: ["Ottawa", "Virtual"]
-                },
-                {
-                    img: "https://media.tacdn.com/media/attractions-content--1x-1/0a/b0/c9/b4.jpg",
-                    title: "Virtual Business Network for Toronto",
-                    description: "In this event we will be doing something really special as it will be virtual and stuff and other things too",
-                    date: "2020-06-03",
-                    filterWords: ["Toronto", "Virtual"]
-                },
-                {
-                    img: "https://www.theglobeandmail.com/resizer/rsuWtBTJYUc7Y_IlwOsMJVcN8D0=/2048x0/filters:quality(80)/arc-anglerfish-tgam-prod-tgam.s3.amazonaws.com/public/IFFGYMZKUNDYREDLYRORQD3A2U.JPG",
-                    title: "Virtual Business Network for Guelph",
-                    description: "In this event we will be doing something really special as it will be virtual and stuff and other things too",
-                    date: "2020-06-03",
-                    filterWords: ["Guelph", "Virtual"]
-                },
-                {
-                    img: "https://cdn-0.newinhomes.com/90091d5a-1fe4-4168-82b0-70b94e59d3d2/l/toronto%20skyline%2020.jpeg",
-                    title: "Virtual Business Network for Toronto",
-                    description: "In this event we will be doing something really special as it will be virtual and stuff and other things too",
-                    date: "2020-06-03",
-                    filterWords: ["Toronto", "Virtual"]
-                },
-                {
-                    img: "https://assets.tvo.org/prod/s3fs-public/styles/full_width_1280/public/article-thumbnails/Corrigan-Kingston-downtown.JPG?e0VZV.aEoKz0ni0VS4T7LXKaPvHC.ahO",
-                    title: "Virtual Business Network for Kingston",
-                    description: "In this event we will be doing something really special as it will be virtual and stuff and other things too",
-                    date: "2020-06-03",
-                    filterWords: ["Kingston", "Virtual"]
-                }
-            ],
             filter: "allEvents",
             totalEvents: 0
         }
     }
 
     displayCards: () => JSX.Element[] = () => {
-        const {filter, cards} = this.state
+        const {events} = this.props
+        const {filter} = this.state
         if(filter === "allEvents"){
-            return cards.map(card => <EventCardTwo cardInfo={card}/>)
+            return events.map(event => <EventCardTwo cardInfo={event}/>)
         }
 
-        let filterCards = cards.filter(card => card.filterWords.indexOf(filter) !== -1)
+        let filterCards = events.filter(event => event.filterWords.indexOf(filter) !== -1)
 
         return filterCards.map(card => <EventCardTwo cardInfo={card}/>)
         
@@ -88,10 +61,11 @@ interface IState {
     }
 
     displayTotalEvents: () => number = () => {
-        const {filter, cards} = this.state;
-        if(filter === "allEvents") return cards.length
+        const {filter} = this.state;
+        const {events} = this.props
+        if(filter === "allEvents") return events.length
         else {
-            return cards.filter(card => card.filterWords.indexOf(filter) !== -1).length
+            return events.filter(event => event.filterWords.indexOf(filter) !== -1).length
         }
     }
 
@@ -132,5 +106,8 @@ interface IState {
     }
 }
 
+const mapStateToProps = (state: any) => ({
+    events: state.events
+})
 
-export default EventsDisplay
+export default connect(mapStateToProps)(EventsDisplay)

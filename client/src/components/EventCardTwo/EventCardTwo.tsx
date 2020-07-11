@@ -4,11 +4,23 @@ import { Link } from "react-router-dom"
 
 interface IProps {
         cardInfo: {
-            title: string,
-            img: string,
-            date: string,
-            description: string,
-            filterWords: string[]
+            name: String,
+            location: String,
+            cardImageUrl: String,
+            startDate: {
+                day: String,
+                time: String
+            },
+            endDate: {
+                day: String,
+                time: String
+            },
+            shortDescription: String,
+            longDescription: String,
+            price: Number,
+            volume: Number,
+            firstName: String,
+            filterWords: String[]
         }
 }
 
@@ -17,13 +29,13 @@ class EventCardTwo extends Component<IProps> {
         return (
             <div className="EventCardTwo">
                 <div className="EventCardTwo__container">
-                    <img src={this.props.cardInfo.img} alt="" className="EventCardTwo__img"/>
+                    <img src={`${this.props.cardInfo.cardImageUrl}`} alt="" className="EventCardTwo__img"/>
                     <h3 className="EventCardTwo__title">
-                        {this.props.cardInfo.title}
+                        {this.props.cardInfo.name}
                     </h3>
-                    <h5 className="EventCardTwo__date">{this.props.cardInfo.date}</h5>
+                    <h5 className="EventCardTwo__date">{this.props.cardInfo.startDate.day}</h5>
                     <p className="EventCardTwo__description">
-                        {this.props.cardInfo.description}
+                        {this.props.cardInfo.shortDescription}
                     </p>
                     <Link to="/events/eventId" className="EventCardTwo__learn-more-btn">Learn More</Link>
                 </div>

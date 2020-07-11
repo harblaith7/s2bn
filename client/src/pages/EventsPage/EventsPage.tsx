@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EventHeader from "../../components/EventHeader/EventHeader"
 import EventsDisplay from "../../components/EventsDisplay/EventsDisplay"
 
+
 class EventsPage extends Component {
     render() {
         return (
@@ -12,5 +13,6 @@ class EventsPage extends Component {
         );
     }
 }
+
 
 export default EventsPage;
