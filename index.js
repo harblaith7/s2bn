@@ -14,6 +14,7 @@ app.use(cors())
 // ROUTES
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/messages', require('./routes/messages'))
+app.use('/api/events', require('./routes/events'))
 
 const PORT = process.env.PORT || 5000
 

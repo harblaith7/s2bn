@@ -1,11 +1,35 @@
 import React, { Component } from 'react'
 import "./CreateEvents.scss"
 import EventDisplayModal from "../EventDisplayModal/EventDisplayModal"
+import {connect} from 'react-redux'
+import {createEvent} from '../../redux/actions/events'
+
+type Event = {
+    name: String,
+    location: String,
+    cardImageUrl: String,
+    startDate: {
+        day: String,
+        time: String
+    },
+    endDate: {
+        day: String,
+        time: String
+    },
+    shortDescription: String,
+    longDescription: String,
+    price: Number,
+    volume: Number
+}
+
+interface IProps {
+    createEvent: (event: Event) => void
+}
 
 
-export default class CreateEvents extends Component<{}, any> {
+class CreateEvents extends Component<IProps, any> {
 
-    constructor(props: {}){
+    constructor(props: IProps){
         super(props)
         this.state = {
             eventDetails: {
@@ -88,12 +112,14 @@ export default class CreateEvents extends Component<{}, any> {
                         current: this.state.eventDetails[target.name].length
                     }
                 }
-            })
-            
-            
-            
-        }
-         
+            })    
+        }   
+    }
+
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void = (e) => {
+        e.preventDefault()
+        console.log("Create", this.state.eventDetails)
+        this.props.createEvent(this.state.eventDetails)
     }
 
     render() {
@@ -102,7 +128,7 @@ export default class CreateEvents extends Component<{}, any> {
         return (
             <div className="CreateEvents">
                 <div className="CreateEvents__container">
-                    <form action="" className="CreateEvents__form">
+                    <form action="" className="CreateEvents__form" onSubmit={this.handleSubmit}>
                         <div className="CreateEvents__input-container">
                             <label htmlFor="" className="CreateEvents__label">
                                 Event Name
@@ -113,6 +139,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="name"
                                 onChange={this.handleChange}
                                 value={name}
+                                required
                             />
                             <p className="CreateEvents__character">
                                 {characterCounts.name.current}/{characterCounts.name.max} characters
@@ -126,6 +153,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="startDate-day"
                                 onChange={this.handleChange}
                                 value={startDate.day}
+                                required
                             />
                             <input 
                                 type="time" 
@@ -133,6 +161,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="startDate-time"
                                 onChange={this.handleChange}
                                 value={startDate.time}
+                                required
                             />
                             <label htmlFor="" className="CreateEvents__label">
                                 End Date
@@ -144,6 +173,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="endDate-day"
                                 onChange={this.handleChange}
                                 value={endDate.day}
+                                required
                             />
                             <input 
                                 type="time" 
@@ -152,6 +182,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="endDate-time"
                                 onChange={this.handleChange}
                                 value={endDate.time}
+                                required
                             />
                             <label htmlFor="" className="CreateEvents__label">
                                 Image URL
@@ -163,6 +194,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="cardImageUrl"
                                 onChange={this.handleChange}
                                 value={cardImageUrl}
+                                required
                             />
                             <label htmlFor="" className="CreateEvents__label">
                                 Location
@@ -173,6 +205,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="location"
                                 onChange={this.handleChange}
                                 value={location}
+                                required
                             />
                             <p className="CreateEvents__character">
                                 {characterCounts.location.current}/{characterCounts.location.max} characters
@@ -186,6 +219,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="shortDescription"
                                 onChange={this.handleChange}
                                 value={shortDescription}
+                                required
                             >
                             </textarea>
                             <p className="CreateEvents__character">
@@ -200,6 +234,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="longDescription"
                                 onChange={this.handleChange}
                                 value={longDescription}
+                                required
                             >
                             </textarea>
                             <p className="CreateEvents__character">
@@ -215,6 +250,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="price"
                                 onChange={this.handleChange}
                                 value={price}
+                                required
                             />
                             <label htmlFor="" className="CreateEvents__label">
                                 Volume
@@ -226,6 +262,7 @@ export default class CreateEvents extends Component<{}, any> {
                                 name="volume"
                                 onChange={this.handleChange}
                                 value={volume}
+                                required
                             />
                             <input 
                                 type="submit"
@@ -263,3 +300,5 @@ export default class CreateEvents extends Component<{}, any> {
         )
     }
 }
+
+export default connect(null, {createEvent})(CreateEvents)
