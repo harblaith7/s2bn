@@ -112,6 +112,7 @@ class MonitorEvent extends Component<IProps, IState> {
     }
 
     render() {
+        const {name, startDate: {day, time}, endDate, volume, attendes, price, longDescription, location, shortDescription} = this.state.currentEvent
         return (
             <div className="MonitorEvent">
                 <div className="MonitorEvent__container">
@@ -120,7 +121,44 @@ class MonitorEvent extends Component<IProps, IState> {
                     </div>
                     <div className="MonitorEvent__event-detail-container">
                         <div className="MonitorEvent__event-info-card">
-                            {this.state.currentEvent.name}
+                            {name && (
+                                <div>
+                                    <h2 className="MonitorEvent__header">
+                                        {name}
+                                    </h2>
+                                    <p className="MonitorEvent__date">
+                                        {`${day} from ${time} to ${endDate.time}`}
+                                    </p>
+                                    <div className="MonitorEvent__attendes-container">
+                                        <p className="MonitorEvent__attendes">
+                                            {attendes.length} / {volume} attendes  
+                                        </p>
+                                        <button className="MonitorEvent__view-more-btn">
+                                            View More
+                                        </button>
+                                    </div>
+                                    <p className="MonitorEvent__fields">
+                                        <span>Price:</span> ${price} CAD
+                                    </p>
+                                    <p className="MonitorEvent__fields">
+                                        <span>Location:</span> {location} 
+                                    </p>
+                                    <p className="MonitorEvent__fields">
+                                        <span>Short Description</span>: {shortDescription}
+                                    </p>
+                                    <p className="MonitorEvent__fields">
+                                        <span>Long Description</span>: {longDescription}
+                                    </p>
+                                    <div className="MonitorEvent__btn-container">
+                                        <button className="MonitorEvent__btn MonitorEvent__btn--red">
+                                            Mark as Complete
+                                        </button>
+                                        <button className="MonitorEvent__btn MonitorEvent__btn--yellow">
+                                            Update Event
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

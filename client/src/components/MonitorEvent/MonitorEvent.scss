@@ -41,7 +41,70 @@
         background-color: $white;
         box-shadow: $box-shadow-3;
         width: 100%;
-        padding: 1rem
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    &__header {
+        font-size: 2.5rem;
+    }
+
+    &__date {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        color: $dark-grey
+    }
+
+    &__attendes {
+        font-size: 1.75rem;
+        margin-top: 2rem;
+    }
+
+    &__attendes-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__view-more-btn {
+        width: 20rem;
+        height: 3rem;
+        margin-top: 1rem;
+        border: none;
+        font-size: 1.25rem;
+        color: $dark-grey
+    }
+
+    &__fields {
+
+        font-size: 1.5rem;
+        margin-top: 1rem;
+
+        & span {
+            font-weight: 600;
+        }
+
+    }
+
+    &__btn-container {
+        margin-top: 3rem;
+    }
+
+    &__btn {
+        width: 15rem;
+        padding: 0.75rem;
+        margin-right: 2rem;
+        border: none;
+        font-size: 1.25rem;
+        border-radius: .5rem;
+
+        &--red {
+            background-color: $tomato-red-transparent;
+        }
+
+        &--yellow {
+            background-color: $yellow;
+        }
     }
 
 }
