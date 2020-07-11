@@ -23,7 +23,17 @@ type Event = {
 }
 
 interface IProps {
-    createEvent: (event: Event) => void
+    createEvent: (event: Event) => void,
+    auth: {
+        isAuthenticated: Boolean,
+        loading: Boolean,
+        token: String,
+        user: {
+            firstName: String,
+            lastName: String,
+            email: String
+        }
+    }
 }
 
 
@@ -89,7 +99,6 @@ class CreateEvents extends Component<IProps, any> {
         } else {
             // CHECKING IF CHARACTER LIMIT IS HIT
             if(['name', 'location', 'shortDescription', 'longDescription'].indexOf(target.name) !== -1){
-                console.log(target.value)
                 if(target.value.length > this.state.characterCounts[target.name].max) {
                     return
                 }
@@ -116,10 +125,49 @@ class CreateEvents extends Component<IProps, any> {
         }   
     }
 
-    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void = (e) => {
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void = async (e) => {
         e.preventDefault()
-        console.log("Create", this.state.eventDetails)
-        this.props.createEvent(this.state.eventDetails)
+        await this.props.createEvent({
+            ...this.state.eventDetails,
+            firstName: this.props.auth.user.firstName
+        })
+        await this.setState({
+            eventDetails: {
+                name: "",
+                location: "",
+                cardImageUrl: "",
+                startDate: {
+                    day: "",
+                    time: ""
+                },
+                endDate: {
+                    day: "",
+                    time: ""
+                },
+                shortDescription: "",
+                longDescription: "",
+                price: "",
+                volume: ""
+            },
+            characterCounts: {
+                name: {
+                    current: 0,
+                    max: 50
+                },
+                location: {
+                    current: 0,
+                    max: 25
+                },
+                shortDescription: {
+                    current: 0,
+                    max: 100
+                },
+                longDescription: {
+                    current: 0,
+                    max: 500
+                }
+            }
+        })
     }
 
     render() {
@@ -301,4 +349,9 @@ class CreateEvents extends Component<IProps, any> {
     }
 }
 
-export default connect(null, {createEvent})(CreateEvents)
+const mapStateToProps = (state: any) => ({
+    auth: state.auth
+})
+
+
+export default connect(mapStateToProps, {createEvent})(CreateEvents)

@@ -14,7 +14,8 @@ router.post('/create', checkAuth, async (req, res) => {
         shortDescription,
         longDescription,
         price,
-        volume
+        volume,
+        firstName
     } = req.body
 
     let result = await db
@@ -29,7 +30,8 @@ router.post('/create', checkAuth, async (req, res) => {
         shortDescription,
         longDescription,
         price,
-        volume
+        volume,
+        firstName
     })
 
     res.json({

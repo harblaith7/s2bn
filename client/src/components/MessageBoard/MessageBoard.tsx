@@ -34,13 +34,7 @@ class MessageBoard extends Component<IProps, IState> {
     }
 
     componentDidMount(){       
-        console.log("Mounted")
         this.props.getAllMessages()
-        console.log("Under")
-    }
-
-    componentDidUpdate(){
-        console.log(this.props.messages.messages)
     }
 
     displayMessages: () => JSX.Element[] = () => {

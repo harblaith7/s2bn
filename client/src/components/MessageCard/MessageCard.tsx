@@ -19,10 +19,6 @@ interface IProps {
 
 class MessageCard extends Component<IProps> {
 
-    componentDidUpdate(){
-        console.log(this.props.randomNumber)
-    }
-
     private cardRef = React.createRef<HTMLDivElement>();
 
     constructor(props: IProps){
@@ -46,7 +42,6 @@ class MessageCard extends Component<IProps> {
 
     render() {
         const {message} = this.props
-        console.log(message)
         return (
             <div className="MessageBoard__message-container" ref={this.cardRef} onClick={this.handleClick}>
                     <div className={`MessageBoard__message-status ${this.displayStatus()}`}></div>

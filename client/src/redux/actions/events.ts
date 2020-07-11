@@ -15,13 +15,13 @@ type Event = {
     shortDescription: String,
     longDescription: String,
     price: Number,
-    volume: Number
+    volume: Number,
+    firstName: String
 }
 
 
 export const createEvent = (event: Event) => async (dispatch: any) => {
     try {
-        console.log("In action", event)
         let results = await axios.post('http://localhost:5000/api/events/create', {...event})
     } catch (error) {
         console.log(error)
