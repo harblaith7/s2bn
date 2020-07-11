@@ -33,7 +33,8 @@ router.post('/create', checkAuth, async (req, res) => {
         price,
         volume,
         firstName,
-        filterWords
+        filterWords,
+        attendes: []
     })
 
     res.json({

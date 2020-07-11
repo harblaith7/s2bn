@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./EventDashboard.scss"
 import CreateEvents from '../CreateEvents/CreateEvents'
+import MonitorEvent from '../MonitorEvent/MonitorEvent'
 
 interface IState {
     activeLink: "monitor" | "create"
@@ -11,7 +12,7 @@ export default class EventDashboard extends Component<{}, IState> {
     constructor(props: {}){
         super(props)
         this.state = {
-            activeLink: "create"
+            activeLink: "monitor"
         }
     }
 
@@ -42,7 +43,7 @@ export default class EventDashboard extends Component<{}, IState> {
                     </li>
                 </nav>
                 <div className="EventDashboard__container">
-                    {activeLink === "create" ? <CreateEvents/> : ""}
+                    {activeLink === "create" ? <CreateEvents/> : <MonitorEvent/>}
                 </div>
             </div>
         )

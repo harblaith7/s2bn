@@ -1,0 +1,47 @@
+@import "../../sass/variables.scss";
+
+.MonitorEvent {
+
+    &__container {
+        height: 100vh;
+        display: flex;
+        padding: 5rem 10rem
+    }
+
+    &__events-container {
+        width: 60%;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2rem
+    }
+
+    &__event-detail-container {
+        width: 40%;
+        margin-top: 2rem;
+    }
+
+    &__card {
+        height: 17.5rem;
+        width: 17.5rem;
+        background-color: $white;
+        margin-right: 3rem;
+        border-radius: 0.5rem;
+        margin-bottom: 3rem;
+        box-shadow: $box-shadow-3;
+        cursor: pointer;
+        padding: 1rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
+
+    &__event-info-card {
+        height: 50rem;
+        background-color: $white;
+        box-shadow: $box-shadow-3;
+        width: 100%;
+        padding: 1rem
+    }
+
+}
