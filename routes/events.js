@@ -37,7 +37,22 @@ router.post('/create', checkAuth, async (req, res) => {
     res.json({
         result
     })
+})
 
+router.get('/', checkAuth, async (req, res) => {
+    try {
+        let events = await db
+        .getDb()
+        .collection('events')
+        .find({})
+        .toArray()
+
+        res.json({
+            events
+        })
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 

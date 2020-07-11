@@ -13,18 +13,16 @@ import MessagePage from './pages/MessagesPage/MessagePage'
 import {Route, BrowserRouter, Switch, Redirect} from "react-router-dom"
 import {Provider} from 'react-redux'
 import {loadUser} from "./redux/actions/auth"
+import {fetchEvent} from "./redux/actions/events"
 import store from './redux/store'
 import Nav from './components/Nav/Nav'
-import setAuthToken from '../../client/src/utils/setAuthToken'
 
 function App() {
 
-  if(localStorage.token){
-    setAuthToken(localStorage.token)
-  }
 
   useEffect(() => {
     store.dispatch(loadUser())
+    store.dispatch(fetchEvent())
   }, [])
 
   return (

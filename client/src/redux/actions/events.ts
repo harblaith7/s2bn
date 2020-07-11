@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { FETCH_EVENTS } from './types'
 
 type Event = {
     name: String,
@@ -25,5 +26,19 @@ export const createEvent = (event: Event) => async (dispatch: any) => {
         let results = await axios.post('http://localhost:5000/api/events/create', {...event})
     } catch (error) {
         console.log(error)
+    }
+}
+
+export const fetchEvent = () => async (dispatch: any) => {
+    try {
+        console.log("called")
+        let results = await axios.get('http://localhost:5000/api/events')
+
+        dispatch({
+            type: FETCH_EVENTS,
+            payload: results.data.events
+        })
+    } catch (error) {
+        console.log('Error', error)
     }
 }
