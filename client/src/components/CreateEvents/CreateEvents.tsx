@@ -84,6 +84,7 @@ class CreateEvents extends Component<IProps, any> {
         }
     }
 
+    // UPDATES THE STATE IF THE USER HASN'T HIT ANY CHARACTER LIMITS
     handleChange: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void = async (e) => {
         const target = e.target
 
@@ -130,11 +131,13 @@ class CreateEvents extends Component<IProps, any> {
 
     handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void = async (e) => {
         e.preventDefault()
+        // SENDING EVENT DATA TO BACKEND
         await this.props.createEvent({
             ...this.state.eventDetails,
             filterWords: this.state.eventDetails.location.split(", "),
             firstName: this.props.auth.user.firstName
         })
+        // REFRESHING THE INPUTS BACK TO DEFAULT
         await this.setState({
             eventDetails: {
                 name: "",
@@ -174,9 +177,11 @@ class CreateEvents extends Component<IProps, any> {
         })
     }
 
+    // UPDATING THE EVENT FIELD
     handleClick = () => {
         const {eventDetails} = this.state
         const changes = []
+        // ADDING ALL CHANGES FIELDS, EXCEPT FOR STARTDATE AND ENDDATE INTO CHANGES ARRAY
         for(let element in eventDetails){
             if(
                 eventDetails[element] &&
@@ -186,6 +191,7 @@ class CreateEvents extends Component<IProps, any> {
                 changes.push({[element]: eventDetails[element]})
             }
         }
+        // HANDLING THE CASE FOR STARTDATE
         for(let element in eventDetails.startDate){
             if(eventDetails.startDate[element]){
                 changes.push({
@@ -193,6 +199,7 @@ class CreateEvents extends Component<IProps, any> {
                 })
             }
         }
+        // HANDLING THE CASE FOR ENDDATE
         for(let element in eventDetails.endDate){
             if(eventDetails.endDate[element]){
                 changes.push({
@@ -200,7 +207,8 @@ class CreateEvents extends Component<IProps, any> {
                 })
             }
         }
-
+        // CHECKING IF CHANGES ARE EVEN MADE AND
+        // THEN FIRING OFF REQUEST
         if(changes.length){
             this.props.updateEvent(this.props.id!, changes)
         }
