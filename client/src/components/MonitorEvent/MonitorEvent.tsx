@@ -1,29 +1,29 @@
 import React, { Component } from 'react'
 import './MonitorEvent.scss'
 import {connect} from 'react-redux'
-
+import UpdateEventModal from '../Modals/UpdateEventModal/UpdateEventModal'
 
 interface IState {
     currentEvent: {
         name: String,
-    location: String,
-    cardImageUrl: String,
-    startDate: {
-        day: String,
-        time: String
-    },
-    endDate: {
-        day: String,
-        time: String
-    },
-    shortDescription: String,
-    longDescription: String,
-    price: String,
-    volume: String,
-    firstName: String,
-    attendes: any[],
-    _id: String
-}
+        location: String,
+        cardImageUrl: String,
+        startDate: {
+            day: String,
+            time: String
+        },
+        endDate: {
+            day: String,
+            time: String
+        },
+        shortDescription: String,
+        longDescription: String,
+        price: String,
+        volume: String,
+        firstName: String,
+        attendes: any[],
+        _id: String
+    }
 }
 
 interface IProps {
@@ -112,7 +112,7 @@ class MonitorEvent extends Component<IProps, IState> {
     }
 
     render() {
-        const {name, startDate: {day, time}, endDate, volume, attendes, price, longDescription, location, shortDescription} = this.state.currentEvent
+        const {name, firstName, startDate: {day, time}, endDate, volume, attendes, price, longDescription, location, shortDescription} = this.state.currentEvent
         return (
             <div className="MonitorEvent">
                 <div className="MonitorEvent__container">
@@ -138,6 +138,9 @@ class MonitorEvent extends Component<IProps, IState> {
                                         </button>
                                     </div>
                                     <p className="MonitorEvent__fields">
+                                        <span>Created by:</span> {firstName}
+                                    </p>
+                                    <p className="MonitorEvent__fields">
                                         <span>Price:</span> ${price} CAD
                                     </p>
                                     <p className="MonitorEvent__fields">
@@ -153,9 +156,9 @@ class MonitorEvent extends Component<IProps, IState> {
                                         <button className="MonitorEvent__btn MonitorEvent__btn--red">
                                             Mark as Complete
                                         </button>
-                                        <button className="MonitorEvent__btn MonitorEvent__btn--yellow">
-                                            Update Event
-                                        </button>
+                                        <UpdateEventModal
+                                            id={this.state.currentEvent._id}
+                                        />
                                     </div>
                                 </div>
                             )}

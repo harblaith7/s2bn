@@ -1,9 +1,10 @@
 const router = require('express').Router()
 const checkAuth = require('../middleware/checkAuth')
 const db = require('../database/db')
+const {ObjectID} = require('mongodb')
 
-
-
+// Create new event
+// Private
 router.post('/create', checkAuth, async (req, res) => {
     const {
         name,
@@ -42,6 +43,8 @@ router.post('/create', checkAuth, async (req, res) => {
     })
 })
 
+// Get all events 
+// Public
 router.get('/', async (req, res) => {
     try {
         let events = await db
@@ -58,7 +61,43 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Update one event fields
+// Private
+router.patch('/', checkAuth, async (req, res) => {
+    const {_id, changes} = req.body
+    let changesObj = {}
 
+    for(let element of changes){
+        if("location" in element){
+            changesObj = {
+                ...changesObj,
+                ...element,
+                filterWords: element.location.split(", ")
+            }
+        } else {
+            changesObj = {
+                ...changesObj,
+                ...element
+            }
+        }
+    }
+
+    try {
+        let updatedEvent = await db
+        .getDb()
+        .collection('events')
+        .updateOne(
+            {_id: ObjectID(_id)},
+            {$set: changesObj}
+        )
+
+        res.json({
+            updatedEvent
+        })
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 
 module.exports = router

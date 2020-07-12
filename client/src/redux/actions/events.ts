@@ -43,3 +43,16 @@ export const fetchEvent = () => async (dispatch: any) => {
         console.log('Error', error)
     }
 }
+
+
+export const updateEvent = (_id: String, changes: Object[]) => async (dispatch: any) => {
+    try {
+        let results = await axios.patch('http://localhost:5000/api/events', {
+            _id,
+            changes
+        })
+        dispatch(fetchEvent())
+    } catch (error) {
+        console.log(error)
+    }
+}

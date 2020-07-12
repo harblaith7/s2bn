@@ -43,7 +43,7 @@ export default class EventDashboard extends Component<{}, IState> {
                     </li>
                 </nav>
                 <div className="EventDashboard__container">
-                    {activeLink === "create" ? <CreateEvents/> : <MonitorEvent/>}
+                    {activeLink === "create" ? <CreateEvents isUpdate={false}/> : <MonitorEvent/>}
                 </div>
             </div>
         )

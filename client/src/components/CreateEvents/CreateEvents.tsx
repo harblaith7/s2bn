@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "./CreateEvents.scss"
 import EventDisplayModal from "../EventDisplayModal/EventDisplayModal"
 import {connect} from 'react-redux'
-import {createEvent} from '../../redux/actions/events'
+import {createEvent, updateEvent} from '../../redux/actions/events'
 
 type Event = {
     name: String,
@@ -24,6 +24,7 @@ type Event = {
 
 interface IProps {
     createEvent: (event: Event) => void,
+    updateEvent: (id: String, changes: Object[]) => void,
     auth: {
         isAuthenticated: Boolean,
         loading: Boolean,
@@ -33,7 +34,9 @@ interface IProps {
             lastName: String,
             email: String
         }
-    }
+    },
+    isUpdate: Boolean,
+    id?: String
 }
 
 
@@ -171,13 +174,50 @@ class CreateEvents extends Component<IProps, any> {
         })
     }
 
+    handleClick = () => {
+        const {eventDetails} = this.state
+        const changes = []
+        for(let element in eventDetails){
+            if(
+                eventDetails[element] &&
+                element !== "startDate" &&
+                element !== "endDate"
+            ){
+                changes.push({[element]: eventDetails[element]})
+            }
+        }
+        for(let element in eventDetails.startDate){
+            if(eventDetails.startDate[element]){
+                changes.push({
+                    [`startDate.${element}`] : eventDetails.startDate[element]
+                })
+            }
+        }
+        for(let element in eventDetails.endDate){
+            if(eventDetails.endDate[element]){
+                changes.push({
+                    [`endDate.${element}`] : eventDetails.endDate[element]
+                })
+            }
+        }
+
+        if(changes.length){
+            this.props.updateEvent(this.props.id!, changes)
+        }
+        
+    }
+
     render() {
         const {name, location, cardImageUrl, startDate, endDate, shortDescription, longDescription, price, volume} = this.state.eventDetails
         const {characterCounts} = this.state
         return (
             <div className="CreateEvents">
                 <div className="CreateEvents__container">
-                    <form action="" className="CreateEvents__form" onSubmit={this.handleSubmit}>
+                    <form 
+                        action="" 
+                        className={`CreateEvents__form ${this.props.isUpdate && "CreateEvents__form--larger"}`} 
+                        onSubmit={this.handleSubmit}
+                    >
                         <div className="CreateEvents__input-container">
                             <label htmlFor="" className="CreateEvents__label">
                                 Event Name
@@ -313,14 +353,23 @@ class CreateEvents extends Component<IProps, any> {
                                 value={volume}
                                 required
                             />
-                            <input 
-                                type="submit"
-                                value="Create Event"
-                                className="CreateEvents__input CreateEvents__input--submit" 
-                            />
+                            {this.props.isUpdate ? (
+                                <input 
+                                    type="button"
+                                    value="Update Event"
+                                    className="CreateEvents__input CreateEvents__input--submit"
+                                    onClick={this.handleClick} 
+                                />
+                            ) : (
+                                <input 
+                                    type="submit"
+                                    value="Create Event"
+                                    className="CreateEvents__input CreateEvents__input--submit" 
+                                />
+                            )}
                         </div>
                     </form>
-                    <div className="CreateEvents__demo-card-container">
+                    {!this.props.isUpdate && (<div className="CreateEvents__demo-card-container">
                             <div className="CreateEvents__card">
                                 <div className="CreateEvents__card-image-container">
                                     <img src={cardImageUrl} alt="" className="CreateEvents__card-image"/>
@@ -343,7 +392,7 @@ class CreateEvents extends Component<IProps, any> {
                                     longDescription={longDescription}
                                 />
                             </div>
-                    </div>
+                    </div>)}
                 </div>
             </div>
         )
@@ -355,4 +404,4 @@ const mapStateToProps = (state: any) => ({
 })
 
 
-export default connect(mapStateToProps, {createEvent})(CreateEvents)
+export default connect(mapStateToProps, {createEvent, updateEvent})(CreateEvents)
