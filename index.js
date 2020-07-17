@@ -3,8 +3,9 @@ const app = express()
 const db = require('./database/db')
 const cors = require('cors')
 
-app.get('/', (req, res) => {
-    res.send('Hello')
+
+app.get('/', async (req, res) => {
+    res.send('Bye')
 })
 
 // MIDDLEWARE
@@ -15,6 +16,7 @@ app.use(cors())
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/messages', require('./routes/messages'))
 app.use('/api/events', require('./routes/events'))
+app.use('/api/payments', require('./routes/payments'))
 
 const PORT = process.env.PORT || 5000
 

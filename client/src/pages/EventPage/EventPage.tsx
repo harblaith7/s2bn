@@ -1,16 +1,63 @@
 import React, { Component } from 'react'
 import EventHeader from '../../components/IndividualEventHeader/EventHeader'
 import AboutEvent from '../../components/AboutEvent/AboutEvent'
+import {connect} from 'react-redux'
 
-class EventPage extends Component {
+
+interface IProps {
+    events: {
+        name: String,
+        location: String,
+        _id: String,
+        cardImageUrl: String,
+        startDate: {
+            day: String,
+            time: String
+        },
+        endDate: {
+            day: String,
+            time: String
+        },
+        shortDescription: String,
+        longDescription: String,
+        price: Number,
+        volume: Number
+    }[]
+}
+
+class EventPage extends Component<IProps> {
+
+    displayPage: () => JSX.Element = () => {
+        let event = this.props.events.find(event => {
+            return event._id === this.props.match.params.id
+        })! 
+
+        return (
+            <>
+                <EventHeader
+                    imageUrl={event.cardImageUrl}
+                    title={event.name}
+                    startDate={event.startDate}
+                    endDate={event.endDate}
+                />
+                <AboutEvent
+                    longDescription={event.longDescription}
+                />
+            </>
+        )
+    }
+
     render() {
         return (
             <div>
-                <EventHeader/>
-                <AboutEvent/>
+                {this.props.events.length ? this.displayPage() : ""}
             </div>
         )
     }
 }
 
-export default EventPage
+const mapStateToProps = (state: any) => ({
+    events: state.events
+})
+
+export default connect(mapStateToProps)(EventPage)

@@ -6,6 +6,7 @@ interface IProps {
         cardInfo: {
             name: String,
             location: String,
+            _id: String,
             cardImageUrl: String,
             startDate: {
                 day: String,
@@ -26,18 +27,19 @@ interface IProps {
 
 class EventCardTwo extends Component<IProps> {
     render() {
+        const {cardImageUrl, name, startDate, shortDescription, _id} = this.props.cardInfo
         return (
             <div className="EventCardTwo">
                 <div className="EventCardTwo__container">
-                    <img src={`${this.props.cardInfo.cardImageUrl}`} alt="" className="EventCardTwo__img"/>
+                    <img src={`${cardImageUrl}`} alt="" className="EventCardTwo__img"/>
                     <h3 className="EventCardTwo__title">
                         {this.props.cardInfo.name}
                     </h3>
-                    <h5 className="EventCardTwo__date">{this.props.cardInfo.startDate.day}</h5>
+                    <h5 className="EventCardTwo__date">{startDate.day}</h5>
                     <p className="EventCardTwo__description">
-                        {this.props.cardInfo.shortDescription}
+                        {shortDescription}
                     </p>
-                    <Link to="/events/eventId" className="EventCardTwo__learn-more-btn">Learn More</Link>
+                    <Link to={`/events/${_id}`} className="EventCardTwo__learn-more-btn">Learn More</Link>
                 </div>
             </div>
         )

@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import './EventHeader.scss'
+import RegisterModal from '../Modals/RegisterModal/RegisterModal'
 
 interface IProps {
     imageUrl: String,
     title: String,
-    date: String
+    startDate: {
+        day: String,
+        time: String
+    },
+    endDate: {
+        day: String,
+        time: String
+    }
 }
 
 export default class EventHeader extends Component<IProps> {
     render() {
-        const {imageUrl, title, date} = this.props
+        const {imageUrl, title, startDate, endDate} = this.props
         return (
             <div className="SingleEventHeader">
                 <div className="SingleEventHeader__container">
@@ -20,11 +28,9 @@ export default class EventHeader extends Component<IProps> {
                             {title}
                         </h4>
                         <h6 className="SingleEventHeader__date">
-                            {date} 
+                            {startDate.day} at {startDate.time} to {endDate.time}
                         </h6>
-                        <button className="SingleEventHeader__register-btn">
-                            Register Now
-                        </button>
+                        <RegisterModal/>
                     </div>
                 </div>
             </div>
