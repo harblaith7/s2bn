@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./CheckoutForm.scss"
-import {CardElement} from "@stripe/react-stripe-js"
+import {CardElement, useElements} from "@stripe/react-stripe-js"
+import {StripeCardElementChangeEvent} from "@stripe/stripe-js"
+
 
 const CheckoutForm = () => {
+
+    const [checkoutError, setCheckoutError] = useState("")
+
+    const handleCardDetailChange = (e: StripeCardElementChangeEvent) => {
+        if(e.error){
+            return setCheckoutError(e.error.message)
+        } 
+        setCheckoutError("")
+    }
+
     return (
         <form className="CheckoutForm">
             <input 
@@ -33,10 +45,14 @@ const CheckoutForm = () => {
                 name="number"
                 required
             />
+            <div className="CheckoutForm__error-container">
+             {checkoutError && <p>{checkoutError}</p>}
+            </div>
             <CardElement
                 options={{
                     hidePostalCode: true
                 }}
+                onChange={handleCardDetailChange}
             />
             <button type="submit" className="CheckoutForm__btn">
                 Pay
