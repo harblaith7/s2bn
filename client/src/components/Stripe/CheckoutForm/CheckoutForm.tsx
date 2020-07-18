@@ -1,28 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "./CheckoutForm.scss"
-import {CardElement} from '@stripe/react-stripe-js'
-import axios from 'axios'
 
-export default class CheckoutForm extends Component {
-
-    handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-
-        const {data: clientSecret} = await axios.post('/api/payment_intents', {
-            amount: 2000
-        })
-    }
-
-    render() {
-        return (
-            <form className="CheckoutForm" onSubmit={this.handleSubmit}>
-                <CardElement
-                    options = {{
-                        hidePostalCode : true
-                    }}
-                />
-                <input type="submit"/>
-            </form>
-        )
-    }
+const CheckoutForm = () => {
+    return (
+        <form className="CheckoutForm">
+            <input 
+                type="text" 
+                placeholder="Full Name" 
+                className="CheckoutForm__input"
+                name="fullName"
+            />
+            <input 
+                type="text" 
+                placeholder="Email" 
+                className="CheckoutForm__input"
+                name="email"
+            />
+            <input 
+                type="text" 
+                placeholder="Address" 
+                className="CheckoutForm__input"
+                name="email"
+            />
+            <input 
+                type="text" 
+                placeholder="Phone Number" 
+                className="CheckoutForm__input"
+                name="number"
+            />
+        </form>
+    )
 }
+
+export default CheckoutForm
