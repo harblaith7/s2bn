@@ -9,9 +9,19 @@ const CheckoutForm = (props: {
     price: Number
 }) => {
 
+    let initialButtonName;
+
+    if(props.price <= 0) {
+        initialButtonName = "Register Now"
+    } else {
+        initialButtonName = `Pay $${props.price}`
+    }
+
     const [checkoutError, setCheckoutError] = useState("")
     const [processingPayment, setProcessingPayment] = useState(false)
-    const [buttonName, setButtonName] = useState(`Pay $${props.price}`)
+    const [buttonName, setButtonName] = useState(initialButtonName)
+
+    
 
     const element = useElements()
     const stripe = useStripe()
@@ -32,6 +42,16 @@ const CheckoutForm = (props: {
             name: e.target.name.value,
             email: e.target.email.value,
             phone: e.target.number.value
+        }
+
+        if(props.price <= 0){
+            setTimeout(() => {
+                setButtonName(`Success! Registered`)
+            }, 2000)
+            setTimeout(() => {
+                props.setOpen(false)
+                return
+            }, 3000)
         }
 
         // Disable button 
@@ -113,12 +133,14 @@ const CheckoutForm = (props: {
             <div className="CheckoutForm__error-container">
              {checkoutError && <p>{checkoutError}</p>}
             </div>
-            <CardElement
-                options={{
-                    hidePostalCode: true
-                }}
-                onChange={handleCardDetailChange}
-            />
+            {props.price > 0 && (
+                <CardElement
+                    options={{
+                        hidePostalCode: true
+                    }}
+                    onChange={handleCardDetailChange}
+                />
+            )}
             <button type="submit" className="CheckoutForm__btn" disabled={processingPayment}>
                 {buttonName}
             </button>
