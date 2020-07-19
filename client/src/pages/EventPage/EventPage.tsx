@@ -39,6 +39,7 @@ class EventPage extends Component<IProps> {
                     title={event.name}
                     startDate={event.startDate}
                     endDate={event.endDate}
+                    price={event.price}
                 />
                 <AboutEvent
                     longDescription={event.longDescription}

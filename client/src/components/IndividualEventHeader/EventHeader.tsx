@@ -12,12 +12,13 @@ interface IProps {
     endDate: {
         day: String,
         time: String
-    }
+    },
+    price: Number
 }
 
 export default class EventHeader extends Component<IProps> {
     render() {
-        const {imageUrl, title, startDate, endDate} = this.props
+        const {imageUrl, title, startDate, endDate, price} = this.props
         return (
             <div className="SingleEventHeader">
                 <div className="SingleEventHeader__container">
@@ -30,7 +31,9 @@ export default class EventHeader extends Component<IProps> {
                         <h6 className="SingleEventHeader__date">
                             {startDate.day} at {startDate.time} to {endDate.time}
                         </h6>
-                        <RegisterModal/>
+                        <RegisterModal
+                            price = {price}
+                        />
                     </div>
                 </div>
             </div>

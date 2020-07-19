@@ -3,13 +3,15 @@ import "./CheckoutForm.scss"
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js"
 import {StripeCardElementChangeEvent} from "@stripe/stripe-js"
 import axios from 'axios'
-import { Redirect } from "react-router-dom";
 
-const CheckoutForm = (props: {setOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
+const CheckoutForm = (props: {
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    price: Number
+}) => {
 
     const [checkoutError, setCheckoutError] = useState("")
     const [processingPayment, setProcessingPayment] = useState(false)
-    const [buttonName, setButtonName] = useState('Pay')
+    const [buttonName, setButtonName] = useState(`Pay $${props.price}`)
 
     const element = useElements()
     const stripe = useStripe()
@@ -41,7 +43,7 @@ const CheckoutForm = (props: {setOpen: React.Dispatch<React.SetStateAction<boole
         try {
             const { data: clientSecret } = await axios.post(
                 "http://localhost:5000/api/payments",
-                 {amount: 1000}
+                 {amount: (100 * props.price)}
             )
 
             // Create payment method
@@ -67,6 +69,7 @@ const CheckoutForm = (props: {setOpen: React.Dispatch<React.SetStateAction<boole
             if(completePayment!.error){
                 setCheckoutError(completePayment!.error.message!)
                 setProcessingPayment(false);
+                setButtonName(`Pay $${props.price}`)
                 return
             }
 
