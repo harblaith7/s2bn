@@ -11,6 +11,7 @@ interface IState {
 interface IProps {
     events: {
         name: String,
+        _id: String,
         location: String,
         cardImageUrl: String,
         startDate: {

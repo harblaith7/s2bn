@@ -1,0 +1,33 @@
+@import "../../../sass/variables.scss";
+
+.CheckoutForm {
+
+    width: 90%;
+    margin: 2.5rem auto;
+
+    &__input {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__btn {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        margin-top: 3rem;
+        border: none;
+        background-color: $primary;
+        color: $white;
+        font-weight: 400;
+
+        letter-spacing: 0.25rem;
+    }
+
+    &__error-container {
+        height: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+}

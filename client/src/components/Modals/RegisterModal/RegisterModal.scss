@@ -1,0 +1,14 @@
+@import "../../../sass/variables.scss";
+
+.RegisterModal {
+    background-color: $white;
+    width: 50rem;
+    overflow-y: auto;
+    padding: 2rem;
+
+    &__card-container {
+        width: 75%;
+        height: 30rem;
+    }
+
+}

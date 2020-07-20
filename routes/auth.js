@@ -15,6 +15,7 @@ router.post('/login', [
     .not()
     .isEmpty()
 ], async (req, res) => {
+    console.log("called login")
     // Check if the inputs are correct
     const errors = validationResult(req);
     if(!errors.isEmpty()){

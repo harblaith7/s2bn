@@ -24,12 +24,8 @@
     &__blurb {
         width: 50%;
         font-size: 1.5rem;
-    }
-
-    &__event-image {
-        width: 30rem;
-        height: 30rem;
-        border-radius: 100%;
+        margin: 0 auto;
+        text-align: center;
     }
 
 }
