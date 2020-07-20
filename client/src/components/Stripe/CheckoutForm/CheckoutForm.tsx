@@ -50,7 +50,6 @@ const CheckoutForm = (props: {
             }, 2000)
             setTimeout(() => {
                 props.setOpen(false)
-                return
             }, 3000)
         }
 
