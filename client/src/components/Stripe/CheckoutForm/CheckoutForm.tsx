@@ -6,10 +6,12 @@ import axios from 'axios'
 
 const CheckoutForm = (props: {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>,
-    price: Number
+    price: number,
+    id: String
 }) => {
 
     let initialButtonName;
+    console.log(props.id)
 
     if(props.price <= 0) {
         initialButtonName = "Register Now"
@@ -43,6 +45,8 @@ const CheckoutForm = (props: {
             email: e.target.email.value,
             phone: e.target.number.value
         }
+
+        console.log(billingInfo)
 
         if(props.price <= 0){
             setTimeout(() => {
@@ -92,6 +96,16 @@ const CheckoutForm = (props: {
                 return
             }
 
+            // Save the user 
+            try {
+                    axios.post("http://localhost:5000/api/payments/save-user", {
+                    ...billingInfo,
+                    id: props.id
+                })
+            } catch (error) {
+                console.log(error)
+            }
+
             // Success message and clear inputs 
             setButtonName("Success! Payment Complete")
 
@@ -112,7 +126,7 @@ const CheckoutForm = (props: {
                 type="text" 
                 placeholder="Full Name" 
                 className="CheckoutForm__input"
-                name="fullName"
+                name="name"
                 required
             />
             <input 

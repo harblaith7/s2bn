@@ -28,6 +28,8 @@ router.post('/', async (req, res) => {
 router.post('/save-user', async (req, res) => {
     const {name, email, phone, id} = req.body
 
+    console.log(name)
+
     try {
         let newUser = await db
         .getDb()

@@ -57,6 +57,7 @@ export default function TransitionsModal(props: any) {
             <CheckoutForm
               setOpen={setOpen}
               price={props.price}
+              id={props.id}
             />
           </div>
         </Fade>

@@ -40,6 +40,7 @@ class EventPage extends Component<IProps> {
                     startDate={event.startDate}
                     endDate={event.endDate}
                     price={event.price}
+                    id={this.props.match.params.id}
                 />
                 <AboutEvent
                     longDescription={event.longDescription}
