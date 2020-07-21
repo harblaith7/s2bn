@@ -1,0 +1,41 @@
+@import "../../../sass/variables.scss";
+
+.ViewMoreModal {
+    width: 50rem;
+    height: 50rem;
+    padding: 2.5rem;
+    background-color: $white;
+
+    &__user-section {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 0.1rem solid $less-transparent-grey;
+    }
+
+    & p {
+        font-size: 1.25rem;
+    }
+
+    &__container {
+        height: 85%;
+        overflow-y: auto;
+    }
+
+    &__copy-btn {
+        margin-top: 2rem;
+        width: 100%;
+        padding: 1rem;
+        background-color: $primary;
+        color: $white;
+        border: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 0.1rem;
+    }
+
+    &__input {
+        display: hidden;
+        opacity: 0
+    }
+}

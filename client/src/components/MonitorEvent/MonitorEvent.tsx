@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './MonitorEvent.scss'
 import {connect} from 'react-redux'
 import UpdateEventModal from '../Modals/UpdateEventModal/UpdateEventModal'
+import ViewMoreModal from "../Modals/ViewMoreModal/ViewMoreModal"
 
 interface IState {
     currentEvent: {
@@ -21,7 +22,11 @@ interface IState {
         price: String,
         volume: String,
         firstName: String,
-        attendes: any[],
+        attendes: {
+            name: String,
+            email: String,
+            phone: String
+        }[],
         _id: String
     }
 }
@@ -44,7 +49,11 @@ interface IProps {
         price: String,
         volume: String,
         firstName: String,
-        attendes: any[],
+        attendes: {
+            name: String,
+            email: String,
+            phone: String
+        }[],
         _id: string
     }[]
 }
@@ -133,9 +142,9 @@ class MonitorEvent extends Component<IProps, IState> {
                                         <p className="MonitorEvent__attendes">
                                             {attendes.length} / {volume} attendes  
                                         </p>
-                                        <button className="MonitorEvent__view-more-btn">
-                                            View More
-                                        </button>
+                                        <ViewMoreModal
+                                            attendes={attendes}
+                                        />
                                     </div>
                                     <p className="MonitorEvent__fields">
                                         <span>Created by:</span> {firstName}
