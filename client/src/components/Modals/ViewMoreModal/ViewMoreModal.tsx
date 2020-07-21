@@ -44,7 +44,7 @@ export default function TransitionsModal(props: IProps) {
   const displayUsers: () => JSX.Element[] = () => {
       return props.attendes.map(attende => {
           return (
-              <div>
+              <div className="ViewMoreModal__user-section">
                   <p>{attende.name}</p>
                   <p>{attende.phone}</p>
                   <p>{attende.email}</p>

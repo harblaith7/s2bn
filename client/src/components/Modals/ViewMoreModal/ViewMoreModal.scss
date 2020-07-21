@@ -5,4 +5,15 @@
     height: 50rem;
     padding: 2.5rem;
     background-color: $white;
+
+    &__user-section {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 0.1rem solid $less-transparent-grey;
+    }
+
+    & p {
+        font-size: 1.25rem;
+    }
 }
