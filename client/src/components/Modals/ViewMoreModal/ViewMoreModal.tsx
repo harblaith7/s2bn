@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -41,6 +41,29 @@ export default function TransitionsModal(props: IProps) {
     setOpen(false);
   };
 
+
+  const [copySuccess, setCopySuccess] = useState('');
+  const textAreaRef = useRef(null);
+
+  const [emails, setEmails] = useState("")
+
+  const concatEmails = () => {
+    let emails = ""
+    props.attendes.map(attende => {
+      emails += `${attende.email}, `
+    })
+    return emails
+  }
+
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the the whole text area selected.
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
+
   const displayUsers: () => JSX.Element[] = () => {
       return props.attendes.map(attende => {
           return (
@@ -72,7 +95,24 @@ export default function TransitionsModal(props: IProps) {
       >
         <Fade in={open}>
           <div className="ViewMoreModal">
-            {displayUsers()}
+            <div className="ViewMoreModal__container">
+              {displayUsers()}
+            </div>
+          <div>
+          <input
+            type="text"
+            ref={textAreaRef}
+            value={concatEmails()}
+            className="ViewMoreModal__input"
+          />
+          { document.queryCommandSupported('copy') &&
+            (
+              <div>
+                <button onClick={copyToClipboard} className="ViewMoreModal__copy-btn">Copy Emails</button> 
+              </div>
+            )
+          }
+    </div>
           </div>
         </Fade>
       </Modal>
