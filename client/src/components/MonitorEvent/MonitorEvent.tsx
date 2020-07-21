@@ -3,6 +3,8 @@ import './MonitorEvent.scss'
 import {connect} from 'react-redux'
 import UpdateEventModal from '../Modals/UpdateEventModal/UpdateEventModal'
 import ViewMoreModal from "../Modals/ViewMoreModal/ViewMoreModal"
+import axios from 'axios'
+import { fetchEvent } from '../../redux/actions/events'
 
 interface IState {
     currentEvent: {
@@ -55,7 +57,8 @@ interface IProps {
             phone: String
         }[],
         _id: string
-    }[]
+    }[],
+    fetchEvent: () => void
 }
 
 class MonitorEvent extends Component<IProps, IState> {
@@ -120,6 +123,14 @@ class MonitorEvent extends Component<IProps, IState> {
         }
     }
 
+    deleteEvent = async () => {
+        console.log(this.state.currentEvent._id)
+        let item = await  axios.post("http://localhost:5000/api/events",
+         {id: this.state.currentEvent._id})
+        console.log(item)
+        this.props.fetchEvent()
+    }
+
     render() {
         const {name, firstName, startDate: {day, time}, endDate, volume, attendes, price, longDescription, location, shortDescription} = this.state.currentEvent
         return (
@@ -162,7 +173,7 @@ class MonitorEvent extends Component<IProps, IState> {
                                         <span>Long Description</span>: {longDescription}
                                     </p>
                                     <div className="MonitorEvent__btn-container">
-                                        <button className="MonitorEvent__btn MonitorEvent__btn--red">
+                                        <button className="MonitorEvent__btn MonitorEvent__btn--red" onClick={this.deleteEvent}>
                                             Mark as Complete
                                         </button>
                                         <UpdateEventModal
@@ -183,87 +194,4 @@ const mapStateToProps = (state: any) => ({
     events: state.events
 })
 
-export default connect(mapStateToProps)(MonitorEvent)
-
-
-/*
-import React, { Component } from 'react'
-import './MonitorEvent.scss'
-import {connect} from 'react-redux'
-import events from '../../redux/reducers/events'
-
-interface IState {
-        currentEventId: String,
-        currentEvent: {
-            name: String,
-        location: String,
-        cardImageUrl: String,
-        startDate: {
-            day: String,
-            time: String
-        },
-        endDate: {
-            day: String,
-            time: String
-        },
-        shortDescription: String,
-        longDescription: String,
-        price: String,
-        volume: String,
-        firstName: String,
-        attendes: any[],
-        _id: String
-    }
-}
-
-interface IProps {
-    events: {
-        name: String,
-        location: String,
-        cardImageUrl: String,
-        startDate: {
-            day: String,
-            time: String
-        },
-        endDate: {
-            day: String,
-            time: String
-        },
-        shortDescription: String,
-        longDescription: String,
-        price: String,
-        volume: String,
-        firstName: String,
-        attendes: any[],
-        _id: String
-    }
-}
-
-class MonitorEvent extends Component<IProps, IState> {
-
-    constructor(props: IProps){
-        super(props)
-        this.state = {
-            currentEventId: "",
-            currentEvent: {
-                name: "",
-                location: "",
-                cardImageUrl: "",
-                startDate: {
-                    day: "",
-                    time: ""
-                },
-                endDate: {
-                    day: "",
-                    time: ""
-                },
-                shortDescription: "",
-                longDescription: "",
-                price: "",
-                volume: "",
-                firstName: "",
-                attendes: [],
-                _id: ""
-            }
-    }
-    */
+export default connect(mapStateToProps, {fetchEvent})(MonitorEvent)
