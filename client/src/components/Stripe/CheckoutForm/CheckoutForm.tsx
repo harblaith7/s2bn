@@ -64,10 +64,6 @@ const CheckoutForm = (props: {
         const cardElement = element!.getElement("card");
 
         try {
-            const { data: clientSecret } = await axios.post(
-                "http://localhost:5000/api/payments",
-                 {amount: (100 * props.price)}
-            )
 
             // Create payment method
             const paymentMethod = await stripe!.createPaymentMethod({
@@ -75,6 +71,22 @@ const CheckoutForm = (props: {
                 card: cardElement!,
                 billing_details: billingInfo
             })
+
+            if(props.price <= 0){
+                try {
+                    axios.post("http://localhost:5000/api/payments/save-user", {
+                    ...billingInfo,
+                    id: props.id
+                })
+                } catch (error) {
+                    console.log(error)
+                }
+                return
+            }
+            const { data: clientSecret } = await axios.post(
+                "http://localhost:5000/api/payments",
+                 {amount: (100 * props.price)}
+            )
 
             console.log(paymentMethod)
 

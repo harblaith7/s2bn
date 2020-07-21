@@ -99,5 +99,19 @@ router.patch('/', checkAuth, async (req, res) => {
     }
 })
 
+// Delete Event 
+// Private 
+router.post('/', checkAuth, async (req, res) => {
+    const {id} = req.body
+    console.log(id)
+    let results = await db
+    .getDb()
+    .collection("events")
+    .deleteOne(
+        {_id: ObjectID(id)}
+    )
+
+    res.send(results)
+})
 
 module.exports = router
