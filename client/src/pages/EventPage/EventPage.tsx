@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import EventHeader from '../../components/IndividualEventHeader/EventHeader'
 import AboutEvent from '../../components/AboutEvent/AboutEvent'
 import {connect} from 'react-redux'
-
+import "./EventPage.scss"
 
 interface IProps {
     events: {
@@ -30,7 +30,15 @@ class EventPage extends Component<IProps> {
     displayPage: () => JSX.Element = () => {
         let event = this.props.events.find(event => {
             return event._id === this.props.match.params.id
-        })! 
+        })
+
+        if(!event){
+            return (
+                <div className="EventErrorPage">
+                    Opps, we can't find that event
+                </div>
+            )
+        }
 
         return (
             <>
