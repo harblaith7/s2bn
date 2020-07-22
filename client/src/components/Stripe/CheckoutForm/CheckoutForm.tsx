@@ -46,8 +46,6 @@ const CheckoutForm = (props: {
             phone: e.target.number.value
         }
 
-        console.log(billingInfo)
-
         if(props.price <= 0){
             setTimeout(() => {
                 setButtonName(`Success! Registered`)
@@ -91,6 +89,7 @@ const CheckoutForm = (props: {
             console.log(paymentMethod)
 
             if(paymentMethod.error){
+                console.log("Errored")
                 setCheckoutError(paymentMethod.error.message!)
                 setProcessingPayment(false);
                 return
@@ -108,8 +107,11 @@ const CheckoutForm = (props: {
                 return
             }
 
+            console.log("running 1")
+
             // Save the user 
             try {
+                console.log("running 2")
                     axios.post("http://localhost:5000/api/payments/save-user", {
                     ...billingInfo,
                     id: props.id
@@ -129,6 +131,10 @@ const CheckoutForm = (props: {
 
         } catch (error) {
             setCheckoutError(error.message);
+
+            setTimeout(() => {
+                setCheckoutError("");
+            }, 2000)
         }
     }
 

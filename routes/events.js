@@ -101,8 +101,8 @@ router.patch('/', checkAuth, async (req, res) => {
 
 // Delete Event 
 // Private 
-router.post('/', checkAuth, async (req, res) => {
-    const {id} = req.body
+router.delete('/:id', checkAuth, async (req, res) => {
+    const {id} = req.params
     console.log(id)
     let results = await db
     .getDb()
