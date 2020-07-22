@@ -396,7 +396,7 @@ class CreateEvents extends Component<IProps, any> {
                                 <EventDisplayModal
                                     imageUrl={cardImageUrl}
                                     title={name}
-                                    date={startDate.day}
+                                    date={startDate}
                                     longDescription={longDescription}
                                 />
                             </div>
