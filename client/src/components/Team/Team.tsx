@@ -1,12 +1,38 @@
 import React, { Component } from 'react';
 import PersonCard from "../PersonCard/PersonCard"
 import "./Team.scss"
+import { Link } from "react-router-dom"
 
-export default class Team extends Component {
+interface IState {
+    cities: String[]
+}
+
+export default class Team extends Component<{}, IState> {
+
+    constructor(props: {}){
+        super(props)
+        this.state = {
+            cities : ["London", "Kingston", "Guelph", "Ottawa", "Toronto", "Edmonton", "Waterloo"]
+        }
+    }
+
+    displayNavTabs = () => {
+        return this.state.cities.map(city => {
+            return (
+                <Link to={`/chapters/${city}`} className="Team__nav-tab">
+                    {city}
+                </Link>
+            )
+        })
+    }
+
     render() {
         return (
             <div className="Team">
                 <div className="Team__container">
+                    <nav className="Team__nav-container">
+                        {this.displayNavTabs()}
+                    </nav>
                     <h2 className="Team__header">
                         Our Guelph Team
                     </h2>
