@@ -42,7 +42,7 @@ function App() {
               <PrivateRoute path='/dashboard' component={DashboardPage}/>
               <PrivateRoute path='/messages' component={MessagePage}/>
               <PrivateRoute path="/create-events" component={EventDashboardPage}/>
-              <Route path="/chapters" component={ChaptersPage} />
+              <Route path="/chapters/:city" component={ChaptersPage} />
               <Route exact strict path="/events" component={EventsPage} />
               <Route exact path="/contact" component={ContactPage} />
               <Route exact path="/" component={LandingPage} />

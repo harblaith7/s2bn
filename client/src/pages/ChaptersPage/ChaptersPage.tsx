@@ -9,7 +9,7 @@ import "./ChaptersPage.scss"
 export default class ChaptersPage extends Component {
     render() {
         return (
-            <div className="ChapterPage">
+            <div className="ChapterPage" id="ChapterPage">
                 <SchoolImage/>
                 <Team/>
                 <ContactPage/>

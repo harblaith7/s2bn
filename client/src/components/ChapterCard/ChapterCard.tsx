@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from "react-router-dom"
+import { HashLink as Link } from 'react-router-hash-link';
 
 interface IProps {
     city: {
@@ -13,7 +13,7 @@ interface IProps {
 export default class ChapterCard extends Component<IProps> {
     render() {
         return (
-            <Link to={`/chapter/${this.props.city.linkTo}`} className="Chapters__card">
+            <Link to={`/chapters/${this.props.city.linkTo}/#ChapterPage`} className="Chapters__card">
                 <img src={this.props.city.imageUrl} alt={this.props.city.imageAlt} className="Chapters__img"/>
                 <h3 className="Chapters__title">
                      {this.props.city.name}

@@ -41,7 +41,7 @@ class Nav extends Component<IProps> {
                             </Link>
                         </li>
                         <li className="Nav__list-item">
-                            <Link to="/#chapters" className="Nav__link">
+                            <Link to="/chapters/guelph" className="Nav__link">
                                 Chapters
                             </Link>
                         </li>
