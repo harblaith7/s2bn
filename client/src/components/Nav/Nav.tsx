@@ -32,32 +32,32 @@ class Nav extends Component<IProps> {
                        <>
                         <li className="Nav__list-item">
                             <Link to="/" className="Nav__link">
-                                    <img src={s2bn} alt="" className="Nav__logo"/>
+                                <img src={s2bn} alt="" className="Nav__logo"/>
                             </Link>
                          </li>
                         <li className="Nav__list-item Nav__list-item--right">
                             <Link to="/about" className="Nav__link">
-                                    About
+                                About
                             </Link>
                         </li>
                         <li className="Nav__list-item">
-                            <Link to="/chapters" className="Nav__link">
-                                    Chapters
+                            <Link to="/#chapters" className="Nav__link">
+                                Chapters
                             </Link>
                         </li>
                         <li className="Nav__list-item">
                             <Link to="/events" className="Nav__link">
-                                    Events
+                                Events
                             </Link>
                         </li>
                         <li className="Nav__list-item">
                             <a href="" className="Nav__link">
-                                    Sponsorship
+                                Sponsorship
                             </a>
                         </li>
                         <li className="Nav__list-item">
                             <Link to="/contact" className="Nav__link">
-                                    Contact
+                                Contact
                             </Link>
                         </li>
                    </>
