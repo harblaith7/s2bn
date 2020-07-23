@@ -29,9 +29,11 @@ export default class EventHeader extends Component<IProps> {
                         <h4 className="SingleEventHeader__title">
                             {title}
                         </h4>
-                        <h6 className="SingleEventHeader__date">
-                            {startDate.day} at {startDate.time} to {endDate.time}
-                        </h6>
+                        {startDate && endDate && (
+                            <h6 className="SingleEventHeader__date">
+                                {startDate.day} at {startDate.time} to {endDate.time}
+                            </h6>
+                        )}
                         <RegisterModal
                             price = {price}
                             id={id}
