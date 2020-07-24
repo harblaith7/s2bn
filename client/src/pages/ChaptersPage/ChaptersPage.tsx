@@ -6,7 +6,8 @@ import Sponsors from "../../components/Sponsors/Sponsors";
 import Footer from "../../components/Footer/Footer"
 import "./ChaptersPage.scss"
 
-export default class ChaptersPage extends Component {
+class ChaptersPage extends Component {
+
     render() {
         return (
             <div className="ChapterPage" id="ChapterPage">
@@ -19,3 +20,6 @@ export default class ChaptersPage extends Component {
         )
     }
 }
+
+
+export default ChaptersPage

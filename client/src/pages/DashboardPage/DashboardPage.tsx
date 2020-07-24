@@ -1,8 +1,19 @@
 import React, { Component } from 'react'
 import "./DashboardPage.scss"
 import ChaptersDashboard from '../../components/ChaptersDashboard/ChaptersDashboard'
+import {fetchChapters} from "../../redux/actions/chapters"
+import {connect} from "react-redux"
 
-class DashboardPage extends Component {
+interface IProps {
+    fetchChapters: () => void
+}
+
+class DashboardPage extends Component<IProps> {
+
+    componentDidMount = () => {
+        this.props.fetchChapters()
+    }
+
     render() {
         return (
             <div className="DashboardPage">
@@ -12,4 +23,4 @@ class DashboardPage extends Component {
     }
 }
 
-export default DashboardPage
+export default connect(null, {fetchChapters})(DashboardPage)

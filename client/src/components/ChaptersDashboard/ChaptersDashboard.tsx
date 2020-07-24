@@ -6,7 +6,7 @@ interface IState {
     activeCity: String
 }
 
-export default class ChaptersDashboard extends Component<{}, IState> {
+class ChaptersDashboard extends Component<{}, IState> {
 
     constructor(props: {}){
         super(props)
@@ -36,6 +36,10 @@ export default class ChaptersDashboard extends Component<{}, IState> {
         })
     }
 
+    updateSnippet = async () => {
+
+    }
+
     render() {
         return (
             <div className="ChaptersDashboard">
@@ -47,7 +51,7 @@ export default class ChaptersDashboard extends Component<{}, IState> {
                         {this.displayTabs()}
                     </nav>
                     <div className="ChaptersDashboard__fields-container">
-                        <form action="" className="ChaptersDashboard__form">
+                        <form action="" className="ChaptersDashboard__form" onSubmit={this.updateSnippet}>
                             <p className="ChaptersDashboard__text">
                                 Chapters Snippet
                             </p>
@@ -60,3 +64,5 @@ export default class ChaptersDashboard extends Component<{}, IState> {
         )
     }
 }
+
+export default ChaptersDashboard

@@ -17,6 +17,7 @@ app.use('/api/auth', require('./routes/auth'))
 app.use('/api/messages', require('./routes/messages'))
 app.use('/api/events', require('./routes/events'))
 app.use('/api/payments', require('./routes/payments'))
+app.use('/api/chapters', require('./routes/chapters'))
 
 const PORT = process.env.PORT || 5000
 
