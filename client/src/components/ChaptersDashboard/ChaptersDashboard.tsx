@@ -1,14 +1,23 @@
 import React, { Component } from 'react'
 import "./ChaptersDashboard.scss"
+import {connect} from "react-redux"
 
 interface IState {
     cities: String[],
     activeCity: String
 }
 
-class ChaptersDashboard extends Component<{}, IState> {
+interface IProps {
+    chapters: {
+        city: String,
+        snippet: String,
+        _id: String
+    }[]
+}
 
-    constructor(props: {}){
+class ChaptersDashboard extends Component<IProps, IState> {
+
+    constructor(props: IProps){
         super(props)
         this.state = {
             cities: ["London", "Waterloo", "Ottawa", "Toronto", "Edmonton", "Guelph", "Kingston"],
@@ -28,6 +37,27 @@ class ChaptersDashboard extends Component<{}, IState> {
                 </li>
             )
         })
+    }
+
+    findCurrentChapter = () => {
+        if(this.props.chapters.snippet === ""){
+            return ""
+        }
+
+        let results = this.props.chapters.find(chapter => {
+            return chapter.city === this.state.activeCity!
+        })
+
+        console.log(results)
+
+        if(results){
+            console.log(results.snippet)
+            return results.snippet
+        } else {
+            return ""
+        }
+        
+        
     }
 
     changeCity = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
@@ -55,7 +85,10 @@ class ChaptersDashboard extends Component<{}, IState> {
                             <p className="ChaptersDashboard__text">
                                 Chapters Snippet
                             </p>
-                            <textarea className="ChaptersDashboard__textarea"></textarea>
+                            <textarea 
+                                className="ChaptersDashboard__textarea"
+                                value={this.findCurrentChapter()}
+                            ></textarea>
                             <input className="ChaptersDashboard__submit" type="submit" value="Update Chapter Snippet"/>
                         </form>
                     </div>
@@ -65,4 +98,7 @@ class ChaptersDashboard extends Component<{}, IState> {
     }
 }
 
-export default ChaptersDashboard
+const mapStateToProps = (state: any) => ({
+    chapters: state.chapters
+})
+export default connect(mapStateToProps)(ChaptersDashboard)
