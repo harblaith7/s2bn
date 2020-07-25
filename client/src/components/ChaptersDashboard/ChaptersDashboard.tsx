@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import "./ChaptersDashboard.scss"
 import {connect} from "react-redux"
 import axios from 'axios'
+import ChapterAddMemberForm from "../ChapterAddMemberForm/ChapterAddMemberForm"
 
 interface IState {
     cities: String[],
@@ -109,17 +110,9 @@ class ChaptersDashboard extends Component<IProps, IState> {
                             <p className="ChaptersDashboard__text">
                                 Add Member
                             </p>
-                            <form action="">
-                                <div>
-                                    <input type="text" placeholder="First name" className="ChaptersDashboard__input"/>
-                                    <input type="text" placeholder="AWS Image URL" className="ChaptersDashboard__input"/>
-                                </div>
-                                <div>
-                                    <input type="text" placeholder="LinkedIn URL" className="ChaptersDashboard__input"/>
-                                    <input type="text" placeholder="Short Snippet" className="ChaptersDashboard__input"/>
-                                </div>
-                                <input className="ChaptersDashboard__submit ChaptersDashboard__submit--members" type="submit" value="Add Member"/>
-                            </form>
+                            <ChapterAddMemberForm
+                                chapter={this.state.activeCity}
+                            />
                         </div>
                     </div>
                 </div>

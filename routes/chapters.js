@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const db = require('../database/db')
 const checkAuth = require("../middleware/checkAuth")
+const { check } = require('express-validator')
 
 
 router.post('/', checkAuth, async (req, res) => {
@@ -32,6 +33,29 @@ router.get('/', async (req, res) => {
     res.json({
         cities
     })
+})
+
+router.post('/member', checkAuth, async (req, res) => {
+    const {chapter, name, imageURL, linkedInURL, shortSnippet} = req.body
+
+    console.log(chapter, name, imageURL, linkedInURL, shortSnippet)
+    let results = await db
+    .getDb()
+    .collection('chapters')
+    .updateOne(
+        {city: chapter},
+        {$push: {
+            members: {
+                name,
+                imageURL,
+                linkedInURL,
+                shortSnippet
+            }
+        }},
+        {upsert: true}
+    )
+
+    res.json({results})
 })
 
 module.exports = router
