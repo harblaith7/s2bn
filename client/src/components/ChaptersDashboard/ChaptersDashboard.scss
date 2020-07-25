@@ -53,7 +53,7 @@
     }
 
     &__form {
-        width: 50%;
+        width: 45%;
         margin-top: 2rem;
         display: flex;
         flex-direction: column;
@@ -80,6 +80,29 @@
         border: none;
         margin-top: 1rem;
         font-size: 1.5rem;
+
+        &--members {
+            margin-top: 4rem;
+            width: 52.5rem;
+        }
+    }
+
+    &__fields-container {
+        display: flex;
+    }
+
+    &__add-members-container {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        width: 25rem;
+        margin-bottom: 1rem;
+        margin-right: 2rem;
     }
 
 }

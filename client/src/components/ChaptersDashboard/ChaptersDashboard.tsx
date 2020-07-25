@@ -105,6 +105,22 @@ class ChaptersDashboard extends Component<IProps, IState> {
                             ></textarea>
                             <input className="ChaptersDashboard__submit" type="submit" value="Update Chapter Snippet"/>
                         </form>
+                        <div className="ChaptersDashboard__add-members-container">
+                            <p className="ChaptersDashboard__text">
+                                Add Member
+                            </p>
+                            <form action="">
+                                <div>
+                                    <input type="text" placeholder="First name" className="ChaptersDashboard__input"/>
+                                    <input type="text" placeholder="AWS Image URL" className="ChaptersDashboard__input"/>
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="LinkedIn URL" className="ChaptersDashboard__input"/>
+                                    <input type="text" placeholder="Short Snippet" className="ChaptersDashboard__input"/>
+                                </div>
+                                <input className="ChaptersDashboard__submit ChaptersDashboard__submit--members" type="submit" value="Add Member"/>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
