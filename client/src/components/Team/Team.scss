@@ -11,6 +11,20 @@
         
     }
 
+    &__nav-container {
+        margin: 0 auto;
+        margin-top: 10rem;
+        width: 75%;
+    }
+
+    &__nav-tab {
+        list-style: none;
+        font-size: 2rem;
+        color: $primary;
+        font-weight: 700;
+        cursor: pointer;
+        margin-right: 4rem;
+    }
 
     &__header {
         font-weight: 700;

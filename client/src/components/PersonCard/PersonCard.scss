@@ -4,9 +4,11 @@
 
     width: 35rem;
     background-color: $transparent-grey;
+    height: 30rem;
     padding: 2rem;
     border-radius: 0.5rem;
     margin-bottom: 10rem;
+    box-shadow: $box-shadow-2;
     
 
     &__container {
@@ -17,10 +19,10 @@
     }
 
     &__image {
-        width: 17.5rem;
-        height: 17.5rem;
+        width: 10rem;
+        height: 10rem;
         border-radius: 100%;
-        margin-top: -8.5rem;
+        margin-top: -7rem;
         margin-bottom: 1rem;
         cursor: pointer;
     }

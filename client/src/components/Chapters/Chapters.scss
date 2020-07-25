@@ -32,14 +32,13 @@
         padding: 5rem 0;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
 
     }
 
     &__card {
         width: 40rem;
         height: 35rem;
-        
+        margin-right: 5rem;
         margin-bottom: 5rem;
         display: flex;
         justify-content: center;

@@ -5,13 +5,32 @@ import ContactPage from "../../components/ContactChapter/ContactChapter";
 import Sponsors from "../../components/Sponsors/Sponsors";
 import Footer from "../../components/Footer/Footer"
 import "./ChaptersPage.scss"
+import {connect} from 'react-redux'
+import { fetchChapters } from '../../redux/actions/chapters';
 
-export default class ChaptersPage extends Component {
+interface IProps {
+    fetchChapters: () => void
+    chapters: {
+        _id: String,
+        city: String,
+        snippet: String
+    }[]
+}
+
+
+class ChaptersPage extends Component<IProps> {
+
+    componentDidMount(){
+        this.props.fetchChapters()
+    }
+
     render() {
         return (
-            <div className="ChapterPage">
+            <div className="ChapterPage" id="ChapterPage">
                 <SchoolImage/>
-                <Team/>
+                <Team
+                    chapters={this.props.chapters}
+                />
                 <ContactPage/>
                 <Sponsors/>
                 <Footer/>
@@ -19,3 +38,9 @@ export default class ChaptersPage extends Component {
         )
     }
 }
+
+const mapStateToProps = (state: any) => ({
+    chapters: state.chapters
+})
+
+export default connect(mapStateToProps, {fetchChapters})(ChaptersPage)

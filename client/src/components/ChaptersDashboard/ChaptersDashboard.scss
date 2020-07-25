@@ -1,0 +1,112 @@
+@import "../../sass/variables.scss";
+
+.ChaptersDashboard {
+
+    &__container {
+        width: 100%;
+        background-color: $transparent-grey-2;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        height: 40rem;
+        border: 0.1rem solid $transparent-grey-2; 
+    }
+
+    &__title {
+        color: $primary;
+        font-size: 4rem;
+        padding-bottom: 1rem;
+        border-bottom: 0.1rem solid $less-transparent-grey;
+    }
+
+    &__nav {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+
+    &__tab {
+        list-style: none;
+        border: 0.1rem solid $less-transparent-grey;
+        padding: 0.75rem;
+        text-align: center;
+        margin-top: 1rem;
+        border-radius: 3rem;
+        font-size: 1.25rem;
+        cursor: pointer;
+        color: $primary;
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+        margin-right: 1rem;
+        transition: all 0.5s;
+        width: 12.5%;
+
+        &--active {
+            background-color: $primary;
+            color: $white
+        }
+
+        &:hover {
+            background-color: $primary;
+            color: $white
+        }
+
+    }
+
+    &__form {
+        width: 70%;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__text {
+        font-size: 2.25rem;
+        border-radius: 0.5rem;
+    }
+
+    &__textarea {
+        width: 80%;
+        height: 12.5rem;
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+    &__submit {
+        width: 80%;
+        padding: 0.75rem;
+        background-color: $primary;
+        color: $white;
+        font-weight: 600;
+        border: none;
+        margin-top: 1rem;
+        font-size: 1.5rem;
+
+        &--members {
+            margin-top: -0.25rem;
+            width: 52.25rem;
+        }
+    }
+
+    &__fields-container {
+        display: flex;
+    }
+
+    &__add-members-container {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        width: 25rem;
+        margin-bottom: 1rem;
+        margin-right: 2rem;
+
+        &--short {
+            width: 52.25rem;
+        }
+    }
+
+}
