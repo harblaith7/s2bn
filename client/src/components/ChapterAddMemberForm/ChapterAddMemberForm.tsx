@@ -5,7 +5,8 @@ interface IState {
     name: String
     imageURL: String,
     linkedInURL: String,
-    shortSnippet: String
+    shortSnippet: String,
+    position: String
 }
 
 interface IProps {
@@ -20,7 +21,8 @@ export default class ChapterAddMemberForm extends Component<IProps, IState> {
             name: "",
             imageURL: "",
             linkedInURL: "",
-            shortSnippet: ""
+            shortSnippet: "",
+            position: ""
         }
     }
 
@@ -38,6 +40,7 @@ export default class ChapterAddMemberForm extends Component<IProps, IState> {
             imageURL: this.state.imageURL,
             linkedInURL: this.state.linkedInURL,
             shortSnippet: this.state.shortSnippet,
+            position: this.state.position,
             chapter: this.props.chapter
         })
 
@@ -46,6 +49,7 @@ export default class ChapterAddMemberForm extends Component<IProps, IState> {
             imageURL:"",
             linkedInURL: "",
             shortSnippet: "",
+            position: ""
         })
 
     }
@@ -82,13 +86,21 @@ export default class ChapterAddMemberForm extends Component<IProps, IState> {
                     />
                     <input 
                         type="text" 
-                        placeholder="Short Snippet (150 characters max)" 
+                        placeholder="Position" 
                         className="ChaptersDashboard__input"
-                        value={this.state.shortSnippet}
+                        value={this.state.position}
                         onChange={this.handleChange}
-                        name="shortSnippet"
+                        name="position"
                     />
                 </div>
+                <input 
+                    type="text" 
+                    placeholder="Short Snippet (150 characters max)" 
+                    className="ChaptersDashboard__input ChaptersDashboard__input--short"
+                    value={this.state.shortSnippet}
+                    onChange={this.handleChange}
+                    name="shortSnippet"
+                />
                 <input className="ChaptersDashboard__submit ChaptersDashboard__submit--members" type="submit" value="Add Member"/>
             </form>
         )

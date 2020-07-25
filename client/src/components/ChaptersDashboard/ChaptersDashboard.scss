@@ -53,7 +53,7 @@
     }
 
     &__form {
-        width: 45%;
+        width: 70%;
         margin-top: 2rem;
         display: flex;
         flex-direction: column;
@@ -82,8 +82,8 @@
         font-size: 1.5rem;
 
         &--members {
-            margin-top: 4rem;
-            width: 52.5rem;
+            margin-top: -0.25rem;
+            width: 52.25rem;
         }
     }
 
@@ -103,6 +103,10 @@
         width: 25rem;
         margin-bottom: 1rem;
         margin-right: 2rem;
+
+        &--short {
+            width: 52.25rem;
+        }
     }
 
 }

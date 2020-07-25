@@ -19,7 +19,8 @@ interface IProps {
             name: String,
             imageURL: String,
             linkedInURL: String,
-            shortSnippet: String
+            shortSnippet: String,
+            position: String
         }[]
     }[] 
 }
@@ -59,7 +60,7 @@ export default class Team extends Component<IProps, IState> {
             if(chapter){
                 if(chapter.members){
                     return chapter?.members.map(member => {
-                        return <PersonCard/>
+                        return <PersonCard member={member}/>
                     })
                 } else {
                     return ""

@@ -36,9 +36,8 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/member', checkAuth, async (req, res) => {
-    const {chapter, name, imageURL, linkedInURL, shortSnippet} = req.body
+    const {chapter, name, imageURL, linkedInURL, shortSnippet, position} = req.body
 
-    console.log(chapter, name, imageURL, linkedInURL, shortSnippet)
     let results = await db
     .getDb()
     .collection('chapters')
@@ -49,7 +48,8 @@ router.post('/member', checkAuth, async (req, res) => {
                 name,
                 imageURL,
                 linkedInURL,
-                shortSnippet
+                shortSnippet,
+                position
             }
         }},
         {upsert: true}
