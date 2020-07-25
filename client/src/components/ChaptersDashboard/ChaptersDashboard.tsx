@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import "./ChaptersDashboard.scss"
 import {connect} from "react-redux"
+import axios from 'axios'
 
 interface IState {
     cities: String[],
-    activeCity: String
+    activeCity: String,
+    currentSnippet: String
 }
 
 interface IProps {
@@ -21,7 +23,8 @@ class ChaptersDashboard extends Component<IProps, IState> {
         super(props)
         this.state = {
             cities: ["London", "Waterloo", "Ottawa", "Toronto", "Edmonton", "Guelph", "Kingston"],
-            activeCity: "London"
+            activeCity: "London",
+            currentSnippet :""
         }
     }
 
@@ -48,16 +51,18 @@ class ChaptersDashboard extends Component<IProps, IState> {
             return chapter.city === this.state.activeCity!
         })
 
-        console.log(results)
-
         if(results){
-            console.log(results.snippet)
             return results.snippet
         } else {
             return ""
         }
-        
-        
+
+    }
+
+    handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        this.setState({
+            currentSnippet: e.target.value
+        })
     }
 
     changeCity = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
@@ -66,8 +71,15 @@ class ChaptersDashboard extends Component<IProps, IState> {
         })
     }
 
-    updateSnippet = async () => {
-
+    updateSnippet = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        await axios.post("http://localhost:5000/api/chapters", {
+            city: this.state.activeCity,
+            snippet: this.state.currentSnippet
+        })
+        await this.setState({
+            currentSnippet: ""
+        })
     }
 
     render() {
@@ -87,7 +99,9 @@ class ChaptersDashboard extends Component<IProps, IState> {
                             </p>
                             <textarea 
                                 className="ChaptersDashboard__textarea"
-                                value={this.findCurrentChapter()}
+                                placeholder={`${this.findCurrentChapter()}`}
+                                value={`${this.state.currentSnippet}`}
+                                onChange={this.handleChange}
                             ></textarea>
                             <input className="ChaptersDashboard__submit" type="submit" value="Update Chapter Snippet"/>
                         </form>

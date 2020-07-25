@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const db = require('../database/db')
+const checkAuth = require("../middleware/checkAuth")
 
 
-router.post('/', async (req, res) => {
+router.post('/', checkAuth, async (req, res) => {
 
     const {city, snippet} = req.body
 

@@ -2,27 +2,60 @@ import React, { Component } from 'react';
 import PersonCard from "../PersonCard/PersonCard"
 import "./Team.scss"
 import { Link } from "react-router-dom"
+import ChapterNavTab from "../ChapterNavTab/ChapterNavTab"
 
 interface IState {
-    cities: String[]
+    cities: String[],
+    activeCity: String
 }
 
-export default class Team extends Component<{}, IState> {
+interface IProps {
+    chapters: {
+        _id: String,
+        city: String,
+        snippet: String
+    }[] 
+}
 
-    constructor(props: {}){
+export default class Team extends Component<IProps, IState> {
+
+    constructor(props: IProps){
         super(props)
         this.state = {
-            cities : ["London", "Kingston", "Guelph", "Ottawa", "Toronto", "Edmonton", "Waterloo"]
+            cities: ["London", "Kingston", "Guelph", "Ottawa", "Toronto", "Edmonton", "Waterloo"],
+            activeCity: "London"
         }
     }
 
+    componentDidUpdate(prevProps: any) {
+        console.log(this.props)
+    }
+
     displayNavTabs = () => {
-        return this.state.cities.map(city => {
+        return this.state.cities.map((city, index) => {
             return (
-                <Link to={`/chapters/${city}`} className="Team__nav-tab">
-                    {city}
-                </Link>
+                <ChapterNavTab
+                    city={city}
+                    changeActiveCity={this.changeActiveCity}
+                    key={index}
+                />
             )
+        })
+    }
+
+    changeActiveCity = (city: String) => {
+        this.setState({
+            activeCity: city
+        })
+    }
+
+    chaptersInfo = () => {
+        console.log(this.props.chapters)
+        if(this.props.chapters.members){
+            return ""
+        }
+        return this.props.chapters.find(chapter => {
+            return chapter.city === this.state.activeCity
         })
     }
 
@@ -34,10 +67,10 @@ export default class Team extends Component<{}, IState> {
                         {this.displayNavTabs()}
                     </nav>
                     <h2 className="Team__header">
-                        Our Guelph Team
+                        Our {this.state.activeCity} Team
                     </h2>
                     <p className="Team__text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita distinctio deserunt dolorem iste similique facilis quis at, nostrum, aspernatur, dolor accusamus cum doloribus labore recusandae itaque totam!
+                        {this.chaptersInfo()?.snippet}
                     </p>
                     <div className="Team__person-cards-container">
                         <PersonCard/>
