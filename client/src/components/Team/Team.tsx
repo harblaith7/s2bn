@@ -3,6 +3,7 @@ import PersonCard from "../PersonCard/PersonCard"
 import "./Team.scss"
 import { Link } from "react-router-dom"
 import ChapterNavTab from "../ChapterNavTab/ChapterNavTab"
+import chapters from '../../redux/reducers/chapters';
 
 interface IState {
     cities: String[],
@@ -13,7 +14,13 @@ interface IProps {
     chapters: {
         _id: String,
         city: String,
-        snippet: String
+        snippet: String,
+        members: {
+            name: String,
+            imageURL: String,
+            linkedInURL: String,
+            shortSnippet: String
+        }[]
     }[] 
 }
 
@@ -41,6 +48,27 @@ export default class Team extends Component<IProps, IState> {
                 />
             )
         })
+    }
+
+    displayCards = () => {
+        if(this.props.chapters.snippet !== ""){
+            let chapter = this.props.chapters.find(chapter => {
+                return chapter.city === this.state.activeCity;
+            })
+
+            if(chapter){
+                if(chapter.members){
+                    return chapter?.members.map(member => {
+                        return <PersonCard/>
+                    })
+                } else {
+                    return ""
+                }
+            } else {
+                return ""
+            }
+            
+        }
     }
 
     changeActiveCity = (city: String) => {
@@ -73,17 +101,7 @@ export default class Team extends Component<IProps, IState> {
                         {this.chaptersInfo()?.snippet}
                     </p>
                     <div className="Team__person-cards-container">
-                        <PersonCard/>
-                        <PersonCard/>
-                        <PersonCard/>
-                        <PersonCard/>
-                        <PersonCard/>
-                        <PersonCard/>
-                        <PersonCard/>
-                        <PersonCard/>
-                        <PersonCard/>
-                        <PersonCard/>
-                        <PersonCard/>
+                        {this.displayCards()}
                     </div>
                 </div>
             </div>
