@@ -18,6 +18,7 @@ app.use('/api/messages', require('./routes/messages'))
 app.use('/api/events', require('./routes/events'))
 app.use('/api/payments', require('./routes/payments'))
 app.use('/api/chapters', require('./routes/chapters'))
+app.use('/api/postings', require('./routes/volunteer'))
 
 const PORT = process.env.PORT || 5000
 

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import "./ContactDashboard.scss"
+import axios from 'axios'
 
 interface IState {
     title: String,
     description: String,
-    url: String,
-    city: String
+    googleFormLink: String,
+    chapterName: String
 }
 
 export default class ContactDashboard extends Component<{}, IState> {
@@ -15,8 +16,8 @@ export default class ContactDashboard extends Component<{}, IState> {
         this.state = {
             title: "",
             description: "",
-            url: "",
-            city: "London"
+            googleFormLink: "",
+            chapterName: "London"
         }
     }
 
@@ -29,6 +30,16 @@ export default class ContactDashboard extends Component<{}, IState> {
             })
     }
 
+    handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        axios.post('http://localhost:5000/api/postings', {
+            title: this.state.title,
+            description: this.state.description,
+            googleFormLink: this.state.googleFormLink,
+            chapterName: this.state.chapterName
+        })
+    }
+
     render() {
         return (
             <div className="ContactDashboard">
@@ -36,7 +47,7 @@ export default class ContactDashboard extends Component<{}, IState> {
                     <h4 className="ContactDashboard__title">
                         Volunteer Postings
                     </h4>
-                    <form action="" className="ContactDashboard__form">
+                    <form action="" className="ContactDashboard__form" onSubmit={this.handleSubmit}>
                         <input 
                             type="text" 
                             className="ContactDashboard__input"
@@ -58,10 +69,10 @@ export default class ContactDashboard extends Component<{}, IState> {
                             className="ContactDashboard__input"
                             placeholder="Google Form URL"
                             required
-                            name="url"
+                            name="googleFormLink"
                             onChange={this.handleChange}
                         />
-                        <select name="city" id="" className="ContactDashboard__input" onChange={this.handleChange}>
+                        <select name="chapterName" id="" className="ContactDashboard__input" onChange={this.handleChange}>
                             <option value="London">London</option>
                             <option value="Toronto">Toronto</option>
                             <option value="Ottawa">Ottawa</option>
