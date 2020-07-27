@@ -24,5 +24,19 @@ router.post('/', checkAuth, async (req, res) => {
 
 })
 
+router.get('/', async (req, res) => {
+    try {
+        let postings = await db
+        .getDb()
+        .collection('postings')
+        .find({})
+        .toArray()
+
+        res.send(postings)
+    } catch (error) {
+        res.send('error')
+    }
+})
+
 
 module.exports = router

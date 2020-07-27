@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import "./VolunteerOpportunities.scss";
+import axios from 'axios';
 
 interface IState {
     chapters: {
         chapterName: string,
+        _id: string,
         opportunities: {
             title: string,
             description: string,
@@ -17,49 +19,15 @@ class VolunteerOpportunities extends Component<{}, IState> {
     constructor(props: {}){
         super(props)
         this.state = {
-            chapters: [
-                {
-                    chapterName: "Toronto",
-                    opportunities: [
-                        {
-                            title: "Tech Lead",
-                            description: "Lead team",
-                            googleFormLink: "google.com"
-                        },
-                        {
-                            title: "Front End Developer",
-                            description: "Make website",
-                            googleFormLink: "google.com"
-                        },
-                        {
-                            title: "Software Engineer",
-                            description: "You gotta engineer that",
-                            googleFormLink: "google.com"
-                        }
-                    ]
-                },
-                {
-                    chapterName: "Guelph",
-                    opportunities: [
-                        {
-                            title: "Tech Lead",
-                            description: "Lead Team",
-                            googleFormLink: "google.com"
-                        },
-                        {
-                            title: "Front End Developer",
-                            description: "Design website",
-                            googleFormLink: "google.com"
-                        },
-                        {
-                            title: "Software Engineer",
-                            description: "Engineer the docker container",
-                            googleFormLink: "google.com"
-                        }
-                    ]
-                }
-            ]
+            chapters: []
         }
+    }
+
+    componentDidMount = async () => {
+        let results = await axios.get('http://localhost:5000/api/postings')
+        this.setState({
+            chapters: results.data
+        })
     }
 
     displayOpportunities: () => JSX.Element[] = () => {
@@ -92,7 +60,7 @@ class VolunteerOpportunities extends Component<{}, IState> {
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit ad dolorum sint asperiores? Fuga voluptatibus dolore cum cumque odio ut beatae, eaque aspernatur distinctio sint esse, quidem, molestias optio suscipit.
                     </p>
                     <div className="VolunteerOpportunities__all-opp-container">
-                        {this.displayOpportunities()}
+                        {this.state.chapters.length && this.displayOpportunities()}
                     </div>
                 </div>
             </div>

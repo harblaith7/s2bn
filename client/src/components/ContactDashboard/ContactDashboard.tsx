@@ -30,7 +30,7 @@ export default class ContactDashboard extends Component<{}, IState> {
             })
     }
 
-    handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         axios.post('http://localhost:5000/api/postings', {
             title: this.state.title,
