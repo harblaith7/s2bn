@@ -1,0 +1,48 @@
+@import "../../sass/variables.scss";
+
+.ContactDashboard {
+    width: 45%;
+    background-color: $transparent-grey-2;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    height: 35rem;
+    border: 0.1rem solid $transparent-grey-2; 
+    margin-top: 7.5rem;
+
+    &__title {
+        color: $primary;
+        font-size: 4rem;
+        padding-bottom: 1rem;
+        border-bottom: 0.1rem solid $less-transparent-grey;
+    }
+
+    &__form {
+        width: 100%;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        margin-right: 2rem;
+
+        &--short {
+            width: 52.25rem;
+        }
+    }
+
+    &__submit {
+        width: 95%;
+        padding: 0.75rem;
+        background-color: $primary;
+        color: $white;
+        font-weight: 600;
+        border: none;
+        margin-top: 1rem;
+        font-size: 1.5rem;
+
+    }
+}

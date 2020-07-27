@@ -36,8 +36,8 @@
     }
 
     &__card {
-        width: 40rem;
-        height: 35rem;
+        width: 30rem;
+        height: 25rem;
         margin-right: 5rem;
         margin-bottom: 5rem;
         display: flex;
@@ -48,6 +48,10 @@
         overflow: hidden;
         cursor: pointer;
         background-color: black;
+        
+        &:hover {
+            text-decoration: none;
+        }
 
         &:hover .Chapters__img {
             opacity: 0.75;
