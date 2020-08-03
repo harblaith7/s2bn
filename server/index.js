@@ -13,12 +13,12 @@ app.use(express.json())
 app.use(cors())
 
 // ROUTES
-app.use('/api/auth', require('./routes/auth'))
-app.use('/api/messages', require('./routes/messages'))
-app.use('/api/events', require('./routes/events'))
-app.use('/api/payments', require('./routes/payments'))
-app.use('/api/chapters', require('./routes/chapters'))
-app.use('/api/postings', require('./routes/volunteer'))
+app.use('/auth', require('./routes/auth'))
+app.use('/messages', require('./routes/messages'))
+app.use('/events', require('./routes/events'))
+app.use('/payments', require('./routes/payments'))
+app.use('/chapters', require('./routes/chapters'))
+app.use('/postings', require('./routes/volunteer'))
 
 const PORT = process.env.PORT || 5000
 

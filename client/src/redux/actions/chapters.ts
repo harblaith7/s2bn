@@ -3,7 +3,7 @@ import { FETCH_CHAPTERS } from './types'
 
 export const fetchChapters = () => async (dispatch: any) => {
 
-    let results = await axios.get("http://localhost:5000/api/chapters")
+    let results = await axios.get("/api/chapters")
 
     dispatch({
         type: FETCH_CHAPTERS,

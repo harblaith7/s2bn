@@ -23,7 +23,7 @@ type Event = {
 
 export const createEvent = (event: Event) => async (dispatch: any) => {
     try {
-        let results = await axios.post('http://localhost:5000/api/events/create', {...event})
+        let results = await axios.post('/api/events/create', {...event})
         dispatch(fetchEvent())
     } catch (error) {
         console.log(error)
@@ -33,7 +33,7 @@ export const createEvent = (event: Event) => async (dispatch: any) => {
 export const fetchEvent = () => async (dispatch: any) => {
     try {
         console.log("called")
-        let results = await axios.get('http://localhost:5000/api/events')
+        let results = await axios.get('/api/events')
 
         dispatch({
             type: FETCH_EVENTS,
@@ -47,7 +47,7 @@ export const fetchEvent = () => async (dispatch: any) => {
 
 export const updateEvent = (_id: String, changes: Object[]) => async (dispatch: any) => {
     try {
-        let results = await axios.patch('http://localhost:5000/api/events', {
+        let results = await axios.patch('/api/events', {
             _id,
             changes
         })

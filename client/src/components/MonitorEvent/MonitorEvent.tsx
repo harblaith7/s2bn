@@ -125,7 +125,7 @@ class MonitorEvent extends Component<IProps, IState> {
 
     deleteEvent = async () => {
         console.log(this.state.currentEvent._id)
-        let item = await axios.delete(`http://localhost:5000/api/events/${this.state.currentEvent._id}`)
+        let item = await axios.delete(`/api/events/${this.state.currentEvent._id}`)
         this.props.fetchEvent()
     }
 
