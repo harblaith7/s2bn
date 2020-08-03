@@ -4,11 +4,7 @@ import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js"
 import {StripeCardElementChangeEvent} from "@stripe/stripe-js"
 import axios from 'axios'
 
-const CheckoutForm = (props: {
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>,
-    price: number,
-    id: String
-}) => {
+const CheckoutForm = (props) => {
 
     let initialButtonName;
     console.log(props.id)
@@ -28,14 +24,14 @@ const CheckoutForm = (props: {
     const element = useElements()
     const stripe = useStripe()
 
-    const handleCardDetailChange = (e: StripeCardElementChangeEvent) => {
+    const handleCardDetailChange = (e) => {
         if(e.error){
             return setCheckoutError(e.error.message)
         } 
         setCheckoutError("")
     }
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         // Get billing info
@@ -59,14 +55,14 @@ const CheckoutForm = (props: {
         setProcessingPayment(true)
         setButtonName("Processing...")
 
-        const cardElement = element!.getElement("card");
+        const cardElement = element.getElement("card");
 
         try {
 
             // Create payment method
-            const paymentMethod = await stripe!.createPaymentMethod({
+            const paymentMethod = await stripe.createPaymentMethod({
                 type: "card",
-                card: cardElement!,
+                card: cardElement,
                 billing_details: billingInfo
             })
 
@@ -90,18 +86,18 @@ const CheckoutForm = (props: {
 
             if(paymentMethod.error){
                 console.log("Errored")
-                setCheckoutError(paymentMethod.error.message!)
+                setCheckoutError(paymentMethod.error.message)
                 setProcessingPayment(false);
                 return
             }
 
             // Complete the payment
             const completePayment = await stripe?.confirmCardPayment(clientSecret, {
-                payment_method: paymentMethod.paymentMethod!.id
+                payment_method: paymentMethod.paymentMethod.id
             })
 
-            if(completePayment!.error){
-                setCheckoutError(completePayment!.error.message!)
+            if(completePayment.error){
+                setCheckoutError(completePayment.error.message)
                 setProcessingPayment(false);
                 setButtonName(`Pay $${props.price}`)
                 return

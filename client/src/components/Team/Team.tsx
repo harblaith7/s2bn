@@ -11,18 +11,7 @@ interface IState {
 }
 
 interface IProps {
-    chapters: {
-        _id: String,
-        city: String,
-        snippet: String,
-        members: {
-            name: String,
-            imageURL: String,
-            linkedInURL: String,
-            shortSnippet: String,
-            position: String
-        }[]
-    }[] 
+    chapters: any
 }
 
 export default class Team extends Component<IProps, IState> {

@@ -2,16 +2,9 @@ import React, { Component } from 'react'
 import "./ContactDashboard.scss"
 import axios from 'axios'
 
-interface IState {
-    title: String,
-    description: String,
-    googleFormLink: String,
-    chapterName: String
-}
+export default class ContactDashboard extends Component {
 
-export default class ContactDashboard extends Component<{}, IState> {
-
-    constructor(props: {}){
+    constructor(props){
         super(props)
         this.state = {
             title: "",
@@ -21,16 +14,13 @@ export default class ContactDashboard extends Component<{}, IState> {
         }
     }
 
-    handleChange: (
-        e: React.ChangeEvent<HTMLInputElement> |
-        React.ChangeEvent<HTMLSelectElement>
-        ) => void = (e) => {
+    handleChange = (e) => {
             this.setState({
                 [e.target.name] : e.target.value
             })
     }
 
-    handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit = async (e) => {
         e.preventDefault()
         axios.post('http://localhost:5000/api/postings', {
             title: this.state.title,

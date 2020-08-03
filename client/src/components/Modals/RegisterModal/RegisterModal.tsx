@@ -4,7 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import "./RegisterModal.scss"
-import CheckoutForm from "../../Stripe/CheckoutForm/CheckoutForm"
+import CheckoutForm from "../../Stripe/CheckoutForm/CheckoutForm.jsx"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

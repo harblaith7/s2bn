@@ -20,7 +20,7 @@ export default class PersonCard extends Component<IProps> {
         return (
             <div className="PersonCard">
                 <div className="PersonCard__container">
-                    <img src={imageURL} alt="Picture of member" className="PersonCard__image"/>
+                    <img src={`${imageURL}`} alt="Picture of member" className="PersonCard__image"/>
                     <h5 className="PersonCard__name">
                         {name}
                     </h5>

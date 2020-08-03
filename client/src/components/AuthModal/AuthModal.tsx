@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) =>
             {
                 isLogin ? (
                     <>
-                        {props.alert && <Alert/>}
+                        {props.alert && <Alert alertType={2}/>}
                         <h2 className="AuthModal__title">Login</h2>
                         <p className="AuthModal__blurb">Log in as an administrator</p>
                         <LoginForm

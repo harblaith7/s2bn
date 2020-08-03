@@ -1,21 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-interface IState {
-    name: String
-    imageURL: String,
-    linkedInURL: String,
-    shortSnippet: String,
-    position: String
-}
+export default class ChapterAddMemberForm extends Component {
 
-interface IProps {
-    chapter: String
-}
-
-export default class ChapterAddMemberForm extends Component<IProps, IState> {
-
-    constructor(props: IProps){
+    constructor(props){
         super(props)
         this.state = {
             name: "",
@@ -26,13 +14,13 @@ export default class ChapterAddMemberForm extends Component<IProps, IState> {
         }
     }
 
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
+    handleChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value
         })
     }
 
-    handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit = async (e) => {
         e.preventDefault()
 
         axios.post('http://localhost:5000/api/chapters/member', {

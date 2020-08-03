@@ -27,6 +27,7 @@
     "express-validator": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
+    "nodemon": "^2.0.4",
     "stripe": "^8.69.0"
   }
 }

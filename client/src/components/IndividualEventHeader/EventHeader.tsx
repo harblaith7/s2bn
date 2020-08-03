@@ -3,18 +3,19 @@ import './EventHeader.scss'
 import RegisterModal from '../Modals/RegisterModal/RegisterModal'
 
 interface IProps {
-    imageUrl: String,
-    title: String,
-    startDate: {
+    imageUrl?: String,
+    title?: String,
+    date?: String,
+    startDate?: {
         day: String,
         time: String
     },
-    endDate: {
+    endDate?: {
         day: String,
         time: String
     },
-    price: Number,
-    id: String
+    price?: Number,
+    id?: String
 }
 
 export default class EventHeader extends Component<IProps> {

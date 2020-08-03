@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import './App.scss';
 import PrivateRoute from './utils/PrivateRoutes/PrivateRoutes'
-import LandingPage from "./pages/LandingPage/LandingPage"
+import LandingPage from "./pages/LandingPage/LandingPage.jsx"
 import ChaptersPage from "./pages/ChaptersPage/ChaptersPage";
 import EventDashboardPage from "./pages/EventDashboardPage/EventDashboardPage";
 import AboutPage from "./pages/AboutPage/AboutPage";

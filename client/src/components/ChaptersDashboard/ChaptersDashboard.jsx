@@ -2,25 +2,11 @@ import React, { Component } from 'react'
 import "./ChaptersDashboard.scss"
 import {connect} from "react-redux"
 import axios from 'axios'
-import ChapterAddMemberForm from "../ChapterAddMemberForm/ChapterAddMemberForm"
+import ChapterAddMemberForm from "../ChapterAddMemberForm/ChapterAddMemberForm.jsx"
 
-interface IState {
-    cities: String[],
-    activeCity: String,
-    currentSnippet: String
-}
+class ChaptersDashboard extends Component {
 
-interface IProps {
-    chapters: {
-        city: String,
-        snippet: String,
-        _id: String
-    }[]
-}
-
-class ChaptersDashboard extends Component<IProps, IState> {
-
-    constructor(props: IProps){
+    constructor(props){
         super(props)
         this.state = {
             cities: ["London", "Waterloo", "Ottawa", "Toronto", "Edmonton", "Guelph", "Kingston"],
@@ -49,7 +35,7 @@ class ChaptersDashboard extends Component<IProps, IState> {
         }
 
         let results = this.props.chapters.find(chapter => {
-            return chapter.city === this.state.activeCity!
+            return chapter.city === this.state.activeCity
         })
 
         if(results){
@@ -60,19 +46,19 @@ class ChaptersDashboard extends Component<IProps, IState> {
 
     }
 
-    handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    handleChange = (e) => {
         this.setState({
             currentSnippet: e.target.value
         })
     }
 
-    changeCity = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    changeCity = (e) => {
         this.setState({
             activeCity: e.target.id
         })
     }
 
-    updateSnippet = async (e: React.FormEvent<HTMLFormElement>) => {
+    updateSnippet = async (e) => {
         e.preventDefault()
         await axios.post("http://localhost:5000/api/chapters", {
             city: this.state.activeCity,
@@ -121,7 +107,7 @@ class ChaptersDashboard extends Component<IProps, IState> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state) => ({
     chapters: state.chapters
 })
 export default connect(mapStateToProps)(ChaptersDashboard)

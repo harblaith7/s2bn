@@ -22,7 +22,8 @@ interface IProps {
         longDescription: String,
         price: Number,
         volume: Number
-    }[]
+    }[],
+    match: any
 }
 
 class EventPage extends Component<IProps> {

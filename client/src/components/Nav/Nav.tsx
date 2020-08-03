@@ -81,9 +81,9 @@ class Nav extends Component<IProps> {
                                 </Link>
                             </li>
                             <li className="Nav__list-item">
-                                <Link className="Nav__link" onClick={this.handleClick}>
+                                <a className="Nav__link" onClick={this.handleClick}>
                                     Logout
-                                </Link>
+                                </a>
                             </li>
                             </>
                        )

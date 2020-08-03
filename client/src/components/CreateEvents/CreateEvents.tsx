@@ -411,5 +411,4 @@ const mapStateToProps = (state: any) => ({
     auth: state.auth
 })
 
-
 export default connect(mapStateToProps, {createEvent, updateEvent})(CreateEvents)

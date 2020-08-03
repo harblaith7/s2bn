@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import "./DashboardPage.scss"
-import ChaptersDashboard from '../../components/ChaptersDashboard/ChaptersDashboard'
+import ChaptersDashboard from '../../components/ChaptersDashboard/ChaptersDashboard.jsx'
 import {fetchChapters} from "../../redux/actions/chapters"
 import {connect} from "react-redux"
-import ContactDashboard from '../../components/ContactDashboard/ContactDashboard'
+import ContactDashboard from '../../components/ContactDashboard/ContactDashboard.jsx'
 
 interface IProps {
     fetchChapters: () => void

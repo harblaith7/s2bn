@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './App';
-import setAuthToken from '../../client/src/utils/setAuthToken'
+import App from './App.jsx';
+import setAuthToken from './utils/setAuthToken'
 
 if(localStorage.token){
     setAuthToken(localStorage.token)
