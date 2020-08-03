@@ -23,7 +23,7 @@ export default class ChapterAddMemberForm extends Component {
     handleSubmit = async (e) => {
         e.preventDefault()
 
-        axios.post('http://localhost:5000/api/chapters/member', {
+        axios.post('/api/chapters/member', {
             name: this.state.name,
             imageURL: this.state.imageURL,
             linkedInURL: this.state.linkedInURL,

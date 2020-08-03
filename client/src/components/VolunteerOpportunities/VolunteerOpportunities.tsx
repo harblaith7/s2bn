@@ -24,7 +24,7 @@ class VolunteerOpportunities extends Component<{}, IState> {
     }
 
     componentDidMount = async () => {
-        let results = await axios.get('http://localhost:5000/api/postings')
+        let results = await axios.get('/api/postings')
         this.setState({
             chapters: results.data
         })

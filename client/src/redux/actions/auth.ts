@@ -28,7 +28,7 @@ interface RegisterFields {
 
 export const login = (fields: LoginFields) => async (dispatch: any) => {
     try {
-        let results = await axios.post('http://localhost:5000/api/auth/login', fields);
+        let results = await axios.post('/api/auth/login', fields);
         dispatch({
             type: LOGIN_SUCCESS,
             payload: {
@@ -46,7 +46,7 @@ export const login = (fields: LoginFields) => async (dispatch: any) => {
 
 export const register = (fields: RegisterFields) => async (dispatch: any) => {
     try {
-        let results = await axios.post('http://localhost:5000/api/auth/signup', fields)
+        let results = await axios.post('/api/auth/signup', fields)
         dispatch({
             type: REGISTER_SUCCESS,
             payload: {
@@ -68,7 +68,7 @@ export const loadUser = () => async (dispatch: any) => {
         setAuthToken(localStorage.token)
     }
     try {
-        const res = await axios.get('http://localhost:5000/api/auth')
+        const res = await axios.get('/api/auth')
         dispatch({
             type: USER_LOADED,
             payload: res.data

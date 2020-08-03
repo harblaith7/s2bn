@@ -79,14 +79,14 @@ class Message extends Component<IProps, IState> {
 
     handleClick: (e: any) => void = async (e) => {
         if(e.target.id === "resolved" || e.target.id === "read"){
-            axios.patch('http://localhost:5000/api/messages/updateOne', {
+            axios.patch('/api/messages/updateOne', {
                 status: e.target.id,
                 _id: this.state.message._id
             })
             this.props.updateMessageStatus(this.state.message._id, this.props.messages, e.target.id)
         }  else if (e.target.id === "delete") {
             this.props.deleteMessage(this.state.message._id, this.props.messages)
-            axios.post('http://localhost:5000/api/messages/deleteUser', {
+            axios.post('/api/messages/deleteUser', {
                 _id: this.state.message._id
             })
         }

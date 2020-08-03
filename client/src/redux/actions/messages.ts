@@ -19,7 +19,7 @@ export const sendMessage = (message: {
     message: string
 }) => async (dispatch: any) => {
     try {
-        let results = await axios.post('http://localhost:5000/api/messages', message)
+        let results = await axios.post('/api/messages', message)
         dispatch(triggerAlert(results.data.msg))
         return true
     } catch (error) {
@@ -30,7 +30,7 @@ export const sendMessage = (message: {
 
 export const getAllMessages = () => async (dispatch: any) => {
     try {
-        let results = await axios.get('http://localhost:5000/api/messages/all')
+        let results = await axios.get('/api/messages/all')
         dispatch({
             type: FETCH_MESSAGES_SUCCESS,
             payload: results
