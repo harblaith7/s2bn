@@ -1,11 +1,10 @@
 const router = require('express').Router()
 const Stripe = require('stripe')
-const keys = require('../config/dev')
-const dev = require('../config/dev')
+const keys = require('../config/keys')
 const db = require('../database/db')
 const {ObjectID} = require('mongodb')
 
-const stripe = new Stripe(dev.stripeSecret)
+const stripe = new Stripe(keys.stripeSecret)
 
 router.post('/', async (req, res) => {
    

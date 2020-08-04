@@ -3,7 +3,7 @@ const db = require('../database/db');
 const {check, validationResult} = require('express-validator')
 const bycrpt = require('bcrypt')
 const JWT = require('jsonwebtoken')
-const keys = require('../config/dev')
+const keys = require('../config/keys')
 const checkAuth = require('../middleware/checkAuth')
 
 // Path: api/auth/login
