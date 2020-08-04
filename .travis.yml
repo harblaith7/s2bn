@@ -1,0 +1,18 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t s2bnwebsite/tests -f ./tests/Dockerfile.dev ./tests
+
+script:
+    - docker run -e CI=true s2bnwebsite/tests
+
+after_success:
+    - docker build -t s2bnwebsite/multi-client ./client
+    - docker build -t s2bnwebsite/multi-server ./server
+    - docker build -t s2bnwebsite/multi-nginx ./nginx
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push s2bnwebsite/multi-client
+    - docker push s2bnwebsite/multi-server
+    - docker push s2bnwebsite/multi-nginx 
