@@ -1,5 +1,5 @@
 const {MongoClient} = require('mongodb')
-const keys = require('../config/dev');
+const keys = require('../config/keys');
 
 
 let _db;
