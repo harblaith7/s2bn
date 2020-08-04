@@ -8,7 +8,7 @@ beforeEach(async () => {
         headless: false
     })
     page = await browser.newPage()
-    await page.goto("http://localhost:3000/")
+    await page.goto("http://localhost:3100/")
 })
 
 afterEach(async () => {
@@ -22,8 +22,3 @@ test("Click on about tab redirects user to about page", async () => {
     expect(title).toEqual("2004")
 })
 
-test("Click on chapters tab redirects user to chapters page", async () => {
-    await page.click("a[href='/chapters']")
-    const title = await page.$eval(".Team__header", e => e.innerHTML)
-    expect(title).toEqual("Our Guelph Team")
-})
