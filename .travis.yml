@@ -9,9 +9,9 @@ script:
     - docker run -e CI=true s2bnwebsite/tests
 
 after_success:
-    - docker build -t s2bnwebsite/multi-client ./client
     - docker build -t s2bnwebsite/multi-server ./server
     - docker build -t s2bnwebsite/multi-nginx ./nginx
+    - docker build -t s2bnwebsite/multi-client ./client
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push s2bnwebsite/multi-client
     - docker push s2bnwebsite/multi-server
