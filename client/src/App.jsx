@@ -18,7 +18,7 @@ import store from './redux/store'
 import Nav from './components/Nav/Nav';
 import {Elements} from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
-import keys from "./config/dev"
+import keys from "./config/prod"
 
 const stripePromise = loadStripe(keys.PUBLISHABLE_KEY)
 

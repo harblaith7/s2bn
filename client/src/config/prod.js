@@ -1,0 +1,3 @@
+export default {
+    PUBLISHABLE_KEY: "pk_test_51H46KAGdCnRnTHHAXrZNwGqvnwuwnSK7z5LRZpitsGnL4f2tgiWBgS8bvl3BjbNl4eYwnx0HAndlOS3Fa3KP0Q4w00N6G7GHJn"
+}
