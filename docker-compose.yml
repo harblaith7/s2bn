@@ -21,4 +21,4 @@ services:
             dockerfile: Dockerfile.dev
             context: ./nginx
         ports:
-            - '3100:80'
+            - '3200:80'
