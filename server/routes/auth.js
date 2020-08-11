@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const db = require('../database/db');
 const {check, validationResult} = require('express-validator')
-// const bycrpt = require('bcrypt')
+const bycrpt = require('bcrypt')
 const JWT = require('jsonwebtoken')
 const keys = require('../config/keys')
 const checkAuth = require('../middleware/checkAuth')
@@ -41,7 +41,7 @@ router.post('/login', [
     }
 
     // Compare user password with given password
-    // let isMatch = await bycrpt.compare(password, user.password)
+    let isMatch = await bycrpt.compare(password, user.password)
 
     if(!isMatch){
         return res.status(404).json({
@@ -128,7 +128,7 @@ router.post('/signup', [
     }
 
     // // If user does not exist, hash the password
-    // const hashedPassword = await bycrpt.hash(password, 10)
+    const hashedPassword = await bycrpt.hash(password, 10)
 
     // Save user in the database
     user = await db.getDb()
