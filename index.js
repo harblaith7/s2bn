@@ -22,6 +22,10 @@ app.use('/api/postings', require('./routes/volunteer'))
 
 const PORT = process.env.PORT || 5000
 
+app.get('/', (req, res) => {
+    res.send("sure")
+})
+
 
 db.initDb((err, db) => {
     if(err) console.log(err)
