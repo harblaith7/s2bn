@@ -21,4 +21,9 @@ I will go through how I set up the following:
 
 In this application, I only wanted to authenticate internal members of the organization, rather than anybody that visits the website. This is because authenticated users have the ability to perform sensitive **CRUD** operations, such as creating events and viewing payments, that should by restricted to a few individuals.
 
-As a result, I decided to take the **token-based** approach with **JSON Web Tokens** to authenticate users over the **OAuth** approach with **passport.js**. 
+As a result, I decided to take a **token-based** approach with **JSON Web Tokens** over **OAuth** with **passport.js**. OAuth would have been a more user friendly approach if we wanted to authenticate any user that visits the website, but may have been less useful if we wanted to filter for specific individuals. 
+
+To only allow specific users to create accounts, users must submit an authentication code, along with their credentials, when signing up for an account
+
+#### Signing up
+
