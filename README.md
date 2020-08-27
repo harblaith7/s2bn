@@ -63,3 +63,18 @@ To only allow specific users to create accounts, users must submit an authentica
 ![image](https://user-images.githubusercontent.com/35265876/91337824-fa1a4d00-e7a1-11ea-8224-dbbb8287f126.png)
 
 The authentication code is a random set of strings, unique characters, and numbers that is set as an **environment variable**.
+
+The sign up route start at **line 66** in the /server/routes/auth.js directory. From **line 67 to line 90**, I am utilizing a package called express-validator to validate the users input. For instance, I ensure that the first name and last name fields are not empty and that the email input follows the format of an actual email. If any of these checks are not passed, I throw an error, and the preceeding code is not ran. The error message will also display on the client for the user to see.
+
+![image](https://user-images.githubusercontent.com/35265876/91487763-46d25680-e87c-11ea-9da1-59d9cdee580c.png)
+
+From **line 92 to 102**, I am manually checking if both the password and the confirmPassword match. If they don't, I throw the same error.
+
+From **line 105 to 113**, I am checking if the provided authentication code matches the one in the environment variable. If it doesn't, the same error is  thrown.
+
+From **line 115 to 128**, I am checking if the provided email is already in use. I am doing this by using the **.findOne()** method and passing in the provided email. If I get a non-null value, then that email is already associated with an account and thus we throw an error.
+
+On **line 131**, I am hashing the password with a package called **bcrypt** before storing it in the database. This ensures that if someone breaches the database, those passwords will be encrypted.
+
+
+
