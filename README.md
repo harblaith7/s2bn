@@ -76,7 +76,7 @@ On **line 131**, I am hashing the password with a package called **bcrypt** befo
 
 From **line 134 to 141**, I am simply saving the newly created user into the users collection in the MongoDB database.
 
-From **line 144 to 148**, I am creating a JWT with the email as the payload and then send it to the client. I am using an email because it should be unique across all users. 
+From **line 144 to 148**, I am creating a **JSON Web Token** with the email as the payload and then send it to the client. I am using an email because it should be unique across all users. This JWT will later be used to make authenticated requests.
 
 #### Logging in
 
