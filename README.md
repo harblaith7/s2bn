@@ -12,11 +12,9 @@ I will go through how I set up the following:
 
 1. Folder Structure
 2. Authentication 
-3. Communication with the Database
-4. Payment Handling 
-5. Testing
-6. Input Validation 
-7. Application Containerization
+3. Payment Handling 
+4. Testing
+5. Application Containerization
 
 ### Folder Structure 
 
@@ -75,6 +73,20 @@ From **line 105 to 113**, I am checking if the provided authentication code matc
 From **line 115 to 128**, I am checking if the provided email is already in use. I am doing this by using the **.findOne()** method and passing in the provided email. If I get a non-null value, then that email is already associated with an account and thus we throw an error.
 
 On **line 131**, I am hashing the password with a package called **bcrypt** before storing it in the database. This ensures that if someone breaches the database, those passwords will be encrypted.
+
+From **line 134 to 141**, I am simply saving the newly created user into the users collection in the MongoDB database.
+
+From **line 144 to 148**, I am creating a JWT with the email as the payload and then send it to the client. I am using an email because it should be unique across all users. 
+
+#### Logging in
+
+The logging in logic is very similar to the signing up logic so I won't dwell to much on it. The only main difference is that I am comparing the provided password with the hashed password that corresponds to the provided email. This comparison occurs between **line 44 to line 54**
+
+### Payment Handling
+
+Payment was handled via the **Stripe API**. The first route (starting on **line 9**), is responsible for creating the paymentIntent and communicating it with the Stripe API. If everything was handled correctly, the payment should be processed and completed.
+
+The second route, starting on **line 27**, simply pushes the user into the appropriate event document. This way the administrators can see who is attending which event.
 
 
 
