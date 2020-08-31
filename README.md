@@ -88,7 +88,7 @@ Payment was handled via the **Stripe API**. The first route (starting on **line 
 
 The second route, starting on **line 27**, simply pushes the user into the appropriate event document. This way the administrators can see who is attending which event.
 
-Integrating Stripe into my application was more of a frontend heavy. I actually have a [YouTube series](https://www.youtube.com/watch?v=WROxEd__fNs&t=244s) that discuss how to do it. It applied the same process with this app.
+Integrating Stripe into my application was more of a frontend heavy procedure. I actually have a [YouTube series](https://www.youtube.com/watch?v=WROxEd__fNs&t=244s) that discuss how to do it. It applied the same process with this app.
 
 ### Testing 
 
