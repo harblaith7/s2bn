@@ -103,3 +103,5 @@ Because of this experience, I intended to go back and write the tests I missed f
 ### Application Containerization
 
 Before this application, I never worked with **Docker**. Typically when I wanted an application deployed, I'd either do it via **Heroku** or **Netlify**. For this application however, I wanted to dive into the world of **DevOps**, and thus I decided to use Docker and AWS instead. 
+
+Each component of the application has both a **Dockerfile.dev** and a **Dockerfile** file. The Dockerfile.dev is used for development, and the Dockerfile is used for production. Once a new feature is completed and pushed onto the master branch, it is detected by **Travis**. Travis then runs all the tests to check if they pass. If they do, it starts to build the Docker images and then build them onto DockerHub. Once that is done, it redeploys the application on elastic beanstalk.
