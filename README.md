@@ -2,8 +2,7 @@
 
 This project was completely built (voluntarily) by Laith Harb for an organization called **Science to Business Network**. I believe it encompasses all aspects of software development as it deals with both the frontend & backend, quality assurance, and deployment.
 
-As I am applying for **Shopify's backend development internship** position, I will primarily detail what I've done in the backend, but I will still note some of the notable things I did in the frontend and deployment.
-
+As I am applying for **Shopify's backend development internship** position, I will primarily detail what I've done in the backend.
 ## The Server
 
 The server of this application was built with **Node** and **Express**. The database used by **MongoDB**, where MongoDB Atlas was utlized as the cloud provider. Testing was completed with **Jest** and **Puppeeter**.
