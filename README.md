@@ -2,8 +2,7 @@
 
 This project was completely built (voluntarily) by Laith Harb for an organization called **Science to Business Network**. I believe it encompasses all aspects of software development as it deals with both the frontend & backend, quality assurance, and deployment.
 
-As I am applying for **Shopify's backend development internship** position, I will primarily detail what I've done in the backend, but I will still note some of the notable things I did in the frontend and deployment.
-
+As I am applying for **Shopify's backend development internship** position, I will primarily detail what I've done in the backend.
 ## The Server
 
 The server of this application was built with **Node** and **Express**. The database used by **MongoDB**, where MongoDB Atlas was utlized as the cloud provider. Testing was completed with **Jest** and **Puppeeter**.
@@ -88,5 +87,20 @@ Payment was handled via the **Stripe API**. The first route (starting on **line 
 
 The second route, starting on **line 27**, simply pushes the user into the appropriate event document. This way the administrators can see who is attending which event.
 
-Integrating Stripe into my application was more of a frontend heavy. I actually have a [YouTube series](https://www.youtube.com/watch?v=WROxEd__fNs&t=244s) that discuss how to do it. It applied the same process with this app.
+Integrating Stripe into my application was more of a frontend heavy procedure. I actually have a [YouTube series](https://www.youtube.com/watch?v=WROxEd__fNs&t=244s) that discuss how to do it. It applied the same process with this app.
 
+### Testing 
+
+In this project I tried my best to follow a **test-driven development** approach where I first write an automated test defining the desired results and then produce the code to make the test pass. However, as time became restricted and deadlines processed, I (regrettably) omitted testing all together. 
+
+Following this omission, I learned how important testing an application really is. Whenever I worked on a new feature in the application, I would manually check if it works or not. If it does, then I would push the changes onto master and deploy my application.
+
+However, in one case, I followed that procedure and it ended up breaking other parts of my application. I didn't notice this because the feature itself was working fine, and that was what I was focusing on. If I consistently wrote **unit tests** throughout the application, I would have been prompted of this error. 
+
+Because of this experience, I intended to go back and write the tests I missed for every feature of in the application.
+
+### Application Containerization
+
+Before this application, I never worked with **Docker**. Typically when I wanted an application deployed, I'd either do it via **Heroku** or **Netlify**. For this application however, I wanted to dive into the world of **DevOps**, and thus I decided to use Docker and AWS instead. 
+
+Each component of the application has both a **Dockerfile.dev** and a **Dockerfile** file. The Dockerfile.dev is used for development, and the Dockerfile is used for production. Once a new feature is completed and pushed onto the master branch, it is detected by **Travis**. Travis then runs all the tests to check if they pass. If they do, it starts to build the Docker images and then build them onto DockerHub. Once that is done, it redeploys the application on elastic beanstalk.
