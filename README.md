@@ -31,6 +31,8 @@ All of the applications logic is eventually imported into the index.js file as i
 
 The config folder houses all the keys needed to run the application. As these keys are sensitive information, I didn't want to expose them to the public in any way. To do this, I created a **keys.js** file that checks whether we are in production or development. If we are in development, it exports the keys in the dev.js file, which contains all our development keys. This file is placed in our .gitignore file and is not commited to GitHub. If we are in production, it exports the keys in the prod.js file, which references each key to its respective environment variable.
 
+![image](https://user-images.githubusercontent.com/35265876/95662106-9bffba00-0b02-11eb-9de9-3036f9afab16.png)
+
 ***Database Folder***
 
 The database folder houses just one file that is responsible both connecting to the MongoDB database and returning a db object used to execute all the necessary CRUD operations.
