@@ -27,7 +27,7 @@ The server is made up of 4 folders (config, database, middleware, routes), and 3
 
 The config folder houses all the keys needed to run the application. As these keys are sensitive information, I didn't want to expose them to the public in any way. To do this, I created a **keys.js** file that checks whether we are in production or development. If we are in development, it exports the keys in the dev.js file, which contains all our development keys. This file is placed in our .gitignore file and is not commited to GitHub. If we are in production, it exports the keys in the prod.js file, which references each key to its respective environment variable.
 
-![image](https://user-images.githubusercontent.com/35265876/95662106-9bffba00-0b02-11eb-9de9-3036f9afab16.png)
+![image](https://user-images.githubusercontent.com/35265876/95662452-10d3f380-0b05-11eb-9d97-fff8d3e3e796.png)
 
 ***Database Folder***
 
