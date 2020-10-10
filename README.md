@@ -41,6 +41,14 @@ To connect and communicate with my database, I am using a **MongoDB driver** rat
 
 The middleware contains one middleware file that checks if the user is authenticated. This middleware is used to protect certain that require authentication to hit. For example, for someone to create an event they must hit the '/events' route. However, we don't just want anyone to have the ability to create event. Therefore, we use this middleware on the route to check if the user is authenticated. If they are not, it will throw an error before it processed to the route code. 
 
+The way that this middleware checks if the user is authenticated is looking if a token exists in the req.header["x-auth-header"]. This is set in the client by the function below. 
+
+![image](https://user-images.githubusercontent.com/35265876/95663414-17666900-0b0d-11eb-84d6-07bb28df1488.png)
+
+This function is being called upon mounting of the App component.
+
+![image](https://user-images.githubusercontent.com/35265876/95663562-2ac60400-0b0e-11eb-9dd5-38a061117655.png)
+
 ***Route Folder***
 
 The route folder contains the all the routes of the application seperate based on a common functionality. For instance, all the routes that are responsible for anything to do with the events is housed in the events.js file. Routes responsible for payments are in the payments.js file and routes responsible for authentication are in the auth.js file. All these routes are brough together in the index.js file in the root directory.
