@@ -22,7 +22,7 @@ export default class ContactDashboard extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        axios.post('/api/postings', {
+        axios.post('http://localhost:5000/api/postings', {
             title: this.state.title,
             description: this.state.description,
             googleFormLink: this.state.googleFormLink,

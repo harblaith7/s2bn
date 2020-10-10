@@ -9,7 +9,7 @@ beforeEach(async () => {
         headless: false
     })
     page = await browser.newPage()
-    await page.goto("http://localhost:3100/")
+    await page.goto("http://localhost:3001/")
     await page.click('.Header__about-btn-modal')
 })
 

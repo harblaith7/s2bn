@@ -60,7 +60,7 @@ class ChaptersDashboard extends Component {
 
     updateSnippet = async (e) => {
         e.preventDefault()
-        await axios.post("/api/chapters", {
+        await axios.post("http://localhost:5000as/api/chapters", {
             city: this.state.activeCity,
             snippet: this.state.currentSnippet
         })

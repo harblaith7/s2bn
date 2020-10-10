@@ -68,7 +68,7 @@ const CheckoutForm = (props) => {
 
             if(props.price <= 0){
                 try {
-                    axios.post("/api/payments/save-user", {
+                    axios.post("http://localhost:5000/api/payments/save-user", {
                     ...billingInfo,
                     id: props.id
                 })
@@ -78,7 +78,7 @@ const CheckoutForm = (props) => {
                 return
             }
             const { data: clientSecret } = await axios.post(
-                "/api/payments",
+                "http://localhost:5000/api/payments",
                  {amount: (100 * props.price)}
             )
 
@@ -108,7 +108,7 @@ const CheckoutForm = (props) => {
             // Save the user 
             try {
                 console.log("running 2")
-                    axios.post("/api/payments/save-user", {
+                    axios.post("http://localhost:5000/api/payments/save-user", {
                     ...billingInfo,
                     id: props.id
                 })
