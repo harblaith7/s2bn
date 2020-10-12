@@ -23,13 +23,11 @@ I organized each component of my application into seperate folders housed in the
 
 The server is made up of 4 folders (config, database, middleware, routes), and 3 files (2 Dockerfiles, index.js). 
 
-***index.js***
-
-All of the applications logic is eventually imported into the index.js file as it is what ultimately starts the server.
-
 ***Config Folder***
 
 The config folder houses all the keys needed to run the application. As these keys are sensitive information, I didn't want to expose them to the public in any way. To do this, I created a **keys.js** file that checks whether we are in production or development. If we are in development, it exports the keys in the dev.js file, which contains all our development keys. This file is placed in our .gitignore file and is not commited to GitHub. If we are in production, it exports the keys in the prod.js file, which references each key to its respective environment variable.
+
+![image](https://user-images.githubusercontent.com/35265876/95662452-10d3f380-0b05-11eb-9d97-fff8d3e3e796.png)
 
 ***Database Folder***
 
@@ -37,15 +35,29 @@ The database folder houses just one file that is responsible both connecting to 
 
 To connect and communicate with my database, I am using a **MongoDB driver** rather than a popular **ODM** like **Mongoose**. The reason for this was simply that I didn't understand much about databases at the time and thus I wanted to started with the basics rather than using a ODM that extracts alot of the syntax. I am happy I did it this way because I learned about how to communicate with your database, but it might be a good idea to refactor it to use Mongoose in the future.
 
+![image](https://user-images.githubusercontent.com/35265876/95662397-a622b800-0b04-11eb-8e7c-d3f3c04aa813.png)
+
 ***Middleware Folder***
 
 The middleware contains one middleware file that checks if the user is authenticated. This middleware is used to protect certain that require authentication to hit. For example, for someone to create an event they must hit the '/events' route. However, we don't just want anyone to have the ability to create event. Therefore, we use this middleware on the route to check if the user is authenticated. If they are not, it will throw an error before it processed to the route code. 
+
+The way that this middleware checks if the user is authenticated is looking if a token exists in the req.header["x-auth-header"]. This is set in the client by the function below. 
+
+![image](https://user-images.githubusercontent.com/35265876/95663414-17666900-0b0d-11eb-84d6-07bb28df1488.png)
+
+This function is being called upon mounting of the App component.
+
+![image](https://user-images.githubusercontent.com/35265876/95663562-2ac60400-0b0e-11eb-9dd5-38a061117655.png)
 
 ***Route Folder***
 
 The route folder contains the all the routes of the application seperate based on a common functionality. For instance, all the routes that are responsible for anything to do with the events is housed in the events.js file. Routes responsible for payments are in the payments.js file and routes responsible for authentication are in the auth.js file. All these routes are brough together in the index.js file in the root directory.
 
 ![image](https://user-images.githubusercontent.com/35265876/91347415-4c626a80-e7b0-11ea-8802-89638d290d72.png)
+
+***index.js***
+
+All of the applications logic is eventually imported into the index.js file as it is what ultimately starts the server.
 
 ### Authentication 
 
