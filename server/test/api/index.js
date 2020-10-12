@@ -16,7 +16,7 @@ class DBManager {
 
   // Spin up a new in-memory mongo instance
   async start() {
-    this.connection = await MongoClient.connect("mongodb+srv://s2bn:xN2Dvf4hHx1lq8gK@cluster0-b2yl2.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+    this.connection = await MongoClient.connect("--removed--", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
