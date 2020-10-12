@@ -41,6 +41,8 @@ To connect and communicate with my database, I am using a **MongoDB driver** rat
 
 The middleware contains one middleware file that checks if the user is authenticated. This middleware is used to protect certain that require authentication to hit. For example, for someone to create an event they must hit the '/events' route. However, we don't just want anyone to have the ability to create event. Therefore, we use this middleware on the route to check if the user is authenticated. If they are not, it will throw an error before it processed to the route code. 
 
+![image](https://user-images.githubusercontent.com/35265876/95781539-0435d380-0c9c-11eb-85aa-294ec3bc16ce.png)
+
 The way that this middleware checks if the user is authenticated is looking if a token exists in the req.header["x-auth-header"]. This is set in the client by the function below. 
 
 ![image](https://user-images.githubusercontent.com/35265876/95663414-17666900-0b0d-11eb-84d6-07bb28df1488.png)
