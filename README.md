@@ -11,8 +11,8 @@ I will go through how I set up the following:
 
 1. Folder Structure
 2. Authentication 
-3. Payment Handling 
-4. Testing
+3. Testing
+4. Payment Handling 
 5. Application Containerization
 
 ### Folder Structure 
